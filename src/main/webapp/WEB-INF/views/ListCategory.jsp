@@ -30,7 +30,8 @@
 		<td> <%= list.get(i).getCategoryId() %></td>
 		<td><%=list.get(i).getCategoryName() %></td>
 		<td><%=list.get(i).getDeleted() %></td>
-		<td> <a href = "deletecategory/<%=list.get(i).getCategoryId() %>">Delete</a></td>
+		<td> <a href = "deletecategory/<%=list.get(i).getCategoryId() %>">Delete</a>
+		<a href = "viewcategory/<%=list.get(i).getCategoryId() %>">View </a></td>
 	</tr>
 <%}%>
 

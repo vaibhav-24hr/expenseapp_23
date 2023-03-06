@@ -35,4 +35,18 @@ public class CategoryDao {
 		stmt.update(updateQuery,categoryId);
 		
 	}
+	
+	public CategoryBean getCategoryById(Integer categoryId) {
+		CategoryBean cb = null;
+		
+		try {
+			cb = stmt.queryForObject("select * from category where categoryId = ?", new BeanPropertyRowMapper<CategoryBean>(CategoryBean.class), new Object[] {categoryId});
+			
+		}catch(Exception e){
+			System.out.println("CategoryDao :: getCategoryById()");
+			System.out.println(e.getMessage());
+			
+		}
+		return cb;
+	}
 }

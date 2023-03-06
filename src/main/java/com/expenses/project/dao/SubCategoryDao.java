@@ -23,8 +23,12 @@ public class SubCategoryDao {
 	}
 	
 	public List<SubCategoryBean> getAllSubCategory(){
-		String selectQuery = "select * from subcategory where deleted = false";
-		List<SubCategoryBean> sublist = stmt.query(selectQuery, new BeanPropertyRowMapper<SubCategoryBean>(SubCategoryBean.class));
+		// String selectQuery = "select * from subcategory where deleted = false";
+		
+		String joinQuery = "select c.categoryName , c.categoryId , s.subcategoryId , s.subcategoryname , s.deleted from category c , subcategory s where\r\n"
+				+ " c.categoryId = s.categoryID and s.deleted = false;"; 
+		
+		List<SubCategoryBean> sublist = stmt.query(joinQuery, new BeanPropertyRowMapper<SubCategoryBean>(SubCategoryBean.class));
 		return sublist;
 	}
 	

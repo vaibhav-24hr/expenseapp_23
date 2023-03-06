@@ -16,10 +16,11 @@
 <table border = "1">
 
 	<tr>
-		<th>groupId</th>
+		<th>SubCategoryId</th>
 		<th>SubCategoryName</th>
 		<th>GroupId</th>
 		<th>Deleted?</th>
+		<th>Category Name</th>
 		<th>Action</th>
 		
 	</tr>
@@ -29,6 +30,7 @@
 		<td> <%= list.get(i).getSubCategoryId() %></td>
 		<td><%=list.get(i).getSubCategoryName() %></td>
 		<td><%=list.get(i).getCategoryId() %></td>
+		<td><%= list.get(i).getCategoryName() %></td>
 		<td><%=list.get(i).getDeleted() %></td>
 		<td><a href = "/deletesubcategory/ <%=list.get(i).getSubCategoryId() %>">Delete</a></td>
 	</tr>

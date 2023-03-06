@@ -52,5 +52,12 @@ public class CategoryController {
 		
 	}
 	
+	@GetMapping("/viewcategory/{categoryId}")
+	public String viewCategory(@PathVariable("categoryId")Integer categoryId, Model model) {
+		CategoryBean cb = categoryDao.getCategoryById(categoryId);
+		model.addAttribute("cb", cb);
+		return "ViewCategory";
+	}
+	
 	
 }
