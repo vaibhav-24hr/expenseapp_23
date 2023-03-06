@@ -1,0 +1,50 @@
+open mysql 
+	
+	database create 
+	
+	create database expenseapp; 
+	
+	use expenseapp; 
+	
+	create table users (
+		userId integer primary key auto_increment,
+		firstName varchar(30),
+		lastName varchar(30),
+		email varchar(50),
+		password varchar(80),
+		role integer
+	);
+	
+	1 -> admin 
+	2 -> user/buyer 
+	
+	desc users;
+	
+	
+insert into users (firstName,lastName,email,password,role) 
+	values ('ram','sita','ram@sita.com','ravan');
+	
+	
+alter table users add otp varchar(10); 
+
+
+update user set otp = ? where email = ? 
+
+
+-----------------------------------------
+
+create table category(
+	categoryId integer primary key auto_increment,
+	categoryName varchar(30),
+	deleted boolean  
+);
+
+create table subcategory(
+	subCategoryId integer primary key auto_increment,
+	subCategoryName varchar(30),
+	categoryId integer references category(categoryId)
+);
+
+
+
+
