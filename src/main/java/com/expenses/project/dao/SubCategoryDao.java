@@ -37,5 +37,23 @@ public class SubCategoryDao {
 		stmt.update(updateQuery, subCategoryId);
 	}
 	
+	public SubCategoryBean getSubCategoryById(Integer subCategoryId) {
+		SubCategoryBean scb = null;
+		
+		try {
+			String viewQuery = "select * from category , subcategory where subcategory.subCategoryId = ? and subcategory.subCategoryId = category.categoryId and subcategory.deleted = false ";
+			scb = stmt.queryForObject( viewQuery , new BeanPropertyRowMapper<SubCategoryBean>(SubCategoryBean.class), new Object[] {subCategoryId});
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("SubCategoryDao :: getSubCategoryById");
+			System.out.println(e.getMessage());
+		}
+		
+		return scb;
+	}
+	
 }
+	
+
  

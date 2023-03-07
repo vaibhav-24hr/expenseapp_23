@@ -27,13 +27,15 @@
 
 	<% for(int i=0; i<list.size(); i++){ %>  <!-- we can also use for each loop:  for(CategoryBean cb:list) -->
 	<tr>
-		<td> <%= list.get(i).getSubCategoryId() %></td>
+		<td><%= list.get(i).getSubCategoryId() %></td>
 		<td><%=list.get(i).getSubCategoryName() %></td>
 		<td><%=list.get(i).getCategoryId() %></td>
 		<td><%= list.get(i).getCategoryName() %></td>
 		<td><%=list.get(i).getDeleted() %></td>
-		<td><a href = "/deletesubcategory/ <%=list.get(i).getSubCategoryId() %>">Delete</a></td>
-	</tr>
+		<td><a href = "/deletesubcategory/ <%=list.get(i).getSubCategoryId() %>">Delete</a>
+		<a href = "viewsubcategory/ <%=list.get(i).getSubCategoryId() %>">View</a>
+		</td>
+	</tr>   
 <%}%>
 
 </body>

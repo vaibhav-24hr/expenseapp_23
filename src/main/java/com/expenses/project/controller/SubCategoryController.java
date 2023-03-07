@@ -59,6 +59,14 @@ public class SubCategoryController {
 		
 	}
 	
+	@GetMapping("/viewsubcategory/{subCategoryId}")
+	public String viewSubCategory(@PathVariable("subCategoryId")Integer subCategoryId, Model model) {
+		
+		SubCategoryBean scb = scd.getSubCategoryById(subCategoryId);
+		model.addAttribute("scb", scb);
+		return "ViewSubCategory";
+	}
+	
 }
 
 
