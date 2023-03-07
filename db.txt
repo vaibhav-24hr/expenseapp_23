@@ -45,6 +45,24 @@ create table subcategory(
 	categoryId integer references category(categoryId)
 );
 
+-------------------------------------------------------------
+
+Expense Table
+
+create table expense(
+	expenseId integer primary key auto_increment,
+	title varchar(30),
+	categoryId integer references category(categoryId),
+	subCategoryId integer references subcategory(subcategoryId),
+	vendorId integer references vendor(vendorId),
+	accountTypeId integer references accountType(accountTypeId),
+	statusId integer references status(statusId),
+	amount integer,
+	date varchar(30),
+	description varchar(150),
+	userId integer integer references users(userId)
+	);
+	 
 
 
 
