@@ -18,6 +18,6 @@
 <a href = "listvendor"> Display All Vendors </a><br> <br>
 <a href = "newaccount"> Add Account Type </a><br> <br>
 <a href = "listaccount"> List All Account </a><br> <br>
-
+<a href = "logout"> Log Out </a>
 </body>
 </html>

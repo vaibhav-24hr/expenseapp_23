@@ -1,5 +1,11 @@
 package com.expenses.project.controller;
 
+import javax.servlet.http.Cookie;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+
 //import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -91,9 +97,9 @@ public class SessionController {
 	}
 	
 	
-	
+	// COOKIES
 	@PostMapping("/authentication")
-	public String authentication(LoginBean logb, Model model) {
+	public String authentication(LoginBean logb, Model model, HttpServletResponse rsp, HttpSession session) {
 		System.out.println(logb.getEmail());
 		System.out.println(logb.getPassword());
 		
@@ -101,16 +107,32 @@ public class SessionController {
 		// validation : true
 		// db -> users -> email : password match -> loginBean:email,password
 		
-		UserBean usB = userDao.authenticateUser(logb);
+		UserBean usb = userDao.authenticateUser(logb);
 		
-		if (usB == null) {
+		// unVALID
+		if (usb == null) {
 			// inValid
 			model.addAttribute("error","Invalid Credentials");
 			return "Login";
 		} else {
-			if(usB.getRole() == 2) {
+			
+			// VALID
+				// Cookie
+			
+			Cookie c1 = new Cookie("userId", usb.getUserId()+"");
+			Cookie c2 = new Cookie("firstName", usb.getFirstName());
+			rsp.addCookie(c1);
+			rsp.addCookie(c2);
+			
+			// Session 
+			session.setAttribute("userId", usb.getUserId());
+			
+			// max inactive interval Time
+			session.setMaxInactiveInterval(60*5); //Second 
+			
+			if(usb.getRole() == 2) {
 				return "redirect:/home";
-			}else if (usB.getRole() == 1) {
+			}else if (usb.getRole() == 1) {
 				return "redirect:/admindashboard";// JSP Name
 			}else	
 			return "404"; // JSP Name
@@ -121,14 +143,11 @@ public class SessionController {
 	@GetMapping("/updatepasswordjspopen")
 	public String updatePasswordJspOpen() {
 		return "UpdatePassword";
-		
 	}
 	
 	
 	@PostMapping("updatemypassword")
 	public String updateMyPassword(UpdatePasswordBean upb, Model model) {
-		
-		
 		
 		System.out.println(upb.getEmail());
 		System.out.println(upb.getPassword());
@@ -148,6 +167,12 @@ public class SessionController {
 			userDao.updateMyPassword(upb);
 			return "Login";		
 		}
+	}
+	
+	
+	@GetMapping("/logout")
+	public String logout() {
+		return "redirect:/login";
 	}
 
 }

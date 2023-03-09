@@ -10,7 +10,7 @@
 <form method="post" action="authentication">
 		Email :<input type="email" name="email"><br><br>
 		Password : <input type="password" name="password"><br><br>
-		<input type="submit" value="Login"/> <br>
+		<input type="submit" value="Login"/> <br><br>
 		
 		<a href="forgetpassword">ForgetPassword</a>
 </form>

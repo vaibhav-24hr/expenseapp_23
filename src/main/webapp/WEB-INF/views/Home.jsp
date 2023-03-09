@@ -8,5 +8,8 @@
 </head>
 <body>
 <h1>Home</h1>
+
+<a href = "newexpense">Add your Expenses here</a><br><br>
+<a href = "logout"> Log Out </a><br>
 </body>
 </html>
