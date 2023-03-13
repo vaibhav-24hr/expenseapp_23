@@ -63,6 +63,19 @@ create table expense(
 	userId integer integer references users(userId)
 	);
 	 
+-----------------------------------------------------------------------
+
+To Rename Column Name
+
+alter table expense rename column amount to ammount;
 
 
+--------------------------------------------------------------------------
+delete Row in dataTable
+
+delete from subcategory where subCategoryId = 17;
+
+-------------------------------------------------------------------------
+
+update subcategory set subCategoryName = '' where subCategoryId =  ;
 
