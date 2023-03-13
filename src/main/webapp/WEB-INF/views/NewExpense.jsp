@@ -1,3 +1,6 @@
+<%@page import="java.util.Calendar"%>
+<%@page import="com.expenses.project.bean.VendorBean"%>
+<%@page import="com.expenses.project.bean.StatusBean"%>
 <%@page import="com.expenses.project.bean.AccountBean"%>
 <%@page import="com.expenses.project.bean.SubCategoryBean"%>
 <%@page import="com.expenses.project.bean.CategoryBean"%>
@@ -16,17 +19,30 @@
 	List<CategoryBean> list = (List<CategoryBean>) request.getAttribute("list");
 	List<SubCategoryBean> sublist = (List<SubCategoryBean>) request.getAttribute("sublist");
 	List<AccountBean> acclist = (List<AccountBean>) request.getAttribute("acclist");
+	List<StatusBean> stlist = (List<StatusBean>)request.getAttribute("stlist");
+	List<VendorBean> vdlist = (List<VendorBean>)request.getAttribute("vdlist");
 	%>
 
-	<h3>Add Your Expenses Below</h3>
+	<h2>Add Your Expenses Below</h2>
 
 	<form action="saveexpense" method="post">
 	
 		Title: <input type="text" name="title">
 		<br><br>
 	    
-	    Vendor: 
+	    
+	    
+	    Vendor:  <select name="vendorId">
+	    <%for(VendorBean vb : vdlist){ %>
+	    
+	    <option value = "<%=vb.getVendorId() %>" >
+	    	<%=vb.getVendorName() %></option>
+	    	<%}%>
+	    	
+	    </select>
 	    <br><br>
+	    
+	    
 	    
 		Category: <select name="categoryId">
 			<%
@@ -40,10 +56,15 @@
 		<br><br>
 		
 		
-		SubCategory : <input type="text" name="subCategoryName">
-		 <br><br>
+	 	Sub Category : <select name = "subCategoryId">
+		<% for (SubCategoryBean sb : sublist){ %>
+		<option value = "<%=sb.getSubCategoryId() %>" >
+			<%=sb.getSubCategoryName() %></option>
+			<%} %>
+		</select>
+		 <br><br> 
 		 
-		Account: <select name="accountType">
+		Account: <select name="accountTypeId">
 			<%
 			for (AccountBean acb : acclist) {
 			%>
@@ -56,17 +77,46 @@
 			<br><br>
 
 		
-		Status: 
+		Status: <select name = "statusId">
+		<%
+			for(StatusBean stb : stlist){
+		%>
+		<option value = "<%=stb.getStatusId() %>" >
+		<%=stb.getStatusShow() %>
+		</option>
+		<%} %>
+		</select>
 		<br><br>
 		
-		Amount: 
+		Amount: <input type ="text"> 
 		<br><br>
 		
-		Date: 
-		<br><br>
+		<%
+						Calendar c = Calendar.getInstance(); 
+						int d = c.get(c.DAY_OF_MONTH); //07 
+						int m = c.get(c.MONTH)+1;//03
+						String mon = "";
+						String dt = "";
+						if(m<=9){
+							mon = 0+""+m; 
+						}else{
+							mon = m+"";
+						}
+						if(d <= 9){
+							dt = 0+""+d;
+						}else{
+							dt = d+"";
+						}
+						int y = c.get(c.YEAR);//2023 
+						System.out.println(y+"-"+m+"-"+d);
+					%>
+		
+		Date :  <input type ="date" id="myDate" name = "date" value="<%=y+"-"+mon+"-"+dt%>"><br><br>
+			
+		
 		
 		Description:
-		<textarea rows="" cols=""></textarea>
+		<textarea rows="5" cols="15" name = "description"></textarea>
 		<br><br>
 		
 		<input type="submit">

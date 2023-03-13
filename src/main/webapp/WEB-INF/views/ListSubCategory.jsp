@@ -19,8 +19,8 @@
 		<th>SubCategoryId</th>
 		<th>SubCategoryName</th>
 		<th>GroupId</th>
-		<th>Deleted?</th>
 		<th>Category Name</th>
+		<th>Deleted?</th>
 		<th>Action</th>
 		
 	</tr>
@@ -32,8 +32,8 @@
 		<td><%=list.get(i).getCategoryId() %></td>
 		<td><%= list.get(i).getCategoryName() %></td>
 		<td><%=list.get(i).getDeleted() %></td>
-		<td><a href = "/deletesubcategory/ <%=list.get(i).getSubCategoryId() %>">Delete</a>
-		<a href = "viewsubcategory/ <%=list.get(i).getSubCategoryId() %>">View</a>
+		<td><a href = "/deletesubcategory/<%=list.get(i).getSubCategoryId()%>">Delete</a>
+		<a href = "viewsubcategory/<%=list.get(i).getSubCategoryId()%>">View</a>
 		</td>
 	</tr>   
 <%}%>

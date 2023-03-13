@@ -9,11 +9,40 @@ public class ExpenseBean {
 	private Integer vendorId;
 	private Integer accountTypeId;
 	private Integer statusId;
-	private Integer amount;
 	private String date;
 	private String description;
 	private Integer userId;
+//	private String expenseName;
+	private String categoryName;
+	private String vendorName;
+	private String subCategoryName;
+	private String accountType;
+	private String ammount;
 	
+	public String getCategoryName() {
+		return categoryName;
+	}
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+	public String getVendorName() {
+		return vendorName;
+	}
+	public void setVendorName(String vendorName) {
+		this.vendorName = vendorName;
+	}
+	public String getSubCategoryName() {
+		return subCategoryName;
+	}
+	public void setSubCategoryName(String subCategoryName) {
+		this.subCategoryName = subCategoryName;
+	}
+	public String getAccountType() {
+		return accountType;
+	}
+	public void setAccountType(String accountType) {
+		this.accountType = accountType;
+	}
 	public Integer getExpenseId() {
 		return expenseId;
 	}
@@ -56,12 +85,7 @@ public class ExpenseBean {
 	public void setStatusId(Integer statusId) {
 		this.statusId = statusId;
 	}
-	public Integer getAmount() {
-		return amount;
-	}
-	public void setAmount(Integer amount) {
-		this.amount = amount;
-	}
+	
 	public String getDate() {
 		return date;
 	}
@@ -80,5 +104,12 @@ public class ExpenseBean {
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
+	public String getAmmount() {
+		return ammount;
+	}
+	public void setAmmount(String ammount) {
+		this.ammount = ammount;
+	}
+	
 	
 }

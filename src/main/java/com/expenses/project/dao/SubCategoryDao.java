@@ -25,7 +25,7 @@ public class SubCategoryDao {
 	public List<SubCategoryBean> getAllSubCategory(){
 		// String selectQuery = "select * from subcategory where deleted = false";
 		
-		String joinQuery = "select c.categoryName , c.categoryId , s.subcategoryId , s.subcategoryname , s.deleted from category c , subcategory s where\r\n"
+		String joinQuery = "select c.categoryName , c.categoryId , s.subcategoryId , s.subcategoryname , s.deleted from category c , subcategory s where"
 				+ " c.categoryId = s.categoryID and s.deleted = false;"; 
 		
 		List<SubCategoryBean> sublist = stmt.query(joinQuery, new BeanPropertyRowMapper<SubCategoryBean>(SubCategoryBean.class));
@@ -41,7 +41,7 @@ public class SubCategoryDao {
 		SubCategoryBean scb = null;
 		
 		try {
-			String viewQuery = "select * from category , subcategory where subcategory.subCategoryId = ? and subcategory.subCategoryId = category.categoryId and subcategory.deleted = false ";
+			String viewQuery = "select * from category , subcategory where subcategory.subCategoryId = ? and subcategory.CategoryId = category.categoryId and subcategory.deleted = false ";
 			scb = stmt.queryForObject( viewQuery , new BeanPropertyRowMapper<SubCategoryBean>(SubCategoryBean.class), new Object[] {subCategoryId});
 			
 		} catch (Exception e) {
