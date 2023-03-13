@@ -1,6 +1,10 @@
 package com.expenses.project.controller;
 
+import java.security.PublicKey;
 import java.util.List;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +20,7 @@ import com.expenses.project.bean.SubCategoryBean;
 import com.expenses.project.bean.VendorBean;
 import com.expenses.project.dao.AccountDao;
 import com.expenses.project.dao.CategoryDao;
+import com.expenses.project.dao.ExpenseDao;
 import com.expenses.project.dao.StatusDao;
 import com.expenses.project.dao.SubCategoryDao;
 import com.expenses.project.dao.VendorDao;
@@ -37,6 +42,9 @@ public class ExpenseController {
 	
 	@Autowired
 	StatusDao std;
+	
+	@Autowired
+	ExpenseDao exd;
 	
 	
 	
@@ -62,16 +70,13 @@ public class ExpenseController {
 		 List<VendorBean> vdlist = vdo.getAllVendor();
 		 model.addAttribute("vdlist", vdlist);
 		 
-//			
-		
-		 
 				 return "NewExpense";
 		
 		
 	}
 	
 	@PostMapping("/saveexpense")
-	public String saveExpense(ExpenseBean exb , Model model) {
+	public String saveExpense(ExpenseBean exb , Model model, HttpServletRequest req) {
 		 
 //		cgd.addCategory(cgb);
 		
@@ -93,6 +98,21 @@ public class ExpenseController {
 		 List<VendorBean> vdlist = vdo.getAllVendor();
 		 model.addAttribute("vdlist", vdlist);
 		
+		
+		int userId = -1;
+		String firstName = "";
+		
+		Cookie c[] =  req.getCookies();
+		
+		for(Cookie x : c) {
+			if(x.getName().equals("userId")) {
+				userId = Integer.parseInt(x.getValue());
+			}
+			if(x.getName().equals("firstName")) {
+				firstName = x.getValue();
+			}
+		}
+		
 		System.out.println();
 		System.out.println( "Title : " + exb.getTitle());
 		System.out.println("Vendor : " +  exb.getVendorId());
@@ -100,10 +120,39 @@ public class ExpenseController {
 		System.out.println("Sub Category : " + exb.getSubCategoryId());
 		System.out.println("Account : " + exb.getAccountTypeId());
 		System.out.println("Status : " + exb.getStatusId());
+		System.out.println("Ammount : " + exb.getAmmount());
 		
-		
+		exb.setUserId(userId);
+		System.out.println(exb.getUserId());
+		exd.addExpense(exb, req);
 		
 		return "NewExpense";
+	}
+	
+	@GetMapping("listexpense")
+	public String listExpense(ExpenseBean exb , HttpServletRequest req , Model model) {
+		
+		int userId = -1;
+		String firstName = "";
+		
+		Cookie c[] = req.getCookies();
+		
+		for(Cookie x : c) {
+			if(x.getName().equals("userId")) {
+				userId = Integer.parseInt(x.getValue());
+			}
+			if(x.getName().equals("firstName")) {
+				firstName = x.getValue();
+			}
+		}
+		// Pull All Data from DB
+		
+		exb.setUserId(userId);
+		List<ExpenseBean> explist = exd.getAllExpense(userId);
+		System.out.println(explist);
+		model.addAttribute("explist", explist);
+		
+		return "ListExpense";
 	}
 
 }

@@ -88,7 +88,7 @@
 		</select>
 		<br><br>
 		
-		Amount: <input type ="text"> 
+		Amount: <input type ="text" name = "ammount"> 
 		<br><br>
 		
 		<%
@@ -121,6 +121,8 @@
 		
 		<input type="submit">
 	</form>
+	<br><br>
+	<a href="listexpense">Show all your Expenses</a>
 
 </body>
 </html>
