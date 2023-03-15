@@ -36,6 +36,8 @@
 	
 	
 	</table>
+	<br><br>
+	<a href = "newstatus"> New Status </a>
 	 
 </body>
 </html>

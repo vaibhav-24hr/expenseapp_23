@@ -33,6 +33,8 @@
 			<% } %>
 			
 	</table>
+<br><br>	
+	<a href="New Account"> Add Account </a>
 
 </body>
 </html>

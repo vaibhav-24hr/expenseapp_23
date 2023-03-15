@@ -37,6 +37,8 @@
 		</td>
 	</tr>   
 <%}%>
-
+</table>
+<br><br>
+<a href="newsubcategory"> New Sub Category </a>
 </body>
 </html>

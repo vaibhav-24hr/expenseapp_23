@@ -37,6 +37,9 @@
 		
 	</table>
 	
+	<br><br>
+
+<a href="newvendor"> Add Vendor </a>	
 	
 </body>
 </html>
