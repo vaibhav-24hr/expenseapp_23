@@ -1,0 +1,69 @@
+
+ <%-- --%>
+
+// For Simple Data
+<div class="container-scroller">
+		<!-- Slidebar -->
+		<jsp:include page="LeftSlideBar.jsp"></jsp:include>
+		<!-- navbar -->
+		<div class="container-fluid page-body-wrapper">
+
+			<jsp:include page="Navbar.jsp"></jsp:include>
+			<!-- maincontent -->
+
+			<div class="main-panel">
+				<div class="content-wrapper">
+
+// For Dashboard Data
+<div class="row">
+								// Table Data
+					</div>  <!-- Row or Data End -->
+
+
+</div> <!-- Content Wrapper -->
+</div> <!-- Main Panel -->
+</div> <!-- container fluid -->
+</div> <!-- container scroller -->
+
+
+---------------------------------------------------------------------------------------------------------
+
+
+// For Table Code or Table Data
+
+<div class="container-scroller">
+		<!-- Slidebar -->
+		<jsp:include page="LeftSlideBar.jsp"></jsp:include>
+		<!-- navbar -->
+		<div class="container-fluid page-body-wrapper">
+
+			<jsp:include page="Navbar.jsp"></jsp:include>
+			<!-- maincontent -->
+
+			<div class="main-panel">
+				<div class="content-wrapper">
+					<div class="page-header">
+						<h3 class="page-title">Basic Tables</h3>
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="#">Tables</a></li>
+								<li class="breadcrumb-item active" aria-current="page">Basic
+									tables</li>
+							</ol>
+						</nav>
+					</div> <!--  page HEader End -->
+					
+
+
+<!-- Row or Data Start -->
+					<div class="row">
+								// Table Data
+					</div>  <!-- Row or Data End -->
+
+
+
+				</div> <!-- Content Wrapper -->
+			</div> <!-- Main Panel -->
+		</div>  <!-- container fluid -->
+	</div> <!-- container scroller -->
+
