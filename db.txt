@@ -84,3 +84,42 @@ update subcategory set subCategoryName = '' where subCategoryId =  ;
 Multiple row Deleted
 
 delete from expense where expenseId in (5,6);
+
+
+
+---------------------------------------------------------------------------------
+
+Table Income
+
+create table income(
+    -> incomeId integer primary key auto_increment,
+    -> title varchar(30),
+    -> date varchar(30),
+    -> userId integer references users(userId),
+    -> accountTypeId integer references accountType(accountTypeId),
+    -> description varchar(150),
+    -> statusId integer references status(statusId),
+    -> ammount integer
+    -> );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
