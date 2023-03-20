@@ -100,8 +100,6 @@
 </html>
 
 
-
-
 <%-- <form action="saveincome" method="post">
 
 		Title : <input type="text" name="title"> <br><br> 

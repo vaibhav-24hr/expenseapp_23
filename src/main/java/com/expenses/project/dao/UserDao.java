@@ -85,4 +85,15 @@ public class UserDao {
 		return null;
 	}
 	
+	
+	public UserBean getUserByEmail(String email) {
+		String selecyQuery = "select * from users where email = ?";
+		
+		try {
+			return stmt.queryForObject(selecyQuery, new BeanPropertyRowMapper<UserBean>(UserBean.class), new Object[] {email});
+		}catch(Exception e){	
+			System.out.println(e.getMessage());
+		}
+	return null;
+	}
 }

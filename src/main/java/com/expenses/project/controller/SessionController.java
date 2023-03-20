@@ -59,16 +59,24 @@ public class SessionController {
 	// for process JSP
 	
 	@PostMapping("/saveuser")
-	public String saveUser(UserBean user) {
+	public String saveUser(UserBean user , Model model) {
 		System.out.println("jai Hind....");
 		System.out.println(user.getFirstName());
 		System.out.println(user.getEmail());
 		
-		//
-		userDao.insertUser(user);
-		//
+		// DB Validation
+		// Email present or not in signup Page
 		
-		return "Login";
+		UserBean usb = userDao.getUserByEmail(user.getEmail());
+		
+		if(usb == null) {
+			// insert
+			userDao.insertUser(user);
+			return "Login";
+		}else {
+			model.addAttribute("error", "This Emaii is aleready exists");
+			return "Signup";
+		}
 	}
 	
 	@PostMapping("/sendotpforforgetpassword")
@@ -171,7 +179,8 @@ public class SessionController {
 	
 	
 	@GetMapping("/logout")
-	public String logout() {
+	public String logout(HttpSession session) {
+		session.invalidate(); // Destroy Session
 		return "redirect:/login";
 	}
 

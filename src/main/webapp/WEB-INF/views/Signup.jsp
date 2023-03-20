@@ -68,6 +68,7 @@
                 <div class="form-group">		
 					<label>Email</label> 
 					<input type="text" class="form-control p_input" name="email">
+					<div style="color: red;" >${error}</div>
 				</div>								
 								
 				<div class="form-group">		
