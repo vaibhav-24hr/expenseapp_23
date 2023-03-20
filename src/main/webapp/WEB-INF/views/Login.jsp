@@ -61,7 +61,7 @@ ${error}
                       <label class="form-check-label">
                         <input type="checkbox" class="form-check-input"> Remember me </label>
                     </div>
-                    <a href="#" class="forgot-pass">Forgot password</a>
+                    <a href="forgetpassword" class="forgot-pass">Forgot password</a>
                   </div>
                   <div class="text-center">
                     <button type="submit" class="btn btn-primary btn-block enter-btn">Login</button>
