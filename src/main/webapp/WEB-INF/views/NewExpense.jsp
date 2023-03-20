@@ -10,8 +10,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>ExpenseApp | Add your Expenses</title>
+<jsp:include page="AllCss.jsp"></jsp:include>
 </head>
 <body>
 
@@ -23,7 +26,19 @@
 	List<VendorBean> vdlist = (List<VendorBean>)request.getAttribute("vdlist");
 	%>
 
-	<h2>Add Your Expenses Below</h2>
+<div class="container-scroller">
+		<!-- Slidebar -->
+	 	<jsp:include page="LeftsideUserdashboard.jsp"></jsp:include> 
+		<!-- navbar -->
+		<div class="container-fluid page-body-wrapper">
+
+			<jsp:include page="Navbar.jsp"></jsp:include>
+			<!-- maincontent -->
+
+			<div class="main-panel">
+				<div class="content-wrapper">
+
+
 
 	<form action="saveexpense" method="post">
 	
@@ -123,6 +138,19 @@
 	</form>
 	<br><br>
 	<a href="listexpense">Show all your Expenses</a>
+	
+	</div>
+<footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Vaibhav Adesara</span>
+            </div>
+          </footer>
+				
+			</div> <!-- Main Panel -->
+		</div> <!-- container fluid -->
+	</div> <!-- container scroller -->
+	
+	<jsp:include page="AllJavascript.jsp"></jsp:include>
 
 </body>
 </html>
