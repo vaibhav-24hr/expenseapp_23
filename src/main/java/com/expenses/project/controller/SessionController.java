@@ -39,8 +39,6 @@ public class SessionController {
 		return "Signup";
 	}
 	
-
-	
 	@GetMapping("/forgetpassword")
 	public String forgetpassword() {
 		return "ForgetPassword";

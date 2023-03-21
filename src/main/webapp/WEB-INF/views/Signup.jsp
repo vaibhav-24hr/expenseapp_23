@@ -84,10 +84,10 @@
                     <a href="#" class="forgot-pass">Forgot password</a>
                   </div>
                   <div class="text-center">
-                    <button type="submit" class="btn btn-primary btn-block enter-btn">Login</button>
+                    <button type="submit" class="btn btn-primary btn-block enter-btn">Sign UP</button>
                   </div>
                
-                  <p class="sign-up text-center">Already have an Account?<a href="#"> Sign Up</a></p>
+                  <p class="sign-up text-center">Already have an Account?<a href="login"> Login</a></p>
                   
                 </form>
               </div>
