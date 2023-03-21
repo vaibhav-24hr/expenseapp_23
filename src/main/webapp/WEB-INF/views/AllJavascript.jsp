@@ -18,3 +18,9 @@
 	<!-- Custom js for this page -->
 	<script src="assets/js/dashboard.js"></script>
 	<!-- End custom js for this page -->
+
+<!-- 	Data TAble -->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+<script src = "https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+

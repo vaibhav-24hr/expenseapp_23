@@ -54,7 +54,7 @@
 									<h4 class="card-title">Status List</h4>
 
 									<div class="table-responsive">
-										<table class="table table-striped">
+										<table class="table table-striped" id = "lists">
 											<thead>
 												<tr>
 													
@@ -100,6 +100,11 @@
 
 	<!-- All JavaScript Plugin -->
 	<jsp:include page="AllJavascript.jsp"></jsp:include>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#lists').DataTable();
+		});
+	</script>
 	
 	 
 </body>

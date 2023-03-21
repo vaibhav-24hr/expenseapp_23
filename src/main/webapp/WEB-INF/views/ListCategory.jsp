@@ -49,49 +49,47 @@
 					<div class="row">
 
 
-						<div class="col-lg-12 grid-margin stretch-card">
+						<div class="col-lg-12">
 							<div class="card">
 								<div class="card-body">
 									<h4 class="card-title">Categories</h4>
 
-									<div class="table-responsive">
-										<table class="table table-striped">
-											<thead>
-												<tr>
+									<table class="table table-striped" id="lists">
+										<thead>
+											<tr>
 
-													<th style="color: white">Category</th>
+												<th style="color: white">Category</th>
 
-													<th style="color: white">Status</th>
-													<th style="color: white">Action</th>
-												</tr>
-											</thead>
+												<th style="color: white">Status</th>
+												<th style="color: white">Action</th>
+											</tr>
+										</thead>
 
-											<tbody>
+										<tbody>
 
-												<%
-												for (int i = 0; i < list.size(); i++) {
-												%>
-												<tr>
-													<td><%=list.get(i).getCategoryName()%></td>
-													<td><%=list.get(i).getDeleted()%></td>
-													<td><a
-														href="deletecategory/<%=list.get(i).getCategoryId()%>">Delete</a>
-														/ <a href="viewcategory/<%=list.get(i).getCategoryId()%>">View
-													</a></td>
-												</tr>
-												<%
-												}
-												%>
+											<%
+											for (int i = 0; i < list.size(); i++) {
+											%>
+											<tr>
+												<td><%=list.get(i).getCategoryName()%></td>
+												<td><%=list.get(i).getDeleted()%></td>
+												<td><a
+													href="deletecategory/<%=list.get(i).getCategoryId()%>">Delete</a>
+													/ <a href="viewcategory/<%=list.get(i).getCategoryId()%>">View
+												</a></td>
+											</tr>
+											<%
+											}
+											%>
 
-											</tbody>
-										</table>
-									</div>
-									<div align="right">
-										<a href="newcategory"><button type="button"
-												class="btn btn-outline-warning btn-icon-text">
-												<i class="mdi mdi-plus btn-icon-prepend"></i> Add Category
-											</button></a>
-									</div>
+										</tbody>
+									</table>
+								</div>
+								<div align="right">
+									<a href="newcategory"><button type="button"
+											class="btn btn-outline-warning btn-icon-text">
+											<i class="mdi mdi-plus btn-icon-prepend"></i> Add Category
+										</button></a>
 								</div>
 							</div>
 						</div>
@@ -105,8 +103,13 @@
 	</div>
 	<!-- container scroller -->
 
-<!-- All JavaScript Plugin -->
-<jsp:include page="AllJavascript.jsp"></jsp:include>
+	<!-- All JavaScript Plugin -->
+	<jsp:include page="AllJavascript.jsp"></jsp:include>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#lists').DataTable();
+		});
+	</script>
 
 </body>
 </html>

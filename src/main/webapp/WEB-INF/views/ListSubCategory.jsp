@@ -51,7 +51,7 @@
 									<h4 class="card-title">Sub Categories</h4>
 
 									<div class="table-responsive">
-										<table class="table table-striped">
+										<table class="table table-striped" id = "lists">
 											<thead>
 												<tr>
 
@@ -107,6 +107,11 @@
 	<!-- container scroller -->
 
 	<jsp:include page="AllJavascript.jsp"></jsp:include>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#lists').DataTable();
+		});
+	</script>
 
 </body>
 </html>

@@ -53,7 +53,7 @@
 									<h4 class="card-title">Vendor List</h4>
 
 									<div class="table-responsive">
-										<table class="table table-striped">
+										<table class="table table-striped" id = "lists">
 											<thead>
 												<tr>
 													<th style="color: white">Vendor</th>
@@ -103,7 +103,11 @@
 
 	<!-- All JavaScript Plugin -->
 	<jsp:include page="AllJavascript.jsp"></jsp:include>
-
+<script type="text/javascript">
+		$(document).ready(function() {
+			$('#lists').DataTable();
+		});
+	</script>
 
 </body>
 </html>
