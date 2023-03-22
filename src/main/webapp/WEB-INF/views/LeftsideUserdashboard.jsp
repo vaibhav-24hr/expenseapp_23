@@ -62,7 +62,7 @@
           </li> 
           
            <li class="nav-item menu-items">
-            <a class="nav-link" href="listexpense">
+            <a class="nav-link" href="listincome">
               <span class="menu-icon">
                 <i class="mdi mdi-account-card-details"></i>
               </span>
