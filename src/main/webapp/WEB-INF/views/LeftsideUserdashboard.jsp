@@ -52,14 +52,23 @@
           
         
           
-        <!--   <li class="nav-item menu-items">
-            <a class="nav-link" href="liststatus">
+      <li class="nav-item menu-items">
+            <a class="nav-link" href="listexpense">
               <span class="menu-icon">
                 <i class="mdi mdi-chart-bar"></i>
               </span>
-              <span class="menu-title">Status</span>
+              <span class="menu-title">Your Expenses</span>
             </a>
-          </li> -->
+          </li> 
+          
+           <li class="nav-item menu-items">
+            <a class="nav-link" href="listexpense">
+              <span class="menu-icon">
+                <i class="mdi mdi-account-card-details"></i>
+              </span>
+              <span class="menu-title">Your Income</span>
+            </a>
+          </li>
         
           
           <li class="nav-item menu-items">
