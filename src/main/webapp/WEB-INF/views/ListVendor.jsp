@@ -72,7 +72,7 @@
 													<td><%=cb.getVendorName()%></td>
 													<td><%=cb.getDeleted()%></td>
 													<td><a href="deletevendor/<%=cb.getVendorId()%>">
-															Delete </a></td>
+															<button type="button" class="btn btn-rounded btn-inverse-danger btn-sm">Delete</button> </a></td>
 												</tr>
 
 												<%

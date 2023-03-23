@@ -25,11 +25,11 @@
 
 			<div class="main-panel">
 				<div class="content-wrapper">
-					
+
 					<!--  page HEader -->
 
 
-<!-- Row or Data Start -->
+					<!-- Row or Data Start -->
 					<div class="row">
 						<div class="col-xl-3 col-sm-6 grid-margin stretch-card">
 							<div class="card">
@@ -111,55 +111,129 @@
 								</div>
 							</div>
 						</div>
-					</div>  <!-- Row or Data End -->
+					</div>
+					<!-- Row or Data End -->
 
-<!-- 2nd Row Start -->
-	
-	<div class="row" align="center" >
-              <div class="col-md-5 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                    <h4 class="card-title">Transaction History</h4>
-                    <canvas id="transaction-history" class="transaction-chart chartjs-render-monitor" style="display: block; height: 134px; width: 268px;" width="371" height="185"></canvas>
-                    <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
-                      <div class="text-md-center text-xl-left">
-                        <h6 class="mb-1">Transfer to Paypal</h6>
-                        <p class="text-muted mb-0">07 Jan 2019, 09:12AM</p>
-                      </div>
-                      <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
-                        <h6 class="font-weight-bold mb-0">$236</h6>
-                      </div>
-                    </div>
-                    <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
-                      <div class="text-md-center text-xl-left">
-                        <h6 class="mb-1">Tranfer to Stripe</h6>
-                        <p class="text-muted mb-0">07 Jan 2019, 09:12AM</p>
-                      </div>
-                      <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
-                        <h6 class="font-weight-bold mb-0">$593</h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-		
-<!-- 2nd Row End -->
+					<!-- 2nd Row Start -->
+
+					<div class="row" align="center">
+						<div class="col-md-4 grid-margin stretch-card">
+							<div class="card">
+								<div class="card-body">
+									<div class="chartjs-size-monitor">
+										<div class="chartjs-size-monitor-expand">
+											<div class=""></div>
+										</div>
+										<div class="chartjs-size-monitor-shrink">
+											<div class=""></div>
+										</div>
+									</div>
+									<h4 class="card-title">Transaction History</h4>
+									<canvas id="transaction-history"
+										class="transaction-chart chartjs-render-monitor"
+										style="display: block; height: 134px; width: 268px;"
+										width="371" height="185"></canvas>
+									<div
+										class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
+										<div class="text-md-center text-xl-left">
+											<h6 class="mb-1">Transfer to Paypal</h6>
+											<p class="text-muted mb-0">07 Jan 2019, 09:12AM</p>
+										</div>
+										<div
+											class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
+											<h6 class="font-weight-bold mb-0">$236</h6>
+										</div>
+									</div>
+									<div
+										class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
+										<div class="text-md-center text-xl-left">
+											<h6 class="mb-1">Tranfer to Stripe</h6>
+											<p class="text-muted mb-0">07 Jan 2019, 09:12AM</p>
+										</div>
+										<div
+											class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
+											<h6 class="font-weight-bold mb-0">$593</h6>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-8 grid-margin stretch-card">
+							<div class="card">
+								<div class="card-body">
+									<div class="chartjs-size-monitor">
+										<div class="chartjs-size-monitor-expand">
+											<div class=""></div>
+										</div>
+										<div class="chartjs-size-monitor-shrink">
+											<div class=""></div>
+										</div>
+									</div>
+									<h4 class="card-title">Bar chart</h4>
+									<canvas id="barChart"
+										style="height: 224px; display: block; width: 449px;"
+										width="622" height="310" class="chartjs-render-monitor"></canvas>
+								</div>
+							</div>
+						</div>
 
 
-				</div> <!-- Content Wrapper -->
-				
+
+
+					</div>
+
+					<!-- 2nd Row End -->
+					<div class="row">
+
+						<div class="col-lg-7 grid-margin stretch-card">
+							<div class="card">
+								<div class="card-body">
+									<div class="chartjs-size-monitor">
+										<div class="chartjs-size-monitor-expand">
+											<div class=""></div>
+										</div>
+										<div class="chartjs-size-monitor-shrink">
+											<div class=""></div>
+										</div>
+									</div>
+									<h4 class="card-title">Line chart</h4>
+									<canvas id="lineChart"
+										style="height: 224px; display: block; width: 449px;"
+										width="622" height="310" class="chartjs-render-monitor"></canvas>
+								</div>
+							</div>
+						</div>
+
+
+
+					</div>
+
+
+
+				</div>
+				<!-- Content Wrapper -->
+
 				<footer class="footer">
-            <div class="d-sm-flex justify-content-center justify-content-sm-between">
-              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Vaibhav Adesara</span>
-            </div>
-          </footer>
-				
-			</div> <!-- Main Panel -->
-		</div> <!-- container fluid -->
-	</div> <!-- container scroller -->
-	
+					<div
+						class="d-sm-flex justify-content-center justify-content-sm-between">
+						<span
+							class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright
+							© Vaibhav Adesara</span>
+					</div>
+				</footer>
+
+			</div>
+			<!-- Main Panel -->
+		</div>
+		<!-- container fluid -->
+	</div>
+	<!-- container scroller -->
+
 	<jsp:include page="AllJavascript.jsp"></jsp:include>
+	<!-- Custom js for this page -->
+	<script src="../../assets/js/chart.js"></script>
+	<!-- End custom js for this page -->
 
 </body>
 </html>

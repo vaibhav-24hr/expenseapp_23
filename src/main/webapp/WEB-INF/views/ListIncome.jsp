@@ -73,7 +73,7 @@
 												<td><%=ib.getDate()%></td>
 												<%-- 	<td><%=ib.getDescription() %></td> --%>
 												<td><a
-													href="/viewincome?incomeId=<%=ib.getIncomeId()%>">View</a></td>
+													href="/viewincome?incomeId=<%=ib.getIncomeId()%>"><button type="button" class="btn btn-rounded btn-inverse-success btn-sm">View</button></a></td>
 											</tr>
 
 											<%

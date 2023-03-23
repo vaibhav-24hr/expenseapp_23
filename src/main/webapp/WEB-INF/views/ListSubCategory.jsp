@@ -75,9 +75,9 @@
 													<td><%=list.get(i).getCategoryName()%></td>
 													<td><%=list.get(i).getDeleted()%></td>
 													<td><a
-														href="/deletesubcategory/<%=list.get(i).getSubCategoryId()%>">Delete</a> /
+														href="/deletesubcategory/<%=list.get(i).getSubCategoryId()%>"><button type="button" class="btn btn-rounded btn-inverse-danger btn-sm">Delete</button></a> /
 														<a
-														href="viewsubcategory?subCategoryId=<%=list.get(i).getSubCategoryId()%>">View</a>
+														href="viewsubcategory?subCategoryId=<%=list.get(i).getSubCategoryId()%>"><button type="button" class="btn btn-rounded btn-inverse-success btn-sm">View</button></a>
 													</td>
 												</tr>
 												<%
