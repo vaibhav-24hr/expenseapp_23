@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.expenses.project.bean.AccountBean;
@@ -154,5 +155,14 @@ public class ExpenseController {
 		
 		return "ListExpense";
 	}
+	
+	@GetMapping("/viewexpense/{expenseId}")
+	public String viewExpense(@PathVariable("expenseId") Integer expenseId , Model model){
+		ExpenseBean exb =  exd.getExpenseById(expenseId);
+		System.out.println(exb.getExpenseId());
+		model.addAttribute("exb", exb);
+		return "ViewExpense";
+	}
+	
 
 }

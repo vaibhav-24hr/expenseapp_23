@@ -47,11 +47,12 @@
 
 <!-- 		<th>IncomeId</th> -->
 		<th style="color: white">Title</th>
-		<th style="color: white">AccountTypeId</th>
-		<th style="color: white">StatusId</th>
+		<th style="color: white">AccountType</th>
+		<th style="color: white">Status</th>
 <!-- 		<th>UserId</th> -->
 		<th style="color: white">Amount</th>
 		<th style="color: white">Date</th>
+		<th style="color: white">Action</th>
 <!-- 		<th>Description</th> -->
 		
 	</tr>
@@ -63,12 +64,13 @@
 	<tr>
 <%-- 		<td><%=ib.getIncomeId() %></td> --%>
 		<td><%=ib.getTitle() %></td>
-		<td><%=ib.getAccountTypeId() %></td>
-		<td><%=ib.getStatusId() %></td>
+		<td><%=ib.getAccountType() %></td>
+		<td><%=ib.getStatusShow() %></td>
 <%-- 		<td><%=ib.getUserId() %></td> --%>
 		<td><%=ib.getAmmount() %></td>
 		<td><%=ib.getDate() %></td>
 	<%-- 	<td><%=ib.getDescription() %></td> --%>
+	<td><a href= "/viewincome/<%=ib.getIncomeId()%>">View</a></td>
 	</tr>
 	
 	<%} %>
@@ -78,7 +80,7 @@
 										<a href="newincome"><button type="button"
 												class="btn btn-outline-warning btn-icon-text">
 												<i class="mdi mdi-plus btn-icon-prepend"></i> Add New
-												Expense
+												Income
 											</button></a>
 									</div>
 

@@ -11,7 +11,22 @@ public class IncomeBean {
 	private Integer statusId;
 	private Integer ammount;
 	
+	private String accountType;
+	private String statusShow;
 	
+	
+	public String getAccountType() {
+		return accountType;
+	}
+	public void setAccountType(String accountType) {
+		this.accountType = accountType;
+	}
+	public String getStatusShow() {
+		return statusShow;
+	}
+	public void setStatusShow(String statusShow) {
+		this.statusShow = statusShow;
+	}
 	public Integer getIncomeId() {
 		return incomeId;
 	}

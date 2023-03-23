@@ -18,7 +18,16 @@ public class ExpenseBean {
 	private String subCategoryName;
 	private String accountType;
 	private String ammount;
+	private String statusShow;
+
 	
+	
+	public String getStatusShow() {
+		return statusShow;
+	}
+	public void setStatusShow(String statusShow) {
+		this.statusShow = statusShow;
+	}
 	public String getCategoryName() {
 		return categoryName;
 	}

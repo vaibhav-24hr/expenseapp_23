@@ -43,10 +43,37 @@ public class ExpenseDao {
 	
 	public List<ExpenseBean> getAllExpense(Integer userId){
 		
-		String selectQuery = "select * from expense where userId = ?";
+		String selectQuery = "select e.title, e.ammount, e.date, e.description, c.categoryName, sc.subcategoryName, v.vendorName,\r\n"
+				+ " a.accountType, s.statusShow from expense e, category c, subcategory sc, vendor v, accountType a,\r\n"
+				+ " status s where e.categoryId = c.categoryId and e.subCategoryId = sc.subCategoryId \r\n"
+				+ " and e.vendorId = v.vendorId and e.accountTypeId = a.accountTypeId and e.statusId = s.statusId \r\n"
+				+ " and userId = ?; ";
 		List<ExpenseBean> explist = stmt.query(selectQuery, new BeanPropertyRowMapper<ExpenseBean>(ExpenseBean.class), new Object[] {userId});
 		
 		return explist;
 	}
+
+
+
+
+	public ExpenseBean getExpenseById(Integer expenseId) {
+		// TODO Auto-generated method stub
+		ExpenseBean exb = null;
+		
+		try {
+			exb = stmt.queryForObject("select * from expense where expenseId = ?", new BeanPropertyRowMapper<ExpenseBean>(ExpenseBean.class), new Object[]{expenseId});
+		}catch (Exception e) {
+			System.out.println("Expense DAO : getExpenseById();");
+			System.out.println(e.getMessage());
+		}
+		
+		
+	return exb;
+	}
+
+
+
+
+	
 	
 }

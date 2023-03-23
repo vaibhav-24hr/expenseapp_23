@@ -10,6 +10,7 @@ import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.expenses.project.bean.AccountBean;
@@ -112,6 +113,13 @@ public class IncomeController {
 		model.addAttribute("inclist",inclist);
 		
 		return "ListIncome";
+	}
+	
+	@GetMapping("/viewincome/{incomeId}")
+	public String viewIncome(@PathVariable("incomeId")Integer incomeId, Model model) {
+		IncomeBean inb = ido.getIncomeById(incomeId);
+		model.addAttribute("inb", inb);
+		return "ViewIncome";
 	}
 	
 }
