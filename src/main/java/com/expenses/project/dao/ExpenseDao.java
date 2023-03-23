@@ -43,11 +43,7 @@ public class ExpenseDao {
 	
 	public List<ExpenseBean> getAllExpense(Integer userId){
 		
-		String selectQuery = "select e.title, e.ammount, e.date, e.description, c.categoryName, sc.subcategoryName, v.vendorName,\r\n"
-				+ " a.accountType, s.statusShow from expense e, category c, subcategory sc, vendor v, accountType a,\r\n"
-				+ " status s where e.categoryId = c.categoryId and e.subCategoryId = sc.subCategoryId \r\n"
-				+ " and e.vendorId = v.vendorId and e.accountTypeId = a.accountTypeId and e.statusId = s.statusId \r\n"
-				+ " and userId = ?; ";
+		String selectQuery = "select e.userId, e.expenseId, e.title, e.ammount, e.date, e.description, c.categoryName, sc.subcategoryName, v.vendorName, a.accountType, s.statusShow from expense e, category c, subcategory sc, vendor v, accountType a, status s where e.categoryId = c.categoryId and e.subCategoryId = sc.subCategoryId and e.vendorId = v.vendorId and e.accountTypeId = a.accountTypeId and e.statusId = s.statusId and userId = ?";
 		List<ExpenseBean> explist = stmt.query(selectQuery, new BeanPropertyRowMapper<ExpenseBean>(ExpenseBean.class), new Object[] {userId});
 		
 		return explist;
@@ -58,10 +54,12 @@ public class ExpenseDao {
 
 	public ExpenseBean getExpenseById(Integer expenseId) {
 		// TODO Auto-generated method stub
-		ExpenseBean exb = null;
 		
+		ExpenseBean exb = null;
+		String selectQuery = "select e.expenseId, e.title, e.ammount, e.date, e.description, c.categoryName, sc.subcategoryName, v.vendorName, a.accountType, s.statusShow from expense e, category c, subcategory sc, vendor v, accountType a, status s where e.categoryId = c.categoryId and e.subCategoryId = sc.subCategoryId and e.vendorId = v.vendorId and e.accountTypeId = a.accountTypeId and e.statusId = s.statusId and expenseId = ?";
+// String selectQuery= "select * from expense where expenseId = ?"; 
 		try {
-			exb = stmt.queryForObject("select * from expense where expenseId = ?", new BeanPropertyRowMapper<ExpenseBean>(ExpenseBean.class), new Object[]{expenseId});
+			exb = stmt.queryForObject(selectQuery ,new BeanPropertyRowMapper<ExpenseBean>(ExpenseBean.class), new Object[]{expenseId});
 		}catch (Exception e) {
 			System.out.println("Expense DAO : getExpenseById();");
 			System.out.println(e.getMessage());

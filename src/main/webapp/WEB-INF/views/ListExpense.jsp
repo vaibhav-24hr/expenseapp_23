@@ -80,7 +80,7 @@
 												<td><%=exb.getDate()%></td>
 												<%-- 		<td> <%=exb.getDescription() %> </td> --%>
 												<%-- 		<td> <%=exb.getUserId() %> </td> --%>
-											     <td><a href="viewexpense/<%=exb.getExpenseId()%>">view</a></td> 
+											     <td><a href="viewexpense?expenseId=<%=exb.getExpenseId()%>">view</a></td> 
 											   
 											</tr>
 

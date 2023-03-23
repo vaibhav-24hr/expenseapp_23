@@ -1,7 +1,7 @@
 <%@page import="com.expenses.project.bean.IncomeBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,9 +13,9 @@
 </head>
 <body>
 
-<%
-	List<IncomeBean> inclist = (List<IncomeBean>)request.getAttribute("inclist");
-%>
+	<%
+	List<IncomeBean> inclist = (List<IncomeBean>) request.getAttribute("inclist");
+	%>
 
 	<div class="container-scroller">
 		<!-- Slidebar -->
@@ -41,52 +41,55 @@
 
 
 									<table class="table table-striped" id="lists">
-									<thead>
+										<thead>
 											<tr>
 
 
-<!-- 		<th>IncomeId</th> -->
-		<th style="color: white">Title</th>
-		<th style="color: white">AccountType</th>
-		<th style="color: white">Status</th>
-<!-- 		<th>UserId</th> -->
-		<th style="color: white">Amount</th>
-		<th style="color: white">Date</th>
-		<th style="color: white">Action</th>
-<!-- 		<th>Description</th> -->
-		
-	</tr>
-	</thead>
-	
-	<tbody>
+												<!-- 		<th>IncomeId</th> -->
+												<th style="color: white">Title</th>
+												<th style="color: white">AccountType</th>
+												<th style="color: white">Status</th>
+												<!-- 		<th>UserId</th> -->
+												<th style="color: white">Amount</th>
+												<th style="color: white">Date</th>
+												<th style="color: white">Action</th>
+												<!-- 		<th>Description</th> -->
 
-<% for(IncomeBean ib : inclist){ %>
-	<tr>
-<%-- 		<td><%=ib.getIncomeId() %></td> --%>
-		<td><%=ib.getTitle() %></td>
-		<td><%=ib.getAccountType() %></td>
-		<td><%=ib.getStatusShow() %></td>
-<%-- 		<td><%=ib.getUserId() %></td> --%>
-		<td><%=ib.getAmmount() %></td>
-		<td><%=ib.getDate() %></td>
-	<%-- 	<td><%=ib.getDescription() %></td> --%>
-	<td><a href= "/viewincome/<%=ib.getIncomeId()%>">View</a></td>
-	</tr>
-	
-	<%} %>
-	</tbody>
-</table>
-<div align="left">
+											</tr>
+										</thead>
+
+										<tbody>
+
+											<%
+											for (IncomeBean ib : inclist) {
+											%>
+											<tr>
+												<%-- 		<td><%=ib.getIncomeId() %></td> --%>
+												<td><%=ib.getTitle()%></td>
+												<td><%=ib.getAccountType()%></td>
+												<td><%=ib.getStatusShow()%></td>
+												<%-- 		<td><%=ib.getUserId() %></td> --%>
+												<td><%=ib.getAmmount()%></td>
+												<td><%=ib.getDate()%></td>
+												<%-- 	<td><%=ib.getDescription() %></td> --%>
+												<td><a
+													href="/viewincome?incomeId=<%=ib.getIncomeId()%>">View</a></td>
+											</tr>
+
+											<%
+											}
+											%>
+										</tbody>
+									</table>
+									<div align="left">
 										<a href="newincome"><button type="button"
 												class="btn btn-outline-warning btn-icon-text">
-												<i class="mdi mdi-plus btn-icon-prepend"></i> Add New
-												Income
+												<i class="mdi mdi-plus btn-icon-prepend"></i> Add New Income
 											</button></a>
 									</div>
 
 								</div>
-								<br>
-								<br>
+								<br> <br>
 
 							</div>
 						</div>

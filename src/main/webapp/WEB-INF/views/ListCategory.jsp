@@ -75,7 +75,7 @@
 												<td><%=list.get(i).getDeleted()%></td>
 												<td><a
 													href="deletecategory/<%=list.get(i).getCategoryId()%>">Delete</a>
-													/ <a href="viewcategory/<%=list.get(i).getCategoryId()%>">View
+													/ <a href="viewcategory?categoryId=<%=list.get(i).getCategoryId()%>">View
 												</a></td>
 											</tr>
 											<%

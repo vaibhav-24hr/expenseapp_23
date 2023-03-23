@@ -23,17 +23,19 @@ public class IncomeDao {
 	}
 	
 	public List<IncomeBean> getAllIncome(Integer userId){
-		String selectQuery = "select i.title, i.date, i.ammount, i.description, a.accountType, s.statusShow from income i, accountType a, status s where i.accountTypeId = a.accountTypeId and s.statusId = i.statusId and userId = ?";
+		String selectQuery = "select i.incomeId, i.title, i.date, i.ammount, i.description, a.accountType, s.statusShow from income i, accountType a, status s where i.accountTypeId = a.accountTypeId and s.statusId = i.statusId and userId = ?";
 		List<IncomeBean> inclist = stmt.query(selectQuery , new BeanPropertyRowMapper<IncomeBean>(IncomeBean.class), new Object[] {userId} );
 		return inclist;
 		
 	}
 
 	public IncomeBean getIncomeById(Integer incomeId) {
+		
 		IncomeBean inb = null;
+		String selectQuery = "select i.incomeId, i.title, i.date, i.ammount, i.description, a.accountType, s.statusShow from income i, accountType a, status s where i.accountTypeId = a.accountTypeId and s.statusId = i.statusId and incomeId = ?";
 		
 		try {
-			inb = stmt.queryForObject("select * from income where incomeId = ?", new BeanPropertyRowMapper<IncomeBean>(IncomeBean.class), new Object[] {incomeId} );
+			inb = stmt.queryForObject(selectQuery, new BeanPropertyRowMapper<IncomeBean>(IncomeBean.class), new Object[] {incomeId} );
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -44,5 +46,8 @@ public class IncomeDao {
 	}
 	
 }
+
 //Right :----->   select i.title, i.date, i.ammount, i.description, a.accountType, s.statusShow from income i, accountType a, status s where i.accountTypeId = a.accountTypeId and s.statusId = i.statusId and userId = ?
 //wrong :----->   select i.title, i.ammount,i.date,i.description, a.accountType, s.statusShow from income i, accountType a, status s where i.accountTypeId=a.accountTypeId and s.statusId= i.statusId and userId = ?
+
+

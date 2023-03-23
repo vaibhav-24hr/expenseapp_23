@@ -5,31 +5,54 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Expense Manager | Expensees View</title>
+<title>Expense Manager | Expensees View</title> 
+<jsp:include page="AllCss.jsp"></jsp:include>
 </head>
 <body>
 
-<h2>Expense Detail</h2>
+<div class="container-scroller">
+		<!-- Slidebar -->
+		<jsp:include page="LeftSlideBar.jsp"></jsp:include>
+		<!-- navbar -->
+		<div class="container-fluid page-body-wrapper">
+
+			<jsp:include page="Navbar.jsp"></jsp:include>
+			<!-- maincontent -->
+
+			<div class="main-panel">
+				<div class="content-wrapper">
+					<div class="page-header">
+						<h3 class="page-title">Expense Details </h3>
+
+					</div>
+					<div class="row" align="center" style="font-size: large;">
+						<div class="col-md-12 grid-margin stretch-card">
+							<div class="card">
+								<div class="card-body">
 
 <% ExpenseBean exb = (ExpenseBean)request.getAttribute("exb"); %>
 
-	Date: <%=exb.getDate() %><br>
-	 expenseId: <%=exb.getExpenseId() %><br>
-	 title: 	<%=exb.getTitle() %><br>
-	 Vendor Id:  <%=exb.getVendorId() %><br>
-	 Vendor Name:  <%=exb.getVendorName() %><br>
-	Category Id:  <%=exb.getCategoryId() %> <br>
+	Date: <%=exb.getDate()%><br>
+	 expenseId: <%=exb.getExpenseId()%><br>
+	 title: 	<%=exb.getTitle()%><br>
+	 Vendor Name:  <%=exb.getVendorName()%><br>
 	Category Name: <%=exb.getCategoryName() %> <br>
-	SubCategory Id: <%=exb.getSubCategoryId()  %><br>
 	SubCategory Name: <%=exb.getSubCategoryName() %><br>
 	Ammount: <%=exb.getAmmount() %><br>
-	AccountTypeId: <%=exb.getAccountTypeId() %><br>
 	Account Type: <%=exb.getAccountType() %><br>
-	StatusID: <%=exb.getStatusId() %><br>
 	Status: <%=exb.getStatusShow() %><br>
 	Description : <%=exb.getDescription() %><br>
-	USerId : <%=exb.getUserId() %><br>
 	
+	
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<jsp:include page="AllJavascript.jsp"></jsp:include>
 
 </body>
 </html>

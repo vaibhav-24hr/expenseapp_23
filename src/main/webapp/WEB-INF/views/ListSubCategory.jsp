@@ -77,7 +77,7 @@
 													<td><a
 														href="/deletesubcategory/<%=list.get(i).getSubCategoryId()%>">Delete</a> /
 														<a
-														href="viewsubcategory/<%=list.get(i).getSubCategoryId()%>">View</a>
+														href="viewsubcategory?subCategoryId=<%=list.get(i).getSubCategoryId()%>">View</a>
 													</td>
 												</tr>
 												<%

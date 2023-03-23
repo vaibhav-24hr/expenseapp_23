@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.expenses.project.bean.CategoryBean;
 import com.expenses.project.dao.CategoryDao;
@@ -52,8 +53,8 @@ public class CategoryController {
 		
 	}
 	
-	@GetMapping("/viewcategory/{categoryId}")
-	public String viewCategory(@PathVariable("categoryId")Integer categoryId, Model model) {
+	@GetMapping("/viewcategory")
+	public String viewCategory(@RequestParam("categoryId")Integer categoryId, Model model) {
 		CategoryBean cb = categoryDao.getCategoryById(categoryId);
 		model.addAttribute("cb", cb);
 		return "ViewCategory";

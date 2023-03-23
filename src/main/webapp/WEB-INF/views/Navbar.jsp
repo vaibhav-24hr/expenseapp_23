@@ -10,9 +10,9 @@
             </button>
             <ul class="navbar-nav w-100">
               <li class="nav-item w-100">
-                <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+                <div class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
                   <input type="text" class="form-control" placeholder="Search products">
-                </form>
+                </div>
               </li>
             </ul>
             <ul class="navbar-nav navbar-nav-right">
@@ -25,6 +25,7 @@
                     <p class="mb-0 d-none d-sm-block navbar-profile-name">Vaibhav Adesara</p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>
+                  
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
                   <h6 class="p-3 mb-0">Profile</h6>
@@ -50,4 +51,5 @@
               <span class="mdi mdi-format-line-spacing"></span>
             </button>
           </div>
+          
         </nav>

@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.expenses.project.bean.AccountBean;
 import com.expenses.project.bean.CategoryBean;
@@ -156,8 +157,8 @@ public class ExpenseController {
 		return "ListExpense";
 	}
 	
-	@GetMapping("/viewexpense/{expenseId}")
-	public String viewExpense(@PathVariable("expenseId") Integer expenseId , Model model){
+	@GetMapping("/viewexpense")
+	public String viewExpense(@RequestParam("expenseId") Integer expenseId , Model model){
 		ExpenseBean exb =  exd.getExpenseById(expenseId);
 		System.out.println(exb.getExpenseId());
 		model.addAttribute("exb", exb);
