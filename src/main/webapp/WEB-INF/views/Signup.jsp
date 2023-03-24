@@ -48,8 +48,8 @@
 	<div class="container-scroller">
 		<div class="container-fluid page-body-wrapper full-page-wrapper">
 			<div class="row w-100 m-0">
-				<div
-					class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
+				<div  
+					class="content-wrapper full-page-wrapper d-flex align-items-center auth register-half-bg">            <!-- register-half-bg     login-bg     lock-full-bg    login-bgf  -->             
 					<div class="card col-lg-6 mx-auto">
 						<div class="card-body px-5 py-5">
 							<h3 class="card-title text-left mb-3">Register</h3>
@@ -144,7 +144,7 @@
 											type="checkbox" class="form-check-input"> Remember me
 										</label>
 									</div>
-									<a href="#" class="forgot-pass">Forgot password</a>
+									
 								</div>
 								
 								
