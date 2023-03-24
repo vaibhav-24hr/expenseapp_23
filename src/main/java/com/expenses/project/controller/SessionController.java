@@ -61,7 +61,10 @@ public class SessionController {
 		System.out.println("jai Hind....");
 		System.out.println(user.getFirstName());
 		System.out.println(user.getEmail());
-		
+		System.out.println(user.getDob());
+		System.out.println(user.getGender());
+		System.out.println(user.getContactNum());
+		System.out.println(user.getJoindate());
 		// DB Validation
 		// Email present or not in signup Page
 		

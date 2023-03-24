@@ -91,6 +91,7 @@
 
 										Date : <input type="date" id="myDate" class="form-control"
 											name="date" value="<%=y + "-" + mon + "-" + dt%>"><br>
+											
 										<br> Amount: <input type="text" name="ammount"
 											class="form-control"> <br>
 										<br> Description :
@@ -121,7 +122,7 @@
 					<div
 						class="d-sm-flex justify-content-center justify-content-sm-between">
 						<span
-							class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright
+							class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright         
 							© Vaibhav Adesara</span>
 					</div>
 				</footer>

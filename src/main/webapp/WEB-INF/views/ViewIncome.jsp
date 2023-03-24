@@ -13,7 +13,6 @@
 <div class="container-scroller">
 		<!-- Slidebar -->
 		<jsp:include page="LeftsideUserdashboard.jsp"></jsp:include>
-
 		<!-- navbar -->
 		<div class="container-fluid page-body-wrapper">
 

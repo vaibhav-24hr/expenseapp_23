@@ -1,5 +1,7 @@
 package com.expenses.project.dao;
 
+import java.util.Calendar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -19,10 +21,31 @@ public class UserDao {
 	//add customer -- signup 
 	public void insertUser(UserBean usb) {
 		//
-		String insertQuery = "insert into users (firstName,lastName,email,password,role) values (?,?,?,?,?)"; 
+		
+		Calendar c = Calendar.getInstance();
+		int d = c.get(c.DAY_OF_MONTH); //07 
+		int m = c.get(c.MONTH) + 1;//03
+		String mon = "";
+		String dt = "";
+		if (m <= 9) {
+			mon = 0 + "" + m;
+		} else {
+			mon = m + "";
+		}
+		if (d <= 9) {
+			dt = 0 + "" + d;
+		} else {
+			dt = d + "";
+		}
+		int y = c.get(c.YEAR);//2023 
+		
+		String today = y + "-" + m + "-" + d;
+		System.out.println(today);
+		
+		String insertQuery = "insert into users (firstName,lastName,email,dob,contactNum,gender,password,joindate,role) values (?,?,?,?,?,?,?,?,?)"; 
 
 	//role - 2 for customer/buyer/user
-		stmt.update(insertQuery,usb.getFirstName(),usb.getLastName(),usb.getEmail(),usb.getPassword(),2);//query execute 
+		stmt.update(insertQuery,usb.getFirstName(),usb.getLastName(),usb.getEmail(),usb.getDob(),usb.getContactNum(),usb.getGender(),usb.getPassword(),today,2);//query execute 
 		System.out.println("user added...");
 		
 	}

@@ -110,11 +110,7 @@ View Expense Content
 
 Expense Query
 
-select e.title, e.ammount, e.date, e.description, c.categoryName, sc.subcategoryName, v.vendorName,
- a.accountType, s.statusShow from expense e, category c, subcategory sc, vendor v, accountType a,
- status s where e.categoryId = c.categoryId and e.subCategoryId = sc.subCategoryId 
- and e.vendorId = v.vendorId and e.accountTypeId = a.accountTypeId and e.statusId = s.statusId 
- and userId = ?; 
+select e.title, e.ammount, e.date, e.description, c.categoryName, sc.subcategoryName, v.vendorName, a.accountType, s.statusShow from expense e, category c, subcategory sc, vendor v, accountType a, status s where e.categoryId = c.categoryId and e.subCategoryId = sc.subCategoryId and e.vendorId = v.vendorId and e.accountTypeId = a.accountTypeId and e.statusId = s.statusId and userId = ?; 
 
 
 

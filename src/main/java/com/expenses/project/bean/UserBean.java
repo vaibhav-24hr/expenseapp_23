@@ -8,6 +8,37 @@ public class UserBean {
 	private String password;
 	private Integer role;
 	
+	private String gender;
+	private String dob;
+	private String joindate;
+	private String contactNum;
+
+	
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getDob() {
+		return dob;
+	}
+	public void setDob(String dob) {
+		this.dob = dob;
+	}
+	
+	public String getJoindate() {
+		return joindate;
+	}
+	public void setJoindate(String joindate) {
+		this.joindate = joindate;
+	}
+	public String getContactNum() {
+		return contactNum;
+	}
+	public void setContactNum(String contactNum) {
+		this.contactNum = contactNum;
+	}
 	public Integer getUserId() {
 		return userId;
 	}
