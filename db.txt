@@ -127,3 +127,57 @@ select e.title, e.ammount, e.date, e.description, c.categoryName, sc.subcategory
 
 
 
+
+// Some Useful Queries
+
+    insert into income (userId, date, title, accountTypeId, description, statusId, ammount) values (11, '2023-03-27', 'Stock Market', 2, 'profit in treding', 5, 50000);
+    
+    select sum(ammount) from income where date like '2023-%';
+    
+    delete from income where incomeId = 6;
+    
+    update users set gender = 'male' where userId in (7,8,9,10,11,12,18);
+    
+     update users set joindate = '01-03-2023' where userId in (7);
+     
+     select count(*) from users where joindate = '08-03-2023';
+     
+     select count(*) from users where joindate like '%-03-%';
+     
+     select count(*) from users where joindate like '%-03-2023';
+     
+      SELECT COUNT(*) FROM users WHERE joindate BETWEEN '2023-03-01' AND '2023-03-31';
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -39,7 +39,7 @@ public class UserDao {
 		}
 		int y = c.get(c.YEAR);//2023 
 		
-		String today = y + "-" + m + "-" + d;
+		String today = dt + "-" + mon + "-" + y;
 		System.out.println(today);
 		
 		String insertQuery = "insert into users (firstName,lastName,email,dob,contactNum,gender,password,joindate,role) values (?,?,?,?,?,?,?,?,?)"; 
