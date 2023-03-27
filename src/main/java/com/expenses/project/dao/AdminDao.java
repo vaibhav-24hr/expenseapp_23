@@ -28,15 +28,15 @@ public class AdminDao {
 		
 		
 		if(m<10) {
-			today = d + "-0" + m + "-" + y;
+			today =  y + "-0" + m + "-" + "%";
 		}else {
-			today = d + "-" + m + "-" + y;
+			today = y + "-" + m + "-%";
 		}
 //		
 //		 today = "%-" + m +  "-" + y;
 		
 //		today ;
-		today = "%-" + y;
+		
 		 
 		System.out.println("Today count USER => " +  today);
 		

@@ -67,7 +67,7 @@
 											</div> 
 										</div>
 									</div>
-									<h6 class="text-muted font-weight-normal">This Month Expenses</h6>
+									<p class="text-muted font-weight-normal">This Month Expenses</p>
 								</div>
 							</div>
 						</div>

@@ -98,7 +98,7 @@
 								</div>
 
 
-								<div class="form-group">
+<%-- 								<div class="form-group">
 									<label>Date of Joining</label>
 									<%
 									Calendar c = Calendar.getInstance();
@@ -122,7 +122,7 @@
 									<input type="date" id="myDate" class="form-control" name="date"
 										value="<%=y + "-" + mon + "-" + dt%>">
 
-								</div>
+								</div> --%>
 
 
 								<div class="form-group">

@@ -1,6 +1,7 @@
 package com.expenses.project.dao;
 
 import java.util.Calendar;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -39,7 +40,7 @@ public class UserDao {
 		}
 		int y = c.get(c.YEAR);//2023 
 		
-		String today = dt + "-" + mon + "-" + y;
+		String today = y + "-" + mon + "-" + dt;
 		System.out.println(today);
 		
 		String insertQuery = "insert into users (firstName,lastName,email,dob,contactNum,gender,password,joindate,role) values (?,?,?,?,?,?,?,?,?)"; 
@@ -119,4 +120,21 @@ public class UserDao {
 		}
 	return null;
 	}
+	
+	
+	
+	public List<UserBean> getAllUsers(){
+		
+		String selectQuery = "select * from users where role = 2";
+		List<UserBean> userlist = stmt.query(selectQuery, new BeanPropertyRowMapper<UserBean>(UserBean.class));
+		return userlist;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }

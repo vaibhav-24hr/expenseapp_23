@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="assets/css/style.css">
 
 <!-- End layout styles -->
-<link rel="shortcut icon" href="assets/images/elogo.png"> 
+<link rel="shortcut icon" href="assets/images/expenselogo.png"> 
 <!-- LOGO Default:- favicon.png,   want :- expenselogo.png, Temporary:- elogo.png  -->
     
 <style type="text/css">/* Chart.js */

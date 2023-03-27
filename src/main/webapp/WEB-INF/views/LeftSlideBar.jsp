@@ -31,6 +31,17 @@
               <span class="menu-title">Admin Dashboard</span>
             </a>
           </li>
+          
+          <li class="nav-item menu-items active">
+            <a class="nav-link" href="listusers">
+              <span class="menu-icon">
+                <i class="mdi mdi-account-multiple"></i>
+              </span>
+              <span class="menu-title">Total Users</span>
+            </a>
+          </li>
+          
+          
        
           <li class="nav-item menu-items">
             <a class="nav-link" href="listcategories">
@@ -89,7 +100,7 @@
               <!--   <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li>
                 <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
                 <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li> -->
-                <li class="nav-item"> <a class="nav-link" href="login"> Login </a></li>
+                <li class="nav-item"> <a class="nav-link" href="logout"> Log Out </a></li>
                 <li class="nav-item"> <a class="nav-link" href="signup"> SignUp </a></li>
               </ul>
             </div>
