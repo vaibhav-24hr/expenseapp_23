@@ -19,16 +19,25 @@ public class AdminDao {
 		
 		// dd-mm-yyyy
 		Calendar c = Calendar.getInstance();
-//		int d = c.get(Calendar.DATE);
-//		int m = c.get(Calendar.MONTH)+1;
+		int d = c.get(Calendar.DATE);
+		int m = c.get(Calendar.MONTH)+1;
 		int y = c.get(Calendar.YEAR);
-		String today = "%-" + y;
+//		String today  = d  + "-" + m +"-" +y;
 		
-//		if(m<10) {
-//			today = d + "-0" + m + "-" + y;
-//		}else {
-//			today = d + "-" + m + "-" + y;
-//		}
+		String today;
+		
+		
+		if(m<10) {
+			today = d + "-0" + m + "-" + y;
+		}else {
+			today = d + "-" + m + "-" + y;
+		}
+//		
+//		 today = "%-" + m +  "-" + y;
+		
+//		today ;
+		today = "%-" + y;
+		 
 		System.out.println("Today count USER => " +  today);
 		
 //		 int num = stmt.queryForObject(countQuery, Integer.class, new Object[] {today});

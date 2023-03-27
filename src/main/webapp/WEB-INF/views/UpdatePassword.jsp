@@ -7,6 +7,14 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>expenseManeger | Update Password</title>
+
+<style type="text/css">
+.error{
+	color: red;
+}
+</style>
+
+
 <jsp:include page="AllCss.jsp"></jsp:include>
 </head>
 <body>
@@ -19,16 +27,19 @@
 					<div class="card col-lg-4 mx-auto">
 						<div class="card-body px-5 py-5">
 							<h3 class="card-title text-left mb-3">Update Password</h3>
-							<form action="updatemypassword" method="post">
+							<form action="updatemypassword" method="post" id="myform">
 
 								Email :<input type="email" name="email"><br>
-								<br> Password : <input type="password" name="password"><br>
-								<br> Confirm Password : <input type="password"
-									name="confirmPassword"><br>
-								<br> OTP : <input type="text" name="otp" /> <br>
+								<br> 
+								Password : <input type="password" name="password" id = "password"><br>
+								<span id="passwordError" class = "error"> </span> <br>
+								Confirm Password : <input type="password" id = "cpassword"
+									name="confirmPassword"><br><span id="cpasswordError" class = "error"></span>
+								<br> 
+								OTP : <input type="text" name="otp" /> <br>
 								<br> 
 								
-								<button type="submit" class="btn btn-outline-warning btn-icon-text">
+								<button type="button" class="btn btn-outline-warning btn-icon-text" onclick="validation()">
 								<i class=" btn-icon-prepend"></i> Update Password
 										</button>
 								
@@ -46,6 +57,52 @@
 		</div>
 		<!-- page-body-wrapper ends -->
 	</div>
+
+<script type="text/javascript">
+
+function validation(){
+	
+	
+	isError = false;
+	
+	password = document.getElementById("password");
+	passwordError = document.getElementById("passwordError");
+	passwordRegex = /^[a-zA-Z0-9]{8,}$/;   
+	
+	cpassword = document.getElementById("cpassword");
+	cpasswordError = document.getElementById("cpasswordError");
+	
+	
+	if(password.value == ''){
+		passwordError.innerHTML = "please Enter Password";
+		isError = true;
+	}else{
+		if(passwordRegex.test(password.value) == false){
+			passwordError.innerHTML = "password must have atleast 8 character";
+			isError = true;
+		}else if(!(password.value == cpassword.value)){
+			passwordError.innerHTML = "Password and confirm password must be match";
+			cpasswordError.innerHTML = "Password and confirm password must be match";
+			isError = true;
+		}else{
+			passwordError.innerHTML = '';
+			cpasswordError.innerHTML = '';
+		}
+	}
+	
+	
+	if(isError == false){
+		myform = document.getElementById("myform");
+		myform.submit();
+	}
+	
+	
+	
+	
+}
+
+
+</script>
 
 </body>
 </html>
