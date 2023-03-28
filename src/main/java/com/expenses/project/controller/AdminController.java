@@ -28,13 +28,13 @@ public class AdminController {
 		// Number Of Transaction or Expenses
 		int totalUsers =  admo.getUsersCount();
 		int totalExpenseCount = admo.getExpenseCount();
-		int totalIncomr = admo.getAmmountOfIncome();
-		int totalExpense = admo.getAmmountOfExpense();
+		int totalExpenseDaily = admo.getAmmountOfExpennseDaily();
+		int totalExpenseMonthly = admo.getAmmountOfExpenseMonthly();
 		
 		model.addAttribute("NumberOfUsers", totalUsers);
-		model.addAttribute("ThisMonthExpenses", totalExpenseCount);
-		model.addAttribute("ThisMonthIncome", totalIncomr);
-		model.addAttribute("TodayExpenses", totalExpense);
+		model.addAttribute("NumberOfMonthlyExpenses", totalExpenseCount);
+		model.addAttribute("TodayExpense", totalExpenseDaily);
+		model.addAttribute("MonthlyExpense", totalExpenseMonthly);
 		
 		return "AdminDashboard";
 	}

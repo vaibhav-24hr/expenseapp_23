@@ -19,28 +19,25 @@ public class UserDao {
 	@Autowired
 	JdbcTemplate stmt;
 	
+	Calendar c = Calendar.getInstance();
+	int d = c.get(c.DAY_OF_MONTH); //07 
+	int m = c.get(c.MONTH) + 1;//03
+	int y = c.get(c.YEAR);//2023 
+	
 	//add customer -- signup 
 	public void insertUser(UserBean usb) {
-		//
+		String today ="";
 		
-		Calendar c = Calendar.getInstance();
-		int d = c.get(c.DAY_OF_MONTH); //07 
-		int m = c.get(c.MONTH) + 1;//03
-		String mon = "";
-		String dt = "";
-		if (m <= 9) {
-			mon = 0 + "" + m;
+		if (m < 10) {
+			today = y + "-0" + m + "-" + d;
 		} else {
-			mon = m + "";
+			today = y + "-" + m + "-" + d;
+		}if(d<10) {
+			today = y + "-" + m + "-0" + d;
+		}else {
+			today = y + "-" + m + "-" + d;
 		}
-		if (d <= 9) {
-			dt = 0 + "" + d;
-		} else {
-			dt = d + "";
-		}
-		int y = c.get(c.YEAR);//2023 
-		
-		String today = y + "-" + mon + "-" + dt;
+
 		System.out.println(today);
 		
 		String insertQuery = "insert into users (firstName,lastName,email,dob,contactNum,gender,password,joindate,role) values (?,?,?,?,?,?,?,?,?)"; 
@@ -128,12 +125,9 @@ public class UserDao {
 		String selectQuery = "select * from users where role = 2";
 		List<UserBean> userlist = stmt.query(selectQuery, new BeanPropertyRowMapper<UserBean>(UserBean.class));
 		return userlist;
-	}
+	}	
 	
-	
-	
-	
-	
+
 	
 	
 	

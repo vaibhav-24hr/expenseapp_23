@@ -37,7 +37,7 @@
 									<div class="row">
 										<div class="col-9">
 											<div class="d-flex align-items-center align-self-start">
-												<h3 class="mb-0">${NumberOfUsers}</h3>
+												<h3 class="mb-0">${NumberOfUsers == null ? 0 : NumberOfUsers}</h3>
 												 <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%  </p>
 											</div>
 										</div>
@@ -47,7 +47,7 @@
 											</div>
 										</div> 
 									</div>
-									<h6 class="text-muted font-weight-normal">Number of Users</h6>
+									<h6 class="text-muted font-weight-normal">This Month Users </h6>
 								</div>
 							</div>
 						</div>
@@ -57,7 +57,7 @@
 									<div class="row">
 										<div class="col-9">
 											<div class="d-flex align-items-center align-self-start">
-												<h3 class="mb-0">${ThisMonthExpenses}</h3>
+												<h3 class="mb-0">${NumberOfMonthlyExpenses == null ? 0 : NumberOfMonthlyExpenses}</h3>
 												 <p class="text-success ml-2 mb-0 font-weight-medium">+11%</p> 
 											</div>
 										</div>
@@ -67,7 +67,7 @@
 											</div> 
 										</div>
 									</div>
-									<p class="text-muted font-weight-normal">This Month Expenses</p>
+									<h6 class="text-muted font-weight-normal">This Month Transactiones</h6>
 								</div>
 							</div>
 						</div>
@@ -77,7 +77,7 @@
 									<div class="row">
 										<div class="col-9">
 											<div class="d-flex align-items-center align-self-start">
-<!-- Expression Language Condition if not NULL --><h3 class="mb-0">${ThisMonthIncome == null ? 0 : ThisMonthIncome}</h3>
+<!-- Expression Language Condition if not NULL --><h3 class="mb-0">${TodayExpense == null ? 0 : TodayExpense}</h3>
 												 <p class="text-danger ml-2 mb-0 font-weight-medium">-2.4%</p> 
 											</div>
 										</div>
@@ -87,7 +87,7 @@
 											</div> 
 										</div>
 									</div>
-									<h6 class="text-muted font-weight-normal">This Month Income</h6>
+									<h6 class="text-muted font-weight-normal">Today Expenses Ammount</h6>
 								</div>
 							</div>
 						</div>
@@ -97,7 +97,7 @@
 									<div class="row">
 										<div class="col-9">
 											<div class="d-flex align-items-center align-self-start">
-												<h3 class="mb-0">${TodayExpenses}</h3>
+												<h3 class="mb-0">${MonthlyExpense == null ? 0 : MonthlyExpense}</h3>
 												 <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p> 
 											</div>
 										</div>
@@ -107,7 +107,7 @@
 											</div> 
 										</div>
 									</div>
-									<h6 class="text-muted font-weight-normal">Today Expenses</h6>
+									<h6 class="text-muted font-weight-normal">This Month Expense Ammount</h6>
 								</div>
 							</div>
 						</div>
