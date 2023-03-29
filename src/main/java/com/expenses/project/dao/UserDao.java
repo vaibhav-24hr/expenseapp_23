@@ -30,9 +30,9 @@ public class UserDao {
 		
 		if (m < 10) {
 			today = y + "-0" + m + "-" + d;
-		} else {
+		} else if (m>=10){
 			today = y + "-" + m + "-" + d;
-		}if(d<10) {
+		}else if(d<10) {
 			today = y + "-" + m + "-0" + d;
 		}else {
 			today = y + "-" + m + "-" + d;
