@@ -116,18 +116,24 @@ public class AdminDao {
 		
 		//  the sum of expenses for the  today
 		Double cuurentDayExpense = stmt.queryForObject(sumExpenseQuery, Double.class, new Object[] { currentDay });
-		
+			if(cuurentDayExpense == null) {
+				cuurentDayExpense = 0.0;
+			}
+		System.out.println("Today Expense =>" + cuurentDayExpense);
 	    //  the sum of expenses for the previous day
 		Double previousDayExpense = stmt.queryForObject(sumExpenseQuery, Double.class, new Object[] { lastDay });
-		
+			if(previousDayExpense == null) {
+				previousDayExpense = 0.0;
+			}
+		System.out.println("YesterDay Expense =>" + previousDayExpense);
 		// calculate the ratio between the previous day's expenses and the current day's expenses
-		if(cuurentDayExpense == null || previousDayExpense == null || previousDayExpense == 0.0) {
-			return null;
-		}else {
-			Double ratio = cuurentDayExpense / previousDayExpense;
-			
+//		if(cuurentDayExpense == null || previousDayExpense == null ) {
+//			return null;
+//		}else {
+			Double ratio = cuurentDayExpense - previousDayExpense; // (cuurentDayExpense - previousDayExpense) / 250000 * 100% ;
+			System.out.println( " Expense Daily Ratio  =>" +  ratio);
 			return Double.parseDouble(String.format("%.2f", ratio));
-		}
+//		}
 		
 	}
 	
@@ -137,18 +143,20 @@ public class AdminDao {
 		
 		//  the sum of expenses for the  today
 		Double cuurentMonthExpense = stmt.queryForObject(sumExpenseQuery, Double.class, new Object[] { currentMonth });
-		
+		System.out.println("This Month Expense =>" + cuurentMonthExpense);
 	    //  the sum of expenses for the previous day
 		Double previousMonthExpense = stmt.queryForObject(sumExpenseQuery, Double.class, new Object[] { lastMonth });
-		
+		System.out.println("Last Month Expense =>" + previousMonthExpense);
 		// calculate the ratio between the previous day's expenses and the current day's expenses
-		if(cuurentMonthExpense == null || previousMonthExpense == null || previousMonthExpense == 0.0) {
+		if(cuurentMonthExpense == null || previousMonthExpense == null ) {
 			return null;
 		}else {
 			Double ratio = cuurentMonthExpense / previousMonthExpense;
-			
+			System.out.println( " Expense Month Ratio  =>" +  ratio);
 			return Double.parseDouble(String.format("%.2f", ratio));
+			
 		}
+
 	}
 	
 	
@@ -166,7 +174,7 @@ public class AdminDao {
 			return 0;
 		}else {
 			Integer ratio = cuurentMonthUser - previousMonthUser;
-			
+			System.out.println( " User Ratio  =>" +  ratio);
 			return ratio;
 		}
 	}
@@ -185,7 +193,7 @@ public class AdminDao {
 			return 0;
 		}else {
 			Integer ratio = cuurentMonthTransaction - previousMonthTransaction;
-			
+			System.out.println( " Transaction Ratio  =>" +  ratio);
 			return ratio;
 		}
 	}

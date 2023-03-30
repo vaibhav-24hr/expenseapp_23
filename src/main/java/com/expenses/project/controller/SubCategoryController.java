@@ -18,15 +18,15 @@ import com.expenses.project.dao.SubCategoryDao;
 @Controller
 public class SubCategoryController {
 	
-//	SubCategoryDao scd;
+
 	@Autowired
-	CategoryDao categoryDao;
+	CategoryDao cDao;
 	@Autowired
-	SubCategoryDao scd;
+	SubCategoryDao scDao;
 
 	@GetMapping("/newsubcategory") // URL
 	public String newSubCategory(Model model) { // File
-		model.addAttribute("list", categoryDao.getAllCategory());
+		model.addAttribute("list", cDao.getAllCategory());
 		return "NewSubCategory"; // JSP file
 	}
 	
@@ -37,9 +37,9 @@ public class SubCategoryController {
 		
 		// DAO
 		// Insert
-		scd.addSubCategory(scb);
+		scDao.addSubCategory(scb);
 		
-		List<SubCategoryBean> list = scd.getAllSubCategory();
+		List<SubCategoryBean> list = scDao.getAllSubCategory();
 		model.addAttribute("list",list);
 		
 		return "ListSubCategory"; // redirect 
@@ -48,14 +48,14 @@ public class SubCategoryController {
 	@GetMapping("listsubcategories")
 	public String listSubCategory(Model model) {
 		// pull all categories from DB-Table
-		List<SubCategoryBean> list = scd.getAllSubCategory();
+		List<SubCategoryBean> list = scDao.getAllSubCategory();
 		model.addAttribute("list",list);
 		return "ListSubCategory";
 	}
 	
 	@GetMapping("/deletesubcategory/{subCategoryId}")
 	public String deleteSubcategory(@PathVariable("subCategoryId")Integer subCategoryId){
-		scd.deleteSubcategory(subCategoryId);
+		scDao.deleteSubcategory(subCategoryId);
 		return "redirect:/listsubcategories";  // this will open listSubcategory and there is one query that print only fall action list...
 		
 	}
@@ -63,9 +63,23 @@ public class SubCategoryController {
 	@GetMapping("/viewsubcategory")
 	public String viewSubCategory(@RequestParam("subCategoryId")Integer subCategoryId, Model model) {
 		
-		SubCategoryBean scb = scd.getSubCategoryById(subCategoryId);
+		SubCategoryBean scb = scDao.getSubCategoryById(subCategoryId);
 		model.addAttribute("scb", scb);
 		return "ViewSubCategory";
+	}
+	
+	@GetMapping("editsubcategory")
+	public String editSubCategory(@RequestParam("subCategoryId")Integer subCategoryId, Model model) {
+		SubCategoryBean scBean = scDao.getSubCategoryById(subCategoryId);
+		model.addAttribute("scBean" , scBean);
+		return "EditSubCategory";
+	}
+	
+	@PostMapping("updatesubcategory")
+	public String updateSubCategory(SubCategoryBean scBean) {
+		
+		scDao.updateSubcategory(scBean);
+		return "redirect:/listsubcategories";
 	}
 	
 }

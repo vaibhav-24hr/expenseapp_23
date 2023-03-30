@@ -59,6 +59,7 @@
 													<th style="color: white">Category</th>
 													<th style="color: white">Status</th>
 													<th style="color: white">Action</th>
+													<th style="color: white">Edit</th>
 												</tr>
 											</thead>
 
@@ -79,6 +80,9 @@
 														<a
 														href="viewsubcategory?subCategoryId=<%=list.get(i).getSubCategoryId()%>"><button type="button" class="btn  btn-rounded mdi mdi-eye btn-inverse-success btn-sm"></button></a>
 													</td>
+													<td><a
+														href="editsubcategory?subCategoryId=<%=list.get(i).getSubCategoryId()%>"><button type="button" class="btn  btn-rounded mdi mdi-lead-pencil btn-inverse-info btn-sm"></button></a>
+														</td>
 												</tr>
 												<%
 												}

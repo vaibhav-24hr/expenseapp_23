@@ -17,7 +17,7 @@ import com.expenses.project.dao.CategoryDao;
 public class CategoryController {
 
 	@Autowired
-	CategoryDao categoryDao;
+	CategoryDao cDao;
 	
 	@GetMapping("/newcategory") // URL for Browser
 	public String newCategory(){ // Method
@@ -27,7 +27,7 @@ public class CategoryController {
 	@PostMapping("/savecategory")
 	public String saveCategory(CategoryBean cgb) {
 		System.out.println(cgb.getCategoryName()); // Name of Category
-		categoryDao.addCategory(cgb);
+		cDao.addCategory(cgb);
 		
 		return "NewCategory";
 	}
@@ -38,7 +38,7 @@ public class CategoryController {
 	public String listCategories(Model model) {
 		
 		// pull all categories from DB-Table
-		List<CategoryBean> list = categoryDao.getAllCategory();
+		List<CategoryBean> list = cDao.getAllCategory();
 		model.addAttribute("list",list);
 		
 		return "ListCategory";
@@ -48,19 +48,31 @@ public class CategoryController {
 	@GetMapping("/deletecategory/{categoryId}") //"URl/{print_CATEGORYID from JSP}"
 	public String deleteCategory(@PathVariable("categoryId")Integer categoryId) {  // to know categoryID from URL we need to add annotation => path@variable PATH & its datatype
 								//@PathVariable()
-		categoryDao.deleteCategory(categoryId);
+		cDao.deleteCategory(categoryId);
 		return "redirect:/listcategories";
 		
 	}
 	
 	@GetMapping("/viewcategory")
 	public String viewCategory(@RequestParam("categoryId")Integer categoryId, Model model) {
-		CategoryBean cb = categoryDao.getCategoryById(categoryId);
+		CategoryBean cb = cDao.getCategoryById(categoryId);
 		model.addAttribute("cb", cb);
 		return "ViewCategory";
 	}
 	
-//	@PostMapping("/updatecategory")
+	@GetMapping("/editcategory")
+	public String editCategory(@RequestParam("categoryId")Integer categoryId, Model model) {
+		CategoryBean cBean = cDao.getCategoryById(categoryId);
+		model.addAttribute("cBean" , cBean);
+		return "EditCategory";
+	}
+	
+	@PostMapping("/updatecategory")
+	public String updateCategory(CategoryBean cBean) {
+// (Attr) we take cBean as attributr for data because ID & NAME are arriving and going to update from DAO		
+		cDao.updateCategory(cBean); 
+		return "redirect:/listcategories";
+	}
 	
 	
 	

@@ -35,7 +35,7 @@ public class CategoryDao {
 		stmt.update(updateQuery,categoryId);
 		
 	}
-	
+	// use for Operation like view,delete  and Edit to specific categoryId 
 	public CategoryBean getCategoryById(Integer categoryId) {
 		CategoryBean cb = null;
 		
@@ -50,9 +50,9 @@ public class CategoryDao {
 		return cb;
 	}
 	
-//	public void updateCategory(CategoryBean cgb) {
-//		String updateQuery = "update category set categoryName = ? where categoryId = ?";
-//		stmt.update(updateQuery, cgb.getCategoryName() , cgb.getCategoryId());
-//	}
+	public void updateCategory(CategoryBean cgb) {
+		String updateQuery = "update category set categoryName = ? where categoryId = ?";
+		stmt.update(updateQuery, cgb.getCategoryName() , cgb.getCategoryId());
+	}
 	
 }

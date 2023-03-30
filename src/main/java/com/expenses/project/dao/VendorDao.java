@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.expenses.project.bean.SubCategoryBean;
 import com.expenses.project.bean.VendorBean;
 
 @Repository
@@ -39,5 +40,16 @@ public class VendorDao {
 		String updateQuery = "update vendor set deleted = true where vendorId = ?";
 		stmt.update(updateQuery,vendorId);
 	}
+	
+//	public VendorBean getVendorById(Integer vendorId) {
+//		VendorBean vBean = null;
+//		
+//		try {
+////			String viewQuery = "select "
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
+//		
+//	}
 	
 }

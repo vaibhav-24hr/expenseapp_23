@@ -53,6 +53,11 @@ public class SubCategoryDao {
 		return scb;
 	}
 	
+	public void updateSubcategory(SubCategoryBean scBean) {
+		String updateQuery = "update subcategory set subCategoryName = ? where subCategoryId = ?";
+		stmt.update(updateQuery,scBean.getSubCategoryName(), scBean.getSubCategoryId());
+	}
+	
 }
 	
 

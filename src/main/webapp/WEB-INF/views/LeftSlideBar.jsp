@@ -32,7 +32,7 @@
             </a>
           </li>
           
-          <li class="nav-item menu-items active">
+          <li class="nav-item menu-items ">
             <a class="nav-link" href="listusers">
               <span class="menu-icon">
                 <i class="mdi mdi-account-multiple"></i>
@@ -46,7 +46,7 @@
           <li class="nav-item menu-items">
             <a class="nav-link" href="listcategories">
               <span class="menu-icon">
-                <i class="mdi mdi-playlist-play"></i>
+                <i class="mdi mdi-format-list-bulleted"></i>
               </span>
               <span class="menu-title">Category</span>
             </a>
@@ -55,7 +55,7 @@
           <li class="nav-item menu-items">
             <a class="nav-link" href="listsubcategories">
               <span class="menu-icon">
-                <i class="mdi mdi-table-large"></i>
+                <i class="mdi mdi-file-tree"></i>
               </span>
               <span class="menu-title">Sub Category</span>
             </a>
@@ -64,7 +64,7 @@
            <li class="nav-item menu-items">
             <a class="nav-link" href="listvendor">
               <span class="menu-icon">
-                <i class="mdi mdi-contacts"></i>
+                <i class="mdi mdi-account-network"></i>
               </span>
               <span class="menu-title">Vendor</span>
             </a>
@@ -81,7 +81,7 @@
           <li class="nav-item menu-items">
             <a class="nav-link"  href="listaccount">
               <span class="menu-icon">
-                <i class="mdi mdi-clipboard-account"></i>
+                <i class="mdi mdi-cash-usd"></i>
               </span>
               <span class="menu-title">Account</span>
             </a>
