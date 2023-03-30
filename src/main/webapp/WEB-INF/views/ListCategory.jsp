@@ -62,6 +62,7 @@
 
 												<th style="color: white">Status</th>
 												<th style="color: white">Action</th>
+												<!-- <th style="color: white">Edit</th> -->
 											</tr>
 										</thead>
 
@@ -74,8 +75,8 @@
 												<td><%=list.get(i).getCategoryName()%></td>
 												<td><%=list.get(i).getDeleted()%></td>
 												<td><a
-													href="deletecategory/<%=list.get(i).getCategoryId()%>"><button type="button" class="btn btn-rounded btn-inverse-danger btn-sm">Delete</button></a>
-													/ <a href="viewcategory?categoryId=<%=list.get(i).getCategoryId()%>"><button type="button" class="btn btn-rounded btn-inverse-success btn-sm">View</button> </a></td>
+													href="deletecategory/<%=list.get(i).getCategoryId()%>"><button type="button" class="btn btn-rounded mdi mdi-delete btn-inverse-danger btn-sm "></button></a>
+													/ <a href="viewcategory?categoryId=<%=list.get(i).getCategoryId()%>"><button type="button" class="btn  btn-rounded mdi mdi-eye btn-inverse-success btn-sm"></button> </a></td>
 												
 												
 												

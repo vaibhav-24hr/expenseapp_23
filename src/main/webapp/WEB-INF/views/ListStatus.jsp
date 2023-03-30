@@ -69,7 +69,7 @@
 												<tr>
 
 													<td><%=cb.getStatusShow() %></td>
-													<td> <a href = "deletestatus/<%=cb.getStatusId() %>"> <button type="button" class="btn btn-rounded btn-inverse-danger btn-sm">Delete</button> </a> </td>
+													<td> <a href = "deletestatus/<%=cb.getStatusId() %>"> <button type="button" class="btn btn-rounded mdi mdi-delete btn-inverse-danger btn-sm"></button> </a> </td>
 												</tr>
 
 												<%

@@ -106,29 +106,89 @@ public class AdminDao {
 		
 		
 		return monthlyExpense;
-	
-		
-
-		
 		
 	}
 	
-//	public Double getExpenseRatioForPeviousDay() {
-//	     query for the sum of expenses for the previous day
+	
+	public Double getExpenseRatioForPeviousDay() {
+//Query
+		String sumExpenseQuery = "select sum(ammount) from expense where date like ?";
 		
-//		String sumMonthlyExpenseQuery = "select sum(ammount) from expense where date like ?";
-//		String sumPreviousDayExpenseQuery = 
-
+		//  the sum of expenses for the  today
+		Double cuurentDayExpense = stmt.queryForObject(sumExpenseQuery, Double.class, new Object[] { currentDay });
 		
-
-
-//		System.out.println("Today sum of expense => " + today);
-//		Integer
+	    //  the sum of expenses for the previous day
+		Double previousDayExpense = stmt.queryForObject(sumExpenseQuery, Double.class, new Object[] { lastDay });
 		
- 
+		// calculate the ratio between the previous day's expenses and the current day's expenses
+		if(cuurentDayExpense == null || previousDayExpense == null || previousDayExpense == 0.0) {
+			return null;
+		}else {
+			Double ratio = cuurentDayExpense / previousDayExpense;
+			
+			return Double.parseDouble(String.format("%.2f", ratio));
+		}
 		
+	}
+	
+	
+	public Double getExpenseRatioForPeviousMonth() {
+		String sumExpenseQuery = "select sum(ammount) from expense where date like ?";
 		
+		//  the sum of expenses for the  today
+		Double cuurentMonthExpense = stmt.queryForObject(sumExpenseQuery, Double.class, new Object[] { currentMonth });
 		
-//	}
+	    //  the sum of expenses for the previous day
+		Double previousMonthExpense = stmt.queryForObject(sumExpenseQuery, Double.class, new Object[] { lastMonth });
+		
+		// calculate the ratio between the previous day's expenses and the current day's expenses
+		if(cuurentMonthExpense == null || previousMonthExpense == null || previousMonthExpense == 0.0) {
+			return null;
+		}else {
+			Double ratio = cuurentMonthExpense / previousMonthExpense;
+			
+			return Double.parseDouble(String.format("%.2f", ratio));
+		}
+	}
+	
+	
+	public Integer getUserRatioMonthly() {
+		String countUserQuery = "select count(*) from users where joindate like ?";
+		
+		//  the sum of expenses for the  today
+		Integer cuurentMonthUser = stmt.queryForObject(countUserQuery, Integer.class, new Object[] { currentMonth });
+		
+	    //  the sum of expenses for the previous day
+		Integer previousMonthUser = stmt.queryForObject(countUserQuery, Integer.class, new Object[] { lastMonth });
+		
+		// calculate the ratio between the previous day's expenses and the current day's expenses
+		if(cuurentMonthUser == null || previousMonthUser == null) {
+			return 0;
+		}else {
+			Integer ratio = cuurentMonthUser - previousMonthUser;
+			
+			return ratio;
+		}
+	}
+	
+	public Integer getRatioOfTransaction() {
+		String countTransactionQuery = "select count(*) from expense where date like ?";
+		
+		//  the sum of expenses for the  today
+		Integer cuurentMonthTransaction = stmt.queryForObject(countTransactionQuery, Integer.class, new Object[] { currentMonth });
+		
+	    //  the sum of expenses for the previous day
+		Integer previousMonthTransaction = stmt.queryForObject(countTransactionQuery, Integer.class, new Object[] { lastMonth });
+		
+		// calculate the ratio between the previous day's expenses and the current day's expenses
+		if(cuurentMonthTransaction == null || previousMonthTransaction == null) {
+			return 0;
+		}else {
+			Integer ratio = cuurentMonthTransaction - previousMonthTransaction;
+			
+			return ratio;
+		}
+	}
+	
 
 }

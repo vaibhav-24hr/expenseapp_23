@@ -38,7 +38,7 @@
 										<div class="col-9">
 											<div class="d-flex align-items-center align-self-start">
 												<h3 class="mb-0">${NumberOfUsers == null ? 0 : NumberOfUsers}</h3>
-												 <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%  </p>
+												 <p class="text-success ml-2 mb-0 font-weight-medium">+${ratioUsersMonthly == null ? 0 : ratioUsersMonthly}</p>
 											</div>
 										</div>
 									 	<div class="col-3">
@@ -58,7 +58,7 @@
 										<div class="col-9">
 											<div class="d-flex align-items-center align-self-start">
 												<h3 class="mb-0">${NumberOfMonthlyExpenses == null ? 0 : NumberOfMonthlyExpenses}</h3>
-												 <p class="text-success ml-2 mb-0 font-weight-medium">+11%</p> 
+												 <p class="text-success ml-2 mb-0 font-weight-medium">+${ratioTransactionMonthly}</p> 
 											</div>
 										</div>
 										<div class="col-3">
@@ -71,6 +71,7 @@
 								</div>
 							</div>
 						</div>
+						
 						<div class="col-xl-3 col-sm-6 grid-margin stretch-card">
 							<div class="card">
 								<div class="card-body">
@@ -78,19 +79,20 @@
 										<div class="col-9">
 											<div class="d-flex align-items-center align-self-start">
 <!-- Expression Language Condition if not NULL --><h3 class="mb-0">${TodayExpense == null ? 0 : TodayExpense}</h3>
-												 <p class="text-danger ml-2 mb-0 font-weight-medium">-2.4%</p> 
+												 <p class="text-success ml-2 mb-0 font-weight-medium">+${ratioExpenseDaily == null ? 0 : ratioExpenseDaily}</p> 
 											</div>
 										</div>
 										<div class="col-3">
-											 <div class="icon icon-box-danger">
-												<span class="mdi mdi-arrow-bottom-left icon-item"></span>
-											</div> 
+										<!-- 	 <div class="icon icon-box-success">
+												<span class="mdi mdi-arrow-top-right icon-item"></span>
+											</div> --> 
 										</div>
 									</div>
 									<h6 class="text-muted font-weight-normal">Today Expenses Ammount</h6>
 								</div>
 							</div>
 						</div>
+						
 						<div class="col-xl-3 col-sm-6 grid-margin stretch-card">
 							<div class="card">
 								<div class="card-body">
@@ -98,7 +100,7 @@
 										<div class="col-9">
 											<div class="d-flex align-items-center align-self-start">
 												<h3 class="mb-0">${MonthlyExpense == null ? 0 : MonthlyExpense}</h3>
-												 <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p> 
+												 <p class="text-success ml-2 mb-0 font-weight-medium">+${ratioExpenseMonthly == null ? 0 : ratioExpenseMonthly}</p> 
 											</div>
 										</div>
 										<div class="col-3">

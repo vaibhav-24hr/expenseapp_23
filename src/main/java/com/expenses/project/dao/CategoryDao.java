@@ -49,4 +49,10 @@ public class CategoryDao {
 		}
 		return cb;
 	}
+	
+//	public void updateCategory(CategoryBean cgb) {
+//		String updateQuery = "update category set categoryName = ? where categoryId = ?";
+//		stmt.update(updateQuery, cgb.getCategoryName() , cgb.getCategoryId());
+//	}
+	
 }

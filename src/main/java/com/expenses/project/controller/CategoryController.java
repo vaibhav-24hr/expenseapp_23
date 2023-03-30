@@ -60,5 +60,8 @@ public class CategoryController {
 		return "ViewCategory";
 	}
 	
+//	@PostMapping("/updatecategory")
+	
+	
 	
 }
