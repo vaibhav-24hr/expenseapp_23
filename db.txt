@@ -149,7 +149,9 @@ select e.title, e.ammount, e.date, e.description, c.categoryName, sc.subcategory
       SELECT COUNT(*) FROM users WHERE joindate BETWEEN '2023-03-01' AND '2023-03-31';
       
       
+--------------------------------------------------------------------------------
 
+select monthname(orderdate) as month , sum(totalAmount) as orderAmount from orders where year(orderDate) = 2023 group by monthname(orderdate) order by month(orderDate);
 
 
 
