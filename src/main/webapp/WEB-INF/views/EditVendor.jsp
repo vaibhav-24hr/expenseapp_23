@@ -6,7 +6,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>expense manager | New Account</title>
+<title>expense manager | Edit Vendor</title>
 <jsp:include page="AllCss.jsp"></jsp:include>
 </head>
 <body>
@@ -31,31 +31,27 @@
 						<!-- Row or Data End -->
 						<div class="col-md-10">
 							<div class="card-body px-5 py-5">
-								<h3 class="card-title text-left mb-3">Add New Account</h3>
-	
-	<form action="saveaccount" method="post" >
-
+								<h3 class="card-title text-left mb-3">Edit vendor</h3>
+								<form method="post" action="updatevendor">
 									<div class="form-group">
-										<h4>Account Type *</h4>
+									<input type="hidden" name="vendorId" value = "${vBean.vendorId}"/>
+										<h4>vendor *</h4>
 										<input type="text" class="form-control p_input"
-											name="accountType">
-		</div>
+											name="vendorName" value="${vBean.vendorName}">
+									</div>
+									<br>
 
-		
-		
-<button type="submit"
-										class="btn btn-outline-secondary btn-lg btn-block">Add
-										Account</button>
-										
-																			<div class="d-flex"></div>
-									<br> <a href="listaccount"><button type="button"
+									<button type="submit"
+										class="btn btn-outline-secondary btn-lg btn-block">Update
+										vendor</button>
+
+									<div class="d-flex"></div>
+									<br> <a href="listvendor"><button type="button"
 											class="btn btn-outline-warning btn-icon-text">
-											<i class=" btn-icon-prepend"></i> See All Account
+											<i class=" btn-icon-prepend"></i> List Vendor
 										</button></a>
-	
-	</form>
-	</div>
-	
+								</form>
+							</div>
 						</div>
 					</div>
 					<!-- Row or Data End -->
@@ -64,10 +60,9 @@
 			</div>
 		</div>
 	</div>
-
-
-	<jsp:include page="AllJavascript.jsp"></jsp:include>
 	
+		<jsp:include page="AllJavascript.jsp"></jsp:include>
+
 
 </body>
 </html>

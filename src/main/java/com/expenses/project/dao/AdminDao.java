@@ -153,7 +153,7 @@ public class AdminDao {
 		}else {
 			Double ratio = cuurentMonthExpense / previousMonthExpense;
 			System.out.println( " Expense Month Ratio  =>" +  ratio);
-			return Double.parseDouble(String.format("%.2f", ratio));
+			return Double.parseDouble(String.format("%.4f", ratio));
 			
 		}
 
@@ -196,6 +196,8 @@ public class AdminDao {
 			System.out.println( " Transaction Ratio  =>" +  ratio);
 			return ratio;
 		}
+		
+		
 	}
 	
 

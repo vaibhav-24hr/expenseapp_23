@@ -59,20 +59,22 @@
 													<th style="color: white">Vendor</th>
 													<th style="color: white">Status</th>
 													<th style="color: white">Action</th>
+													<th style="color: white">Edit</th>
 												</tr>
 											</thead>
 											<tbody>
 
 												<%
-												for (VendorBean cb : list) {
+												for (VendorBean vb : list) {
 												%>
 
 												<tr>
 
-													<td><%=cb.getVendorName()%></td>
-													<td><%=cb.getDeleted()%></td>
-													<td><a href="deletevendor/<%=cb.getVendorId()%>">
+													<td><%=vb.getVendorName()%></td>
+													<td><%=vb.getDeleted()%></td>
+													<td><a href="deletevendor/<%=vb.getVendorId()%>">
 															<button type="button" class="btn btn-rounded mdi mdi-delete btn-inverse-danger btn-sm"></button> </a></td>
+													<td><a href="editvendor?vendorId=<%=vb.getVendorId()%>"><button type="button" class="btn  btn-rounded mdi mdi-lead-pencil btn-inverse-info btn-sm"></button></a></td>
 												</tr>
 
 												<%

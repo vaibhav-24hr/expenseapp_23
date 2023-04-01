@@ -10,6 +10,13 @@
 <title>ExpenseManager | Admin Dashboard</title>
 <!-- plugins:css -->
 <jsp:include page="AllCss.jsp"></jsp:include>
+
+<style type="text/css">
+.error {
+	color: red;
+}
+</style>
+
 </head>
 
 <body>
@@ -38,13 +45,13 @@
 										<div class="col-9">
 											<div class="d-flex align-items-center align-self-start">
 												<h3 class="mb-0">${NumberOfUsers == null ? 0 : NumberOfUsers}</h3>
-												 <p class="text-success ml-2 mb-0 font-weight-medium">+${ratioUsersMonthly == null ? 0 : ratioUsersMonthly}</p>
+												 <p class=" ml-2 mb-0 font-weight-medium  mdi" id="user">${ratioUsersMonthly == null ? 0 : ratioUsersMonthly}</p>
 											</div>
 										</div>
-									 	<div class="col-3">
-											<div class="icon icon-box-success ">
+									 	<div class="col-3"><!-- <span id="user"></span> -->
+											<!-- <div class="icon icon-box-success " id ="arrow">
 												<span class="mdi mdi-arrow-top-right icon-item"></span>
-											</div>
+											</div> -->
 										</div> 
 									</div>
 									<h6 class="text-muted font-weight-normal">This Month Users </h6>
@@ -58,13 +65,13 @@
 										<div class="col-9">
 											<div class="d-flex align-items-center align-self-start">
 												<h3 class="mb-0">${NumberOfMonthlyExpenses == null ? 0 : NumberOfMonthlyExpenses}</h3>
-												 <p class="text-success ml-2 mb-0 font-weight-medium">+${ratioTransactionMonthly}</p> 
+												 <p class=" ml-2 mb-0 font-weight-medium mdi" id="ratioTransaction"> <!-- <span id="ratioTransaction" class="{{ ratioTransaction >= 0 ? 'text-success' : 'text-danger' }}"> -->${ratioTransactionMonthly}<!-- </span> --></p> 
 											</div>
 										</div>
 										<div class="col-3">
-											 <div class="icon icon-box-success">
+											<!--  <div class="icon icon-box-success" id ="arrow">
 												<span class="mdi mdi-arrow-top-right icon-item"></span>
-											</div> 
+											</div>  -->
 										</div>
 									</div>
 									<h6 class="text-muted font-weight-normal">This Month Transactiones</h6>
@@ -79,13 +86,13 @@
 										<div class="col-9">
 											<div class="d-flex align-items-center align-self-start">
 <!-- Expression Language Condition if not NULL --><h3 class="mb-0">${TodayExpense == null ? 0 : TodayExpense}</h3>
-												 <p class="text-success ml-2 mb-0 font-weight-medium">+${ratioExpenseDaily == null ? 0 : ratioExpenseDaily}</p> 
+												 <p class=" ml-2 mb-0 font-weight-medium  " id = "ratio">${ratioExpenseDaily == null ? 0 : ratioExpenseDaily}</p> 
 											</div>
 										</div>
-										<div class="col-3">
-										<!-- 	 <div class="icon icon-box-success">
+										<div class="col-3" id ="arrow">
+										 	<!--  <div class="icon icon-box-success">
 												<span class="mdi mdi-arrow-top-right icon-item"></span>
-											</div> --> 
+											</div>  --> 
 										</div>
 									</div>
 									<h6 class="text-muted font-weight-normal">Today Expenses Ammount</h6>
@@ -100,13 +107,13 @@
 										<div class="col-9">
 											<div class="d-flex align-items-center align-self-start">
 												<h3 class="mb-0">${MonthlyExpense == null ? 0 : MonthlyExpense}</h3>
-												 <p class="text-success ml-2 mb-0 font-weight-medium">+${ratioExpenseMonthly == null ? 0 : ratioExpenseMonthly}</p> 
+												 <p class="  ml-2 mb-0 font-weight-medium " id = "ratioMonthly">${ratioExpenseMonthly == null ? 0 : ratioExpenseMonthly}</p> 
 											</div>
 										</div>
-										<div class="col-3">
-											 <div class="icon icon-box-success ">
+										<div class="col-3" >
+											<!--  <div class="icon icon-box-success ">
 												<span class="mdi mdi-arrow-top-right icon-item"></span>
-											</div> 
+											</div>  -->
 										</div>
 									</div>
 									<h6 class="text-muted font-weight-normal">This Month Expense Ammount</h6>
@@ -236,6 +243,57 @@
 	<!-- Custom js for this page -->
 	<script src="../../assets/js/chart.js"></script>
 	<!-- End custom js for this page -->
+	<script type="text/javascript">
+	// Today Expense Colour
+	ratioElement = document.getElementById('ratio');
+	ratioValue = ratioElement.textContent.trim();
+	
+	ratioElement.textContent = ratioValue;
+	
+	if (ratioValue > 0) {
+		ratioElement.classList.add('text-success','icon-box-success','mdi-arrow-top-right');
+		} else  {
+			ratioElement.classList.add('text-danger','icon-box-danger','mdi-arrow-bottom-left');
+		}
+	
+	// No Of Users colour validation
+	userElmment = document.getElementById('user');
+	userValue = userElmment.textContent.trim();
+	user.textContent = userValue;
+	
+	if(userValue > 0){
+		userElmment.classList.add('text-success','icon-box-success','mdi-arrow-top-right');		
+	}else {
+		userElmment.classList.add('text-danger','icon-box-danger','mdi-arrow-bottom-left');
+	}
+	
+	// No of Transaction
+	
+ 	ratioTransactionElement  = document.getElementById('ratioTransaction');
+	ratioTransactionValue  = ratioTransactionElement.textContent.trim();
+	ratioTransactionValue = ratioTransaction.textContent;
+	
+	if(ratioTransactionValue > 0){
+		ratioTransactionElement.classList.add('text-success','icon-box-success','mdi-arrow-top-right');
+	}else {
+		ratioTransactionElement.classList.add('text-danger','icon-box-danger','mdi-arrow-bottom-left');
+	} 
+	
+	// Monyhly Expense
+	ratioMonthly
+ 	ratioMonthlyElement = document.getElementById('ratioMonthly');
+	ratioMonthlyValue = ratioMonthly.textContent.trim();
+	ratioMonthlyValue = ratioMonthly.textContent;
+	
+	if(ratioMonthlyValue > 0){
+		ratioMonthlyElement.classList.add('text-success','icon-box-success','mdi-arrow-top-right');
+	}else {
+		ratioMonthlyElement.classList.add('text-danger','icon-box-danger','mdi-arrow-bottom-left');
+	}  
+	
+	
+	</script>
+
 
 </body>
 </html>
