@@ -59,9 +59,9 @@
 												<thead>
 											<tr>
 
-												<th style="color: white">AccountId</th>
-
 												<th style="color: white">AccountType</th>
+
+												<th style="color: white">Action</th>
 										
 												
 												<!-- <th style="color: white">Edit Category</th>  -->
@@ -73,8 +73,8 @@
 		<%for(AccountBean ab : list){ %>
 		
 		<tr>
-			<td> <%= ab.getAccountTypeId() %> </td>
 			<td> <%= ab.getAccountType() %> </td>
+			<td><a href="deleteaccount/<%=ab.getAccountTypeId()%>"><button type="button" class="btn btn-rounded mdi mdi-delete btn-inverse-danger btn-sm"></button></a> </td>
 		</tr>
 			
 			<%}%>
@@ -84,7 +84,7 @@
 								<div align="right">
 									<a href="newaccount"><button type="button"
 											class="btn btn-outline-warning btn-icon-text">
-											<i class="mdi mdi-plus btn-icon-prepend"></i> Add Vendor
+											<i class="mdi mdi-plus btn-icon-prepend"></i> Add Account Type
 										</button></a>
 								</div>
 							</div>

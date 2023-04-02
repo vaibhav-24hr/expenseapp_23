@@ -2,12 +2,15 @@ package com.expenses.project.dao;
 
 import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.List;
 
 //import org.apache.jasper.tagplugins.jstl.core.If;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
+import com.expenses.project.bean.ChartExpenseBean;
 
 @Repository
 public class AdminDao {
@@ -198,6 +201,11 @@ public class AdminDao {
 		}
 		
 		
+	}
+	// To display Chart
+	public List<ChartExpenseBean> getExpenseStats(){
+		String selectQuery = "select MONTH(date) as month ,sum(ammount) as expenseAmmount from expense group by month(date) order by MONTH(date)";
+		return 	stmt.query(selectQuery, new BeanPropertyRowMapper<ChartExpenseBean>(ChartExpenseBean.class));
 	}
 	
 

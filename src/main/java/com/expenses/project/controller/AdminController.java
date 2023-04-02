@@ -1,5 +1,7 @@
 package com.expenses.project.controller;
 
+import java.util.List;
+
 //import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.expenses.project.bean.ChartExpenseBean;
 //import com.expenses.project.bean.UserBean;
 import com.expenses.project.dao.AdminDao;
 import com.expenses.project.dao.UserDao;
@@ -34,6 +37,7 @@ public class AdminController {
 		int ratioTransactionMonthly = admo.getRatioOfTransaction();
 		Double ratioExpenseDaily = admo.getExpenseRatioForPeviousDay();
 		Double ratioExpenseMonthly = admo.getExpenseRatioForPeviousMonth();
+		List<ChartExpenseBean> chartData = admo.getExpenseStats();
 		
 		model.addAttribute("NumberOfUsers", totalUsers);
 		model.addAttribute("NumberOfMonthlyExpenses", totalExpenseCount);
@@ -43,6 +47,7 @@ public class AdminController {
 		model.addAttribute("ratioExpenseMonthly", ratioExpenseMonthly);
 		model.addAttribute("ratioUsersMonthly", ratioUsersMonthly);
 		model.addAttribute("ratioTransactionMonthly", ratioTransactionMonthly);
+		model.addAttribute("chartData" , chartData);
 		
 		return "AdminDashboard";
 	}
