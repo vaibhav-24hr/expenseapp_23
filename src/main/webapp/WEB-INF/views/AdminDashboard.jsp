@@ -210,6 +210,47 @@ List<ChartExpenseBean> chartData = (List<ChartExpenseBean>)request.getAttribute(
 								</div>
 
 									<script>
+									
+									  BGcolorArray= [
+										    'rgba(201, 203, 207, 0.2)',
+										    'rgba(255, 99, 132, 0.2)',
+									        'rgba(54, 162, 235, 0.2)',
+									        'rgba(255, 206, 86, 0.2)',
+									        'rgba(75, 192, 192, 0.2)',
+									        'rgba(153, 102, 255, 0.2)',
+									        'rgba(255, 159, 64, 0.2)',
+									        'rgba(48, 51, 204, 0.2)',
+									        'rgba(50, 200, 204, 0.2)',
+									        'rgba(189, 129, 46, 0.2)',
+									        'rgba(122, 124, 129, 0.2',
+									        'rgba(48, 30, 38, 0.2)'
+									      ]
+									  
+									  bordderArray = ['rgba(201, 203, 207, 1)',
+										    'rgba(255, 99, 132, 1)',
+									        'rgba(54, 162, 235, 1)',
+									        'rgba(255, 206, 86, 1)',
+									        'rgba(75, 192, 192, 1)',
+									        'rgba(153, 102, 255, 1)',
+									        'rgba(255, 159, 64, 1)',
+									        'rgba(48, 51, 204, 0.2)',
+									        'rgba(50, 200, 204, 0.2)',
+									        'rgba(189, 129, 46, 0.2)',
+									        'rgba(122, 124, 129, 0.2',
+									        'rgba(48, 30, 38, 0.2)'
+									        ]
+									
+									bgColor = [];
+									borderColor = [];
+									
+									<% for(int i = 0; i<chartData.size(); i++){%>
+										bgColor.push(BGcolorArray[<%=i%>]);
+									<%}%>
+									
+									<% for(int i=0; i<chartData.size(); i++){ %>
+										borderColor.push(bordderArray[<%=i%>]);
+									<%}%>
+									
 										const ctx = document
 												.getElementById('barChart');
 
@@ -233,22 +274,12 @@ List<ChartExpenseBean> chartData = (List<ChartExpenseBean>)request.getAttribute(
 																'<%=cb.getExpenseAmmount()%>',
 																	<%}%>
 																	],
-																	  backgroundColor: [
-																	        'rgba(255, 99, 132, 0.2)',
-																	        'rgba(54, 162, 235, 0.2)',
-																	        'rgba(255, 206, 86, 0.2)',
-																	        'rgba(75, 192, 192, 0.2)',
-																	        'rgba(153, 102, 255, 0.2)',
-																	        'rgba(255, 159, 64, 0.2)'
-																	      ],
-																	      borderColor: [
-																	          'rgba(255,99,132,1)',
-																	          'rgba(54, 162, 235, 1)',
-																	          'rgba(255, 206, 86, 1)',
-																	          'rgba(75, 192, 192, 1)',
-																	          'rgba(153, 102, 255, 1)',
-																	          'rgba(255, 159, 64, 1)'
-																	        ],
+																	  backgroundColor: bgColor
+																	       
+																	      ,
+																	      borderColor: borderColor
+																	    	 
+																	        ,
 															borderWidth : 1
 															
 														} ]

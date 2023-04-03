@@ -167,6 +167,8 @@ select e.title, e.ammount, e.date, e.description, c.categoryName, sc.subcategory
 6). select monthname(date) as month , sum(ammount) as expenseAmmount from expense where year(date) = 2023 group by monthname(date) order by monthname(date);
 ---> update from Above -> where year(date) = 2023 <=> above query will give data of All month of current year
 
+7). select monthname(date) as month , sum(ammount) as expenseAmmount from expense where year(date) = 2023 group by monthname(date),month(date)  order by month(date);
+---> update from Above -> group by monthname(date),month(date)  order by month(date); <=> This Query Will give data of assending order by Month Name
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 select monthname(orderdate) as month , sum(totalAmount) as orderAmount from orders where year(orderDate) = 2023 group by monthname(orderdate) order by month(orderDate);

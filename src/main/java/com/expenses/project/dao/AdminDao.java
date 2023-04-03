@@ -204,7 +204,8 @@ public class AdminDao {
 	}
 	// To display Chart
 	public List<ChartExpenseBean> getExpenseStats(){
-		String selectQuery = "select MONTH(date) as month ,sum(ammount) as expenseAmmount from expense group by month(date) order by MONTH(date)";
+//		select MONTH(date) as month ,sum(ammount) as expenseAmmount from expense group by month(date) order by MONTH(date)
+		String selectQuery = "select monthname(date) as month , sum(ammount) as expenseAmmount from expense where year(date) = 2023 group by monthname(date),month(date)  order by month(date)  ";
 		return 	stmt.query(selectQuery, new BeanPropertyRowMapper<ChartExpenseBean>(ChartExpenseBean.class));
 	}
 	
