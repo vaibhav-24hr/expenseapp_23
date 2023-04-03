@@ -140,6 +140,7 @@
 					<!-- 2nd Row Start -->
 
 					<div class="row" align="center">
+					
 						<div class="col-md-4 grid-margin stretch-card">
 							<div class="card">
 								<div class="card-body">
@@ -182,7 +183,142 @@
 							</div>
 						</div>
 
-						<div class="col-lg-8 grid-margin stretch-card">
+					<%List<ChartExpenseBean> lineChartData = (List<ChartExpenseBean>)request.getAttribute("lineChartData"); %>
+
+						<!-- Line Chart -->
+<div class="col-lg-8">
+
+						<div class="col-lg-12 grid-margin stretch-card">
+							<div class="card">
+								<div class="card-body">
+									<!-- Line Chart -->
+									<div class="chartjs-size-monitor">
+										<div class="chartjs-size-monitor-expand">
+											<div class=""></div>
+										</div>
+										<div class="chartjs-size-monitor-shrink">
+											<div class=""></div>
+										</div>
+									</div>
+									<!-- <h4 class="card-title">Line chart</h4>
+									<canvas id="lineChart"
+										style="height: 224px; display: block; width: 449px;"
+										width="622" height="310" class="chartjs-render-monitor"></canvas> -->
+																<h4 class="card-title" >Monthly Number Of Transaction</h4>
+								<div>
+									<canvas id="lineChart" class="chartjs-render-monitor"></canvas>
+								</div>
+								<script type="text/javascript">
+								
+								
+								
+						/* 		 const ctx2 = document.getElementById('lineChart');
+
+								  new Chart(ctx2, {
+								    type: 'line',
+								    data: {
+								      labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+								      datasets: [{
+								        label: 'Sales',
+								        data: [10, 20, 30, 25, 18, 12],
+								        borderColor: 'rgba(255, 99, 132, 1)',
+								        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+								        borderWidth: 1
+								      }]
+								    },
+								    options: {
+								     
+								    
+								    }
+								  }); */
+								
+								 const ctx1 = document
+								.getElementById('lineChart');
+								
+								new Chart(
+										ctx1,
+										{
+											type : 'line',
+											data : {
+												
+												labels : [ 
+												 	<% for(ChartExpenseBean cb : lineChartData) {%>
+												'<%=cb.getMonth()%>', 
+														<%}%> 
+														],
+														
+												datasets : [ {
+													label : '# Transaction',
+													data : [ 
+														 <%for(ChartExpenseBean cb : lineChartData){%>
+														'<%=cb.getTransaction()%>',
+															<%}%> 
+															],
+															pointRadius: 6, // Set the point radius to 10
+															  backgroundColor:   'rgba(5, 1, 2, 1)',
+															  
+															      borderColor: 'rgba(255, 159, 64, 1)',
+													borderWidth : 1.5
+													
+												} ]
+											},
+											options : {
+											/* 	 scales: {
+								        x: {
+								          ticks: {
+								        	  color: 'white'
+								          }
+								        },
+								        y: {
+								          ticks: {
+								            color: 'white'
+								          },
+								          grid: {
+								        	  color: 'rgba(255, 255, 255, 0.3)'
+								          }
+								        }
+								      } */
+								      scales: {
+								    	  x: {
+									          ticks: {
+									            color: 'white'
+									          },
+									          grid: {
+									        	  color: 'rgba(255, 255, 255, 0.1)'
+									          }
+									        },
+								    	    y: {
+										          ticks: {
+										        	  
+										            color: 'white'
+										            
+										          },
+										          grid: {
+										        	  color: 'rgba(255, 255, 255, 0.1)'
+										          }
+										        }
+								    	  },
+								     /*     plugins: {
+								        legend: {
+								          display: false
+								        }
+								      }  */
+											}
+										});  
+										
+										
+								
+								</script>
+								
+								</div>
+							</div>
+						</div>
+					</div>
+					</div>
+					
+					
+					<div class="row">
+					<div class="col-lg-12 grid-margin stretch-card">
 							<div class="card">
 								<div class="card-body">
 									<!-- Bar Chart -->
@@ -204,7 +340,7 @@
 List<ChartExpenseBean> chartData = (List<ChartExpenseBean>)request.getAttribute("chartData"); 
 %>
 
-								<h4 class="card-title" >Bar chart</h4>
+								<h4 class="card-title" >Every Month Expenses </h4>
 								<div>
 									<canvas id="barChart" class="chartjs-render-monitor"></canvas>
 								</div>
@@ -212,7 +348,6 @@ List<ChartExpenseBean> chartData = (List<ChartExpenseBean>)request.getAttribute(
 									<script>
 									
 									  BGcolorArray= [
-										    'rgba(201, 203, 207, 0.2)',
 										    'rgba(255, 99, 132, 0.2)',
 									        'rgba(54, 162, 235, 0.2)',
 									        'rgba(255, 206, 86, 0.2)',
@@ -223,10 +358,11 @@ List<ChartExpenseBean> chartData = (List<ChartExpenseBean>)request.getAttribute(
 									        'rgba(50, 200, 204, 0.2)',
 									        'rgba(189, 129, 46, 0.2)',
 									        'rgba(122, 124, 129, 0.2',
-									        'rgba(48, 30, 38, 0.2)'
+									        'rgba(48, 30, 38, 0.2)',
+									        'rgba(201, 203, 207, 0.2)'
 									      ]
 									  
-									  bordderArray = ['rgba(201, 203, 207, 1)',
+									  bordderArray = [
 										    'rgba(255, 99, 132, 1)',
 									        'rgba(54, 162, 235, 1)',
 									        'rgba(255, 206, 86, 1)',
@@ -237,7 +373,8 @@ List<ChartExpenseBean> chartData = (List<ChartExpenseBean>)request.getAttribute(
 									        'rgba(50, 200, 204, 0.2)',
 									        'rgba(189, 129, 46, 0.2)',
 									        'rgba(122, 124, 129, 0.2',
-									        'rgba(48, 30, 38, 0.2)'
+									        'rgba(48, 30, 38, 0.2)',
+									        'rgba(201, 203, 207, 1)'
 									        ]
 									
 									bgColor = [];
@@ -251,11 +388,11 @@ List<ChartExpenseBean> chartData = (List<ChartExpenseBean>)request.getAttribute(
 										borderColor.push(bordderArray[<%=i%>]);
 									<%}%>
 									
-										const ctx = document
+										const ctx2 = document
 												.getElementById('barChart');
 
 										new Chart(
-												ctx,
+												ctx2,
 												{
 													type : 'bar',
 													data : {
@@ -280,16 +417,29 @@ List<ChartExpenseBean> chartData = (List<ChartExpenseBean>)request.getAttribute(
 																	      borderColor: borderColor
 																	    	 
 																	        ,
-															borderWidth : 1
+															borderWidth : 1.5
 															
 														} ]
 													},
 													options : {
 														scales : {
-															y : {
-																beginAtZero : true
-															}
-														}
+													    	  x: {
+														          ticks: {
+														            color: 'white'
+														          },
+														          grid: {
+														        	  color: 'rgba(255, 255, 255, 0.1)'
+														          }
+														        },
+													    	    y: {
+															          ticks: {
+															            color: 'white'
+															          },
+															          grid: {
+															        	  color: 'rgba(255, 255, 255, 0.1)'
+															          }
+															        }
+													    	  }
 													}
 												});
 									</script>
@@ -300,38 +450,11 @@ List<ChartExpenseBean> chartData = (List<ChartExpenseBean>)request.getAttribute(
 								</div>
 							</div>
 						</div>
-
-
-
-
-					</div>
+						</div>
+					
 
 					<!-- 2nd Row End -->
-					<div class="row">
-
-						<div class="col-lg-7 grid-margin stretch-card">
-							<div class="card">
-								<div class="card-body">
-									<!-- Line Chart -->
-									<div class="chartjs-size-monitor">
-										<div class="chartjs-size-monitor-expand">
-											<div class=""></div>
-										</div>
-										<div class="chartjs-size-monitor-shrink">
-											<div class=""></div>
-										</div>
-									</div>
-									<h4 class="card-title">Line chart</h4>
-									<canvas id="lineChart"
-										style="height: 224px; display: block; width: 449px;"
-										width="622" height="310" class="chartjs-render-monitor"></canvas>
-								</div>
-							</div>
-						</div>
-
-
-
-					</div>
+					
 
 
 
@@ -356,7 +479,7 @@ List<ChartExpenseBean> chartData = (List<ChartExpenseBean>)request.getAttribute(
 
 	<jsp:include page="AllJavascript.jsp"></jsp:include>
 	<!-- Custom js for this page -->
-<!-- 	<script src="../../assets/js/chart.js"></script> -->
+<!-- 	<script src="../../assets/js/chart.js"></script> 
 	<!-- End custom js for this page -->
 	<script type="text/javascript">
 		// Today Expense Colour
@@ -432,3 +555,37 @@ List<ChartExpenseBean> chartData = (List<ChartExpenseBean>)request.getAttribute(
 <a href = "newaccount"> Add Account Type </a><br> <br>
 <a href = "listaccount"> List All Account </a><br> <br>
 <a href = "logout"> Log Out </a> -->
+
+
+
+<!-- Format of Chart -->
+
+							<%-- 	<%-- const ctx1 = document.getElementById('lineChart');
+
+								  new Chart(ctx1, {
+								    type: 'line',
+								    data: {
+								      labels: [<% for(ChartExpenseBean cb : lineChartData) {%>
+										'<%=cb.getMonth()%>', 
+										<%}%> ],
+								      datasets: [{
+								        label: '# Transaction',
+								        data: [ <%for(ChartExpenseBean cb : lineChartData){%>
+										<%=cb.getTransaction()%>,
+										<%}%> ],
+								        borderColor: 'rgba(255, 99, 132, 1)',
+								        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+								        borderWidth: 1
+								      }]
+								    },
+								    options: {
+								      scales: {
+								        y: {
+								          beginAtZero: true
+								        }
+								      }
+								    }
+								  }); --%> 
+
+
+

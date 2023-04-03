@@ -209,5 +209,10 @@ public class AdminDao {
 		return 	stmt.query(selectQuery, new BeanPropertyRowMapper<ChartExpenseBean>(ChartExpenseBean.class));
 	}
 	
+	public List<ChartExpenseBean> getTransactionStats(){
+		String selectQuery = "select monthname(date) as month , count(*) as transaction from expense where year(date) = 2023 group by monthname(date), month(date) order by month(date)";
+		return stmt.query(selectQuery, new BeanPropertyRowMapper<ChartExpenseBean>(ChartExpenseBean.class));
+	}
+	
 
 }
