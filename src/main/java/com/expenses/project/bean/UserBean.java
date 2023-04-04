@@ -6,14 +6,20 @@ public class UserBean {
 	private String lastName;
 	private String email;
 	private String password;
-	private Integer role;
+	private Integer role;   // 1 - Admin & 2 - Users/Customers
 	
 	private String gender;
 	private String dob;
 	private String joindate;
 	private String contactNum;
-
+	private String imageUrl;
 	
+	public String getImageUrl() {
+		return imageUrl;
+	}
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
 	public String getGender() {
 		return gender;
 	}

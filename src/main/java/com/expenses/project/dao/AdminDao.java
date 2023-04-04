@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.expenses.project.bean.ChartExpenseBean;
+import com.expenses.project.bean.ProfileBean;
 
 @Repository
 public class AdminDao {
@@ -215,4 +216,10 @@ public class AdminDao {
 	}
 	
 
+	// For Users Profile Picture
+	
+	public void updateImageUrl(ProfileBean pBean) {
+		stmt.update("update users set imageUrl = ? where userId = ?", pBean.getImageUrl(), pBean.getUserId());
+	}
+	
 }

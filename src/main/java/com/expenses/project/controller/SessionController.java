@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 //import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -135,6 +136,8 @@ public class SessionController {
 			
 			// Session 
 			session.setAttribute("userId", usb.getUserId());
+			session.setAttribute("user", usb);
+			/* session.setAttribute("firstName", usb.getFirstName()); */
 			
 			// max inactive interval Time
 			session.setMaxInactiveInterval(60*5); //Second 

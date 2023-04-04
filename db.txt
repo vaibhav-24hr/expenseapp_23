@@ -179,10 +179,17 @@ Each Users Number of Expenses
 
 
 
+-----------------------------------------------------------------------------------
+ FOR uopload image add URL Data for 1024 char(1024)
+--> alter table users add column imageUrl varchar(1024);
 
+To upload imgae We need to add these maven dependencies
 
+apache commons 
+	io
+	file-upload
 
-
+-------------------------------------------------------
 
 
 

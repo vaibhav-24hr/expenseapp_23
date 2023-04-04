@@ -8,6 +8,7 @@
 
 <!-- endinject -->
 <!-- Plugin css for this page -->
+    <!-- <link rel="stylesheet" href="../../../assets/vendors/jquery-bar-rating/css-stars.css"> -->
 <link rel="stylesheet"
 	href="assets/vendors/jvectormap/jquery-jvectormap.css">
 <link rel="stylesheet"
@@ -16,6 +17,7 @@
 	href="assets/vendors/owl-carousel-2/owl.carousel.min.css">
 <link rel="stylesheet"
 	href="assets/vendors/owl-carousel-2/owl.theme.default.min.css">
+	
 <!-- End plugin css for this page -->
 <!-- inject:css -->
 <!-- endinject -->
@@ -27,7 +29,7 @@
 <!-- End layout styles -->
 <link rel="shortcut icon" href="assets/images/expenselogo.png"> 
 <!-- LOGO Default:- favicon.png,   want :- expenselogo.png, Temporary:- elogo.png  -->
-    
+
 <style type="text/css">/* Chart.js */
 @
 keyframes chartjs-render-animation {
