@@ -71,18 +71,38 @@ ${error}
       <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
-    <!-- plugins:js -->
+<!--     plugins:js
     <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
+    endinject
+    Plugin js for this page
+    End plugin js for this page
+    inject:js
     <script src="../../assets/js/off-canvas.js"></script>
     <script src="../../assets/js/hoverable-collapse.js"></script>
     <script src="../../assets/js/misc.js"></script>
     <script src="../../assets/js/settings.js"></script>
     <script src="../../assets/js/todolist.js"></script>
-    <!-- endinject -->
+    endinject -->
+   <jsp:include page="AllJavascript.jsp"></jsp:include>
+   
+   <link
+		href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+		rel="stylesheet" />
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"
+		integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+		
+		<script>
+		
+	<%if (request.getAttribute("error") != null) {%>
+	toastr
+	.error("<%=request.getAttribute("error")%>")
+	<%}%>
+		 
+	</script>
+   
    
   </body>
 </html>

@@ -73,13 +73,13 @@ public class AdminController {
 	
 	
 	@PostMapping("/saveprofilepic")
-	public String saveProfilepic(ProfileBean pBean) {
+	public String saveProfilePic(ProfileBean pBean) {
 		System.out.println("in AdminController saveProfilepic() userID =>" +pBean.getUserId());
 		System.out.println(pBean.getProfileImg().getOriginalFilename());
 		
 		try {
 			File userDir = new File ("C:\\Users\\vaibhav\\Documents\\workspace-spring-tool-suite-4-4.17.2.RELEASE\\expenseManager-23_Final\\src\\main\\resources\\static\\assets\\profiles",
-					pBean.getImageUrl()+"");
+					pBean.getUserId()+"");
 			if(userDir.exists() == false) {
 				userDir.mkdir();
 			}
