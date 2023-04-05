@@ -13,7 +13,7 @@
 	
 		<div class="container-scroller">
 		<!-- Slidebar -->
-		<jsp:include page="LeftSlideBar.jsp"></jsp:include>
+		<%--  <jsp:include page="LeftSlideBar.jsp"></jsp:include>  --%>
 		<!-- navbar -->
 		<div class="container-fluid page-body-wrapper">
 
@@ -29,7 +29,7 @@
               <h3 class="page-title"> Profile </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Sample Pages</a></li>
+<!-- Very HelpFull --><li class="breadcrumb-item"><a href="${pageContext.request.getHeader('referer')}">Your Dashboard</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Profile</li>
                 </ol>
               </nav>
@@ -46,7 +46,7 @@
                       <div class="col-lg-4">
                         <div class="border-bottom text-center pb-4">
                           <img src="${user.imageUrl}" alt="profile" class="img-lg rounded-circle mb-3">
-                          <p>Bureau Oberhaeuser is a design bureau focused on Information- and Interface Design. </p>
+                          <p> </p>
                           <div class="d-flex justify-content-between">
                             
                             <button class="btn btn-success">Follow</button>
@@ -61,33 +61,34 @@
                           </p>
                           <p class="clearfix">
                             <span class="float-left"> Phone </span>
-                            <span class="float-right text-muted"> 006 3435 22 </span>
+                            <span class="float-right text-muted"> ${user.contactNum} </span>
                           </p>
                           <p class="clearfix">
                             <span class="float-left"> Mail </span>
-                            <span class="float-right text-muted"> Jacod@testmail.com </span>
+                            <span class="float-right text-muted"> ${user.email} </span>
                           </p>
                           <p class="clearfix">
-                            <span class="float-left"> Facebook </span>
+                            <span class="float-left"> Date of Birth </span>
                             <span class="float-right text-muted">
-                              <a href="#">David Grey</a>
+                              <a href="#">${user.dob}</a>
                             </span>
                           </p>
                           <p class="clearfix">
-                            <span class="float-left"> Twitter </span>
+                            <span class="float-left"> gender </span>
                             <span class="float-right text-muted">
-                              <a href="#">@davidgrey</a>
+                              <span>${user.gender}</span>
                             </span>
                           </p>
                         </div>
                         <button class="btn btn-primary btn-block">Preview</button>
                       </div>
+                      
                       <div class="col-lg-8">
                         <div class="d-flex justify-content-between">
                           <div>
-                            <h3>Name: ${user.firstName}</h3>
+                            <h3>${user.firstName}  </h3>
                             <div class="d-flex align-items-center">
-                              <h5 class="mb-0 me-2 text-muted">Role:${user.role}</h5>
+                              <h5 class="mb-0 me-2 text-muted">Role: ${user.role == 1 ? "Admin" : "User"}</h5>
                               <!-- <div class="br-wrapper br-theme-css-stars"><select id="profile-rating" name="rating" autocomplete="off" style="display: none;">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -120,11 +121,19 @@
                           </ul>
                         </div>
                         
-                        <div class = "profile-feed">
+                        <div class = "profile-feed"><br>
                         <form action="saveprofilepic" method = "post" enctype="multipart/form-data">
                         <input type="hidden" name="userId" value="${user.userId}" >
-                        	uplode Profile Pic:<input type="file" name = "profileImg" class="form-control">
-                        	<br>
+                        	
+                        	<!--  uplode Profile Pic:<input type="file" name = "profileImg" class="form-control"> 
+                        	<br> -->
+                        	
+                         	<div class="input-group col-xs-8">
+                          <input type="file" class="form-control file-upload-info" name = "profileImg"  placeholder="Upload Image">
+                          <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                          </span>
+                        </div> 
                         	<div class="text-center">
                       <button type="submit" class="btn btn-primary">Save Changes</button>
                     </div>

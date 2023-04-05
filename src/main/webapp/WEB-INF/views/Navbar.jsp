@@ -22,7 +22,7 @@
                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                   <div class="navbar-profile">
                     <img class="img-xs rounded-circle" src="${user.imageUrl}" alt="">
-                    <p class="mb-0 d-none d-sm-block navbar-profile-name">Vaibhav Adesara</p>
+                    <p class="mb-0 d-none d-sm-block navbar-profile-name">${user.firstName }</p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>
                 </a>
