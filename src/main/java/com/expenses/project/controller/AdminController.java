@@ -47,6 +47,8 @@ public class AdminController {
 		Double ratioExpenseMonthly = admo.getExpenseRatioForPeviousMonth();
 		List<ChartExpenseBean> chartData = admo.getExpenseStats();
 		List<ChartExpenseBean> lineChartData = admo.getTransactionStats();
+		List<ChartExpenseBean> donutChartData = admo.getTransactionTypeStats();
+		
 		
 		model.addAttribute("NumberOfUsers", totalUsers);
 		model.addAttribute("NumberOfMonthlyExpenses", totalExpenseCount);
@@ -58,7 +60,7 @@ public class AdminController {
 		model.addAttribute("ratioTransactionMonthly", ratioTransactionMonthly);
 		model.addAttribute("chartData" , chartData);
 		model.addAttribute("lineChartData" , lineChartData);
-
+		model.addAttribute("donutChartData", donutChartData);
 		
 		
 		return "AdminDashboard";

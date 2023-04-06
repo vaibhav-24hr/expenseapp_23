@@ -211,11 +211,16 @@ public class AdminDao {
 	}
 	
 	public List<ChartExpenseBean> getTransactionStats(){
-		String selectQuery = "select monthname(date) as month , count(*) as transaction from expense where year(date) = 2023 group by monthname(date), month(date) order by month(date)";
+		String selectQuery = "select monthname(date) as month , count(*) as transaction from expense where year(date) = ? group by monthname(date), month(date) order by month(date)";
+		return stmt.query(selectQuery, new BeanPropertyRowMapper<ChartExpenseBean>(ChartExpenseBean.class),y);
+	}
+	
+	public List<ChartExpenseBean> getTransactionTypeStats(){
+		String selectQuery = "SELECT a.accountType AS PaymentType, COUNT(e.accountTypeId) AS transaction  FROM accountType a LEFT JOIN expense e ON a.accountTypeId = e.accountTypeId group by a.accountTypeId";
 		return stmt.query(selectQuery, new BeanPropertyRowMapper<ChartExpenseBean>(ChartExpenseBean.class));
 	}
 	
-
+	
 	// For Users Profile Picture
 	
 	public void updateImageUrl(ProfileBean pBean) {

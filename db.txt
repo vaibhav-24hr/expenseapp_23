@@ -110,8 +110,17 @@ View Expense Content
 
 Expense Query
 
-select e.title, e.ammount, e.date, e.description, c.categoryName, sc.subcategoryName, v.vendorName, a.accountType, s.statusShow from expense e, category c, subcategory sc, vendor v, accountType a, status s where e.categoryId = c.categoryId and e.subCategoryId = sc.subCategoryId and e.vendorId = v.vendorId and e.accountTypeId = a.accountTypeId and e.statusId = s.statusId and userId = ?; 
+  select e.title, e.ammount, e.date, e.description, c.categoryName, sc.subcategoryName, v.vendorName, a.accountType, s.statusShow from expense e, category c, subcategory sc, vendor v, accountType a, status s where e.categoryId = c.categoryId and e.subCategoryId = sc.subCategoryId and e.vendorId = v.vendorId and e.accountTypeId = a.accountTypeId and e.statusId = s.statusId and userId = ?; 
 
+ O/P for userId -> 11
+ +--------------+---------+------------+------------------------------------------------------+--------------+-----------------+------------+-------------+------------+
+ | title        | ammount | date       | description                                          | categoryName | subcategoryName | vendorName | accountType | statusShow |
+ +--------------+---------+------------+------------------------------------------------------+--------------+-----------------+------------+-------------+------------+
+ | With Friends |     700 | 2023-03-12 | Bought Three Cold Coffe in StarBucks. I paid 700 rs. | Food         | Break Fast      | StarBucks  | credit card | paid       |
+ | mobile       |   30000 | 2023-03-13 | Mobile Phhoen                                        | Electronics  | Bike            | Croma      | cash        | paid       |
+ | Furniture    |   10000 | 2023-03-14 | purchased 2 chairs                                   | house        | Chair           | Croma      | cash        | paid       |
+ | Lunch        |    5000 | 2023-04-01 | With friends                                         | Food         | Break Fast      | McDonald's | cash        | paid       |
+ +--------------+---------+------------+------------------------------------------------------+--------------+-----------------+------------+-------------+------------+
 
 
 
@@ -157,6 +166,18 @@ select e.title, e.ammount, e.date, e.description, c.categoryName, sc.subcategory
 
 3). select MONTH(date) as month ,sum(ammount) as expenseAmmount from expense group by month(date) order by MONTH(date);
 ---> Update from Above -> order by MONTH(date) <=> ABove updation Query givr data in Accending Month Data
+O/P 
++-------+----------------+
+| month | expenseAmmount |
++-------+----------------+
+|     1 |          11500 |
+|     2 |          15000 |
+|     3 |          83000 |
+|     4 |           6400 |
+|     5 |           4000 |
+|     6 |           5000 |
++-------+----------------+
+
 
 4). select MONTH(date) as month ,sum(ammount) as expenseAmmount from expense group by month(date) order by MONTH(date) desc;
 --->  Update from Above -> order by MONTH(date) desc <=> Give Data in Descendin Order Month [ex(12 to 1 where 12=december)]
@@ -166,9 +187,31 @@ select e.title, e.ammount, e.date, e.description, c.categoryName, sc.subcategory
 
 6). select monthname(date) as month , sum(ammount) as expenseAmmount from expense where year(date) = 2023 group by monthname(date) order by monthname(date);
 ---> update from Above -> where year(date) = 2023 <=> above query will give data of All month of current year
+O/P 
++----------+----------------+
+| month    | expenseAmmount |
++----------+----------------+
+| April    |           6400 |
+| February |          15000 |
+| January  |          11500 |
+| June     |           5000 |
+| March    |          83000 |
+| May      |           4000 |
++----------+----------------+
 
 7). select monthname(date) as month , sum(ammount) as expenseAmmount from expense where year(date) = 2023 group by monthname(date),month(date)  order by month(date);
 ---> update from Above -> group by monthname(date),month(date)  order by month(date); <=> This Query Will give data of assending order by Month Name
+O/P
++----------+----------------+
+| month    | expenseAmmount |
++----------+----------------+
+| January  |          11500 |
+| February |          15000 |
+| March    |          83000 |
+| April    |           6400 |
+| May      |           4000 |
+| June     |           5000 |
++----------+----------------+
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 select monthname(orderdate) as month , sum(totalAmount) as orderAmount from orders where year(orderDate) = 2023 group by monthname(orderdate) order by month(orderDate);
@@ -191,10 +234,18 @@ apache commons
 
 -------------------------------------------------------
 
+This Query will give number of Transaction in Every Account ex (CreditCard = 4, cash = 7)
 
-
-
-
+ SELECT a.accountType AS PaymentType, COUNT(e.accountTypeId) AS transaction  FROM accountType a LEFT JOIN expense e ON a.accountTypeId = e.accountTypeId group by a.accountTypeId;
+O/P :-
++-------------+-------------+
+| PaymentType | transaction |
++-------------+-------------+
+| cash        |           7 |
+| credit card |           3 |
+| debit card  |           3 |
+| cheque      |           2 |
++-------------+-------------+
 
 
 

@@ -152,15 +152,93 @@
 											<div class=""></div>
 										</div>
 									</div>
-									<h4 class="card-title">Transaction History</h4>
+								<!-- 	<h4 class="card-title">Transaction History</h4>
 									<canvas id="transaction-history"
 										class="transaction-chart chartjs-render-monitor"
 										style="display: block; height: 134px; width: 268px;"
-										width="371" height="185"></canvas>
-									<div
+										width="371" height="185"></canvas> -->
+<%List<ChartExpenseBean> donutChartData = (List<ChartExpenseBean>)request.getAttribute("donutChartData"); %>										
+										
+										<h4 class="card-title" >Transaction History</h4>
+								<div>
+									<canvas id="pieChart" class="chartjs-render-monitor"></canvas>
+								</div>
+							<script type="text/javascript">
+							 
+							 BGcolorArray= [
+							        'rgba(255, 99, 132, 0.4)',
+							        'rgba(54, 162, 235, 0.4)',
+							        'rgba(255, 206, 86, 0.4)',
+							        'rgba(75, 192, 192, 0.4)',
+							        'rgba(153, 102, 255, 0.4)',
+							        'rgba(255, 159, 64, 0.4)'      
+							      ]
+							 
+							  bordderArray = [
+								  'rgba(255,99,132,1)',
+							        'rgba(54, 162, 235, 1)',
+							        'rgba(255, 206, 86, 1)',
+							        'rgba(75, 192, 192, 1)',
+							        'rgba(153, 102, 255, 1)',
+							        'rgba(255, 159, 64, 1)'
+							        ]
+							 
+								bgColor = [];
+								borderColor = [];
+								
+								<% for(int i = 0; i<donutChartData.size(); i++){%>
+									bgColor.push(BGcolorArray[<%=i%>]);
+								<%}%>
+								
+								<% for(int i=0; i<donutChartData.size(); i++){ %>
+									borderColor.push(bordderArray[<%=i%>]);
+								<%}%>
+ 
+ const ctx3 = document.getElementById('pieChart');
+
+ new Chart(ctx3, {
+   type: 'doughnut',
+   data: {
+     labels: [<%for(ChartExpenseBean db : donutChartData){%>
+       '<%=db.getPaymentType()%>',
+     <%}%>
+     ],
+     datasets: [{
+       label: '# Transaction Type',
+       data: [ <%for(ChartExpenseBean db : donutChartData){%>
+         <%=db.getTransaction()%>,
+       <%}%> ],
+       backgroundColor: bgColor,
+       borderColor: borderColor,
+       borderWidth: 1
+     }]
+   },
+   options: {
+     cutout: '50%',
+     plugins: {
+       title: {
+         display: true,
+         text: 'Donut Chart'
+       },
+       legend: {
+         position: 'bottom'
+       }
+     }
+   }
+ });  
+ 				
+ 
+ 
+ 
+ 
+ </script>
+										
+					
+										
+							<!-- 		<div
 										class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
 										<div class="text-md-center text-xl-left">
-											<h6 class="mb-1">Transfer to Paypal</h6>
+											<h6 class="mb-1">Transfer to Cheque</h6>
 											<p class="text-muted mb-0">07 Jan 2019, 09:12AM</p>
 										</div>
 										<div
@@ -178,7 +256,7 @@
 											class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
 											<h6 class="font-weight-bold mb-0">$593</h6>
 										</div>
-									</div>
+									</div> -->
 								</div>
 							</div>
 						</div>

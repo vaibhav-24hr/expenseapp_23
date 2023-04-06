@@ -5,7 +5,17 @@ public class ChartExpenseBean {
 	String month;
 	Long expenseAmmount;
 	Integer transaction;
+	String PaymentType;
 	
+	
+	
+	public String getPaymentType() {
+		return PaymentType;
+	}
+	public void setPaymentType(String paymentType) {
+		PaymentType = paymentType;
+	}
+
 	
 	
 	public Integer getTransaction() {
