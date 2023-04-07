@@ -248,6 +248,45 @@ O/P :-
 +-------------+-------------+
 
 
+--> select c.categoryName as category , count(e.categoryId) as Spending from category c LEFT JOIN expense e ON c.categoryId = e.categoryId group by c.categoryId;
+ 	+-----------------+----------+
+	| category        | Spending |
+	+-----------------+----------+
+	| Lunch           |        0 |
+	| Dinner          |        0 |
+	| BreakFast       |        0 |
+	| Coffee          |        0 |
+	| Automobile      |        2 |
+	| Groceary        |        1 |
+	| house           |        1 |
+	| Electronics     |        1 |
+	| Repairing       |        0 |
+	| Medical         |        0 |
+	| Clothes         |        0 |
+	| Food            |        5 |
+	| Stationery      |        1 |
+	| House Hold      |        2 |
+	| Books for maths |        0 |
+	| Other           |        3 |
+	| D-Mart          |        0 |
+	+-----------------+----------+
+	
+--> select v.vendorName as vendor, count(e.vendorId) as Spent from vendor v LEFT JOIN expense e ON v.vendorId = e.vendorId group by v.vendorId;
+
+	+----------------+-------+
+	| vendor         | Spent |
+	+----------------+-------+
+	| StarBucks      |     2 |
+	| McDonald's     |     2 |
+	| BBQ Nation     |     1 |
+	| BBQ Nation     |     0 |
+	| Croma          |     4 |
+	| Domino's Pizza |     1 |
+	| College        |     3 |
+	| Other          |     2 |
+	| dmy            |     0 |
+	| D-Mart         |     1 |
+	+----------------+-------+	
 
 
 
