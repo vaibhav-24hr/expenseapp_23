@@ -125,7 +125,19 @@ public class UserDao {
 		String selectQuery = "select * from users where role = 2";
 		List<UserBean> userlist = stmt.query(selectQuery, new BeanPropertyRowMapper<UserBean>(UserBean.class));
 		return userlist;
-	}	
+	}
+	
+	public UserBean getUserById(Integer userId) {
+		UserBean usBean = null;
+		try {
+			usBean = stmt.queryForObject("select * from users where userId = ?",new BeanPropertyRowMapper<UserBean>(UserBean.class), new Object[] {userId});
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("USERS DAO : getUserById();");
+			System.out.println(e.getMessage());
+		}
+		return usBean;
+	}
 	
 
 	

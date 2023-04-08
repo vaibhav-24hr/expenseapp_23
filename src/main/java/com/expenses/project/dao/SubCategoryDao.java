@@ -53,9 +53,13 @@ public class SubCategoryDao {
 		return scb;
 	}
 	
+//	public SubCategoryBean getSubCategoryById(Integer subCategoryId) {
+//		return stmt.queryForObject("select * from subcategory where subCategoryId = ?", new BeanPropertyRowMapper<SubCategoryBean>(SubCategoryBean.class), new Object[] {subCategoryId});
+//	}
+	
 	public void updateSubcategory(SubCategoryBean scBean) {
-		String updateQuery = "update subcategory set subCategoryName = ? where subCategoryId = ?";
-		stmt.update(updateQuery,scBean.getSubCategoryName(), scBean.getSubCategoryId());
+		String updateQuery = "update subcategory set subCategoryName = ? , categoryId = ? where subCategoryId = ?";
+		stmt.update(updateQuery,scBean.getSubCategoryName(),scBean.getCategoryId(), scBean.getSubCategoryId());
 	}
 	
 }

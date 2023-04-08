@@ -45,12 +45,19 @@ public class CategoryController {
 		
 	}
 	
-	@GetMapping("/deletecategory/{categoryId}") //"URl/{print_CATEGORYID from JSP}"
-	public String deleteCategory(@PathVariable("categoryId")Integer categoryId) {  // to know categoryID from URL we need to add annotation => path@variable PATH & its datatype
-								//@PathVariable()
-		cDao.deleteCategory(categoryId);
-		return "redirect:/listcategories";
-		
+//	@GetMapping("/deletecategory/{categoryId}") //"URl/{print_CATEGORYID from JSP}"
+//	public String deleteCategory(@PathVariable("categoryId")Integer categoryId) {  // to know categoryID from URL we need to add annotation => path@variable PATH & its datatype
+//								//@PathVariable()
+//		cDao.deleteCategory(categoryId);
+//		return "redirect:/listcategories";
+//		
+//	}
+	
+	
+	@GetMapping("/deletecategory/{categoryId}/{categoryStatus}")
+	public String deleteCategory(@PathVariable("categoryId") Integer categoryId, @PathVariable("currentStatus") boolean currentStatus) {
+		cDao.deactiveCategory(categoryId, currentStatus);
+		return "redirect:/listcategory";
 	}
 	
 	@GetMapping("/viewcategory")

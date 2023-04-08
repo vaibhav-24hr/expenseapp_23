@@ -60,7 +60,7 @@
 
 												<th style="color: white">Category</th>
 
-												<th style="color: white">Status</th>
+												<th style="color: white">Active</th>
 												<th style="color: white">Action</th>
 												
 												<th style="color: white">Edit Category</th> 
@@ -74,8 +74,16 @@
 											%>
 											<tr>
 												<td><%=list.get(i).getCategoryName()%></td>
-												<td><%=list.get(i).getDeleted()%></td>
-												<td><a
+											<%-- 	<td><%=list.get(i).getDeleted()%></td> --%>
+											<td>
+											<div class="form-check form-switch">
+											
+												<input class="form-check-input" onclick="changeStatus(<%=list.get(i).getCategoryId()%><%=list.get(i).getDeleted()%>)" type="checkbox"
+												id="flexSwitchCheckChecked" <%=!list.get(i).getDeleted() ? "checked" : ""%>>
+												</div>
+												</td>
+												
+ 												<td><a
 													href="deletecategory/<%=list.get(i).getCategoryId()%>"><button type="button" class="btn btn-rounded mdi mdi-delete btn-inverse-danger btn-sm "></button></a>
 													/ <a href="viewcategory?categoryId=<%=list.get(i).getCategoryId()%>"><button type="button" class="btn  btn-rounded mdi mdi-eye btn-inverse-success btn-sm"></button> </a></td>
 												<td><a href="editcategory?categoryId=<%=list.get(i).getCategoryId()%>"><button type="button" class="btn  btn-rounded mdi mdi-lead-pencil btn-inverse-info btn-sm"></button> </a></td>
@@ -114,6 +122,11 @@
 		$(document).ready(function() {
 			$('#lists').DataTable();
 		});
+	</script>
+	<script type="text/javascript">
+		function changeStatus(categoryId, currentStatus) {
+			location.href = "deletecategory/"+categoryId+"/"+currentStatus;
+		}
 	</script>
 
 </body>

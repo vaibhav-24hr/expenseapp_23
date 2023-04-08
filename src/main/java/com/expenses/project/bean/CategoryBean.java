@@ -7,6 +7,7 @@ public class CategoryBean {
 	private String categoryName;
 	private Boolean deleted;
 	
+	
 	public Integer getCategoryId() {
 		return categoryId;
 	}

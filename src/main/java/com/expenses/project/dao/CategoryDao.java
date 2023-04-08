@@ -24,17 +24,26 @@ public class CategoryDao {
 	
 	public List<CategoryBean> getAllCategory(){
 		
-		String selectQuery = "select * from category where deleted = false";
+//		String selectQuery = "select * from category where deleted = false";
+		String selectQuery = "select * from category";
 		List<CategoryBean> list = stmt.query(selectQuery, new BeanPropertyRowMapper<CategoryBean>(CategoryBean.class));
 		return list;
 	}
 	
-	public void deleteCategory(Integer categoryId) {
-		
-		String updateQuery = "update category set deleted = true where categoryId = ?";
-		stmt.update(updateQuery,categoryId);
-		
+//	public void deleteCategory(Integer categoryId) {
+//		
+//		String updateQuery = "update category set deleted = true where categoryId = ?";
+//		stmt.update(updateQuery,categoryId);
+//		
+//	}
+	
+	public void deactiveCategory(Integer categoryId, boolean currentStatus) {
+		currentStatus = !currentStatus;
+		String updateCategory = "update category set deleted = ? where categoryId = ?";
+		 stmt.update(updateCategory,currentStatus,categoryId);
 	}
+	
+	
 	// use for Operation like view,delete  and Edit to specific categoryId 
 	public CategoryBean getCategoryById(Integer categoryId) {
 		CategoryBean cb = null;

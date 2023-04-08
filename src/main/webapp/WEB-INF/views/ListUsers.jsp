@@ -58,12 +58,13 @@
 
 												<th style="color: white">Last Name</th>
 												<th style="color: white">Email</th>
-												<th style="color: white">Joining Date</th>
-												<th style="color: white">Password</th>
+												<!-- <th style="color: white">Joining Date</th> -->
+												<!-- <th style="color: white">Password</th> -->
 												<th style="color: white">Gender</th>
 												<th style="color: white">Date of Birth</th>
 												<!-- <th style="color: white">Email</th>
 												<th style="color: white">Email</th> -->
+												<th style="color: white">Action</th>
 											</tr>
 										</thead>
 										
@@ -76,11 +77,11 @@
 												<td><%=userlist.get(i).getFirstName()%></td>
 												<td><%=userlist.get(i).getLastName()%></td>
 												<td><%=userlist.get(i).getEmail()%></td>
-												<td><%=userlist.get(i).getJoindate()%></td>
-												<td><%=userlist.get(i).getPassword()%></td>
+												<%-- <td><%=userlist.get(i).getJoindate()%></td> --%>
+												<%-- <td><%=userlist.get(i).getPassword()%></td> --%>
 												<td><%=userlist.get(i).getGender()%></td>
 												<td><%=userlist.get(i).getDob()%></td>
-												
+												<td><a href="viewuser?userId=<%=userlist.get(i).getUserId()%>"><button type="button" class="btn  btn-rounded mdi mdi-eye btn-inverse-success btn-sm"></button> </a>
 												
 												
 												

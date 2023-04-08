@@ -1,3 +1,6 @@
+<%@page import="com.expenses.project.bean.SubCategoryBean"%>
+<%@page import="com.expenses.project.bean.CategoryBean"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -32,6 +35,12 @@
 						<div class="col-md-10">
 							<div class="card-body px-5 py-5">
 								<h3 class="card-title text-left mb-3">Edit Sub Category</h3>
+								
+			<% List<CategoryBean> list = (List<CategoryBean>)request.getAttribute("list");
+				SubCategoryBean scBean = (SubCategoryBean)request.getAttribute("scBean");	
+			%>
+								
+								
 								<form method="post" action="updatesubcategory">
 									<div class="form-group">
 									<input type="hidden" name="subCategoryId" value = "${scBean.subCategoryId}"/>
@@ -39,6 +48,28 @@
 										<input type="text" class="form-control p_input"
 											name="subCategoryName" value="${scBean.subCategoryName}">
 									</div>
+									<div class="form-group">
+									
+										<h4>Category *</h4>
+										
+										<select name = "categoryId" id = "categoryId"> 
+												<option value="-1">Select Category </option>													
+										<%
+											for(CategoryBean cb :list){
+										%>
+										<option value="<%=cb.getCategoryId()%>"
+											<%=cb.getCategoryId() == scBean.getCategoryId() ? "selected" : ""%>>
+											<%=cb.getCategoryName()%></option>	
+										
+										<%}%>
+										</select>
+										
+										
+										
+								<%-- 		<input type="text" class="form-control p_input"
+											name="subCategoryName" value="${scBean.subCategoryName}"> --%>
+									</div>
+									
 									<br>
 
 									<button type="submit"

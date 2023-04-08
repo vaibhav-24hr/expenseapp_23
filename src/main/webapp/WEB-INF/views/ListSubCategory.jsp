@@ -16,7 +16,7 @@
 <body>
 
 	<%
-	List<SubCategoryBean> list = (List<SubCategoryBean>) request.getAttribute("list");
+	List<SubCategoryBean> sclist = (List<SubCategoryBean>) request.getAttribute("sclist");
 	%>
 
 	<div class="container-scroller">
@@ -66,22 +66,22 @@
 											<tbody>
 
 												<%
-												for (int i = 0; i < list.size(); i++) {
+												for (int i = 0; i < sclist.size(); i++) {
 												%>
 												<!-- we can also use for each loop:  for(CategoryBean cb:list) -->
 												<tr>
 
-													<td><%=list.get(i).getSubCategoryName()%></td>
+													<td><%=sclist.get(i).getSubCategoryName()%></td>
 
-													<td><%=list.get(i).getCategoryName()%></td>
-													<td><%=list.get(i).getDeleted()%></td>
+													<td><%=sclist.get(i).getCategoryName()%></td>
+													<td><%=sclist.get(i).getDeleted()%></td>
 													<td><a
-														href="/deletesubcategory/<%=list.get(i).getSubCategoryId()%>"><button type="button" class="btn btn-rounded mdi mdi-delete btn-inverse-danger btn-sm"></button></a> /
+														href="/deletesubcategory/<%=sclist.get(i).getSubCategoryId()%>"><button type="button" class="btn btn-rounded mdi mdi-delete btn-inverse-danger btn-sm"></button></a> /
 														<a
-														href="viewsubcategory?subCategoryId=<%=list.get(i).getSubCategoryId()%>"><button type="button" class="btn  btn-rounded mdi mdi-eye btn-inverse-success btn-sm"></button></a>
+														href="viewsubcategory?subCategoryId=<%=sclist.get(i).getSubCategoryId()%>"><button type="button" class="btn  btn-rounded mdi mdi-eye btn-inverse-success btn-sm"></button></a>
 													</td>
 													<td><a
-														href="editsubcategory?subCategoryId=<%=list.get(i).getSubCategoryId()%>"><button type="button" class="btn  btn-rounded mdi mdi-lead-pencil btn-inverse-info btn-sm"></button></a>
+														href="editsubcategory?subCategoryId=<%=sclist.get(i).getSubCategoryId()%>"><button type="button" class="btn  btn-rounded mdi mdi-lead-pencil btn-inverse-info btn-sm"></button></a>
 														</td>
 												</tr>
 												<%

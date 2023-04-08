@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.expenses.project.bean.UserBean;
 import com.expenses.project.dao.HomeDao;
@@ -20,7 +21,7 @@ import com.expenses.project.dao.UserDao;
 public class UserController {
 	
 	@Autowired
-	UserDao udo;
+	UserDao uDao;
 	
 	@Autowired
 	HomeDao hdo;
@@ -61,10 +62,19 @@ public class UserController {
 	@GetMapping("/listusers")
 	public String listUsers(Model model) {
 		
-		List<UserBean> userlist = udo.getAllUsers();
+		List<UserBean> userlist = uDao.getAllUsers();
 		model.addAttribute("userlist", userlist);
 		
 		return "ListUsers";
+	}
+	
+	@GetMapping("/viewuser")
+	public String viewUser(@RequestParam("userId")Integer userId,Model model) {
+		UserBean usBan = uDao.getUserById(userId);
+		System.out.println("userId in UserController  =>" + usBan.getUserId());
+		model.addAttribute("usBean", usBan);
+		
+		return "ViewUser";
 	}
 	
 }
