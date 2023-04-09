@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.expenses.project.bean.ChartExpenseBean;
 import com.expenses.project.bean.ProfileBean;
+import com.expenses.project.bean.UserBean;
 //import com.expenses.project.bean.UserBean;
 import com.expenses.project.dao.AdminDao;
 import com.expenses.project.dao.UserDao;
@@ -75,10 +76,12 @@ public class AdminController {
 	
 	
 	@PostMapping("/saveprofilepic")
-	public String saveProfilePic(ProfileBean pBean) {
+	public String saveProfilePic(ProfileBean pBean, UserBean usBean) {
 		System.out.println("in AdminController saveProfilepic() userID =>" +pBean.getUserId());
+		System.out.println("in AdminController saveuserprofile() userID =>" +usBean.getUserId());
 		System.out.println(pBean.getProfileImg().getOriginalFilename());
-		
+		System.out.println("userDetails updated => " + usBean.getFirstName() + usBean.getLastName());
+		admo.updateUser(usBean);
 		try {
 			File userDir = new File ("C:\\Users\\vaibhav\\Documents\\workspace-spring-tool-suite-4-4.17.2.RELEASE\\expenseManager-23_Final\\src\\main\\resources\\static\\assets\\profiles",
 					pBean.getUserId()+"");
@@ -90,6 +93,7 @@ public class AdminController {
 			pBean.setImageUrl("assets/profiles/" + pBean.getUserId() + "/" + pBean.getProfileImg().getOriginalFilename());
 			
 			admo.updateImageUrl(pBean);
+		
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("Error in image uploading");

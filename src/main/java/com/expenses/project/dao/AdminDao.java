@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.expenses.project.bean.ChartExpenseBean;
 import com.expenses.project.bean.ProfileBean;
+import com.expenses.project.bean.UserBean;
 
 @Repository
 public class AdminDao {
@@ -225,6 +226,11 @@ public class AdminDao {
 	
 	public void updateImageUrl(ProfileBean pBean) {
 		stmt.update("update users set imageUrl = ? where userId = ?", pBean.getImageUrl(), pBean.getUserId());
+	}
+	
+	public void updateUser(UserBean usBean) {
+		stmt.update("update users set firstName = ?, lastName = ? , email = ?,dob = ?, contactNum = ? where userId = ? ",usBean.getFirstName(), usBean.getLastName(), usBean.getEmail(),usBean.getDob(),usBean.getContactNum(),usBean.getUserId());
+	
 	}
 	
 }

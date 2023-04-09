@@ -46,10 +46,10 @@
                       <div class="col-lg-4">
                         <div class="border-bottom text-center pb-4">
                           <img src="${user.imageUrl}" alt="profile" class="img-lg rounded-circle mb-3">
-                          <p> </p>
+                         <!--  <p> </p> -->
                           <div class="d-flex justify-content-between">
                             
-                            <button class="btn btn-success">Follow</button>
+                         <!--    <button class="btn btn-success">Follow</button> -->
                           </div>
                         </div>
                         
@@ -70,7 +70,7 @@
                           <p class="clearfix">
                             <span class="float-left"> Date of Birth </span>
                             <span class="float-right text-muted">
-                              <a href="#">${user.dob}</a>
+                              ${user.dob}
                             </span>
                           </p>
                           <p class="clearfix">
@@ -79,28 +79,7 @@
                               <span>${user.gender}</span>
                             </span>
                           </p>
-                        </div>
-                        <button class="btn btn-primary btn-block">Preview</button>
-                      </div>
-                      
-                      <div class="col-lg-8">
-                        <div class="d-flex justify-content-between">
-                          <div>
-                            <h3>${user.firstName}  </h3>
-                            <div class="d-flex align-items-center">
-                              <h5 class="mb-0 me-2 text-muted">Role: ${user.role == 1 ? "Admin" : "User"}</h5>
-                              <!-- <div class="br-wrapper br-theme-css-stars"><select id="profile-rating" name="rating" autocomplete="off" style="display: none;">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                              </select><div class="br-widget"><a href="#" data-rating-value="1" data-rating-text="1" class="br-selected br-current"></a><a href="#" data-rating-value="2" data-rating-text="2" class=""></a><a href="#" data-rating-value="3" data-rating-text="3" class=""></a><a href="#" data-rating-value="4" data-rating-text="4" class=""></a><a href="#" data-rating-value="5" data-rating-text="5" class=""></a></div></div> -->
-                            </div>
-                          </div>
-                          
-                        </div>
-                        <div class="mt-4 py-2 border-top border-bottom">
+                            <div class="mt-4 py-2 border-top border-bottom">
                           <ul class="nav profile-navbar">
                             <li class="nav-item">
                               <a class="nav-link" href="#">
@@ -120,7 +99,29 @@
                             </li>
                           </ul>
                         </div>
-                        
+                        </div>
+                        <!-- <button class="btn btn-primary btn-block">Preview</button> -->
+                      </div>
+                      
+                      <div class="col-lg-8">
+                        <div class="d-flex justify-content-between">
+                          <div>
+                            <h3>${user.firstName}  </h3>
+                            <div class="d-flex align-items-center">
+                              <h5 class="mb-0 me-2 text-muted">Role: ${user.role == 1 ? "Admin" : "User"}</h5>
+                              <!-- <div class="br-wrapper br-theme-css-stars"><select id="profile-rating" name="rating" autocomplete="off" style="display: none;">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select><div class="br-widget"><a href="#" data-rating-value="1" data-rating-text="1" class="br-selected br-current"></a><a href="#" data-rating-value="2" data-rating-text="2" class=""></a><a href="#" data-rating-value="3" data-rating-text="3" class=""></a><a href="#" data-rating-value="4" data-rating-text="4" class=""></a><a href="#" data-rating-value="5" data-rating-text="5" class=""></a></div></div> -->
+                            </div>
+                          </div>
+                          
+                        </div>
+                      
+                        <div class="border-bottom text-center pb-4"></div>
                         <div class = "profile-feed"><br>
                         <form action="saveprofilepic" method = "post" enctype="multipart/form-data">
                         <input type="hidden" name="userId" value="${user.userId}" >
@@ -133,10 +134,45 @@
                           <span class="input-group-append">
                             <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                           </span>
-                        </div> 
+                        </div><br>
+                        
+                        <div class="input-group col-xs-8">
+									<label>First Name *</label> <input type="text"
+										class="form-control p_input" value="${user.firstName}" name="firstName" id="firstName">
+									<span id="firstNameError" class="error"></span>
+								</div> <br>
+                        
+                        <div class="input-group col-xs-8">
+									<label>Last Name *</label> <input type="text"
+										class="form-control p_input" value="${user.lastName }" name="lastName" id="firstName">
+									<span id="firstNameError" class="error"></span>
+								</div><br>
+                         
+                                 <div class="input-group col-xs-8">
+									<label>Email *</label> <input type="text"
+										class="form-control p_input" value="${user.email }" name="email" id="email">
+									<span id="firstNameError" class="error"></span>
+								</div><br>
+								
+								<div class="input-group col-xs-8">
+									<label>Dob *</label> <input type="date"
+										class="form-control p_input" value="${user.dob }" name="dob" id="email">
+									<span id="firstNameError" class="error"></span>
+								</div><br>
+								
+								<div class="input-group col-xs-8">
+									<label>Contact Num *</label> <input type="text"
+										class="form-control p_input" value="${user.contactNum }" name="contactNum" id="email">
+									<span id="firstNameError" class="error"></span>
+								</div><br>
+                         
                         	<div class="text-center">
                       <button type="submit" class="btn btn-primary">Save Changes</button>
                     </div>
+                    
+                    
+                    
+                    
                         </form>
                         
                         </div>
