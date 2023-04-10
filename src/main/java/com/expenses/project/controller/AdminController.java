@@ -27,10 +27,10 @@ import ch.qos.logback.core.util.FileUtil;
 public class AdminController {
 
 	@Autowired
-	AdminDao admo;
+	AdminDao admDao;
 	
 	@Autowired
-	UserDao udo;
+	UserDao uDao;
 	
 	
 	@GetMapping("/admindashboard")
@@ -38,17 +38,17 @@ public class AdminController {
 		System.out.println("InSide admindashboard--url-metho--");
 		
 		// Number Of Transaction or Expenses
-		int totalUsers =  admo.getUsersCount();
-		int totalExpenseCount = admo.getExpenseCount();
-		int totalExpenseDaily = admo.getAmmountOfExpennseDaily();
-		int totalExpenseMonthly = admo.getAmmountOfExpenseMonthly();
-		int ratioUsersMonthly = admo.getUserRatioMonthly();
-		int ratioTransactionMonthly = admo.getRatioOfTransaction();
-		Double ratioExpenseDaily = admo.getExpenseRatioForPeviousDay();
-		Double ratioExpenseMonthly = admo.getExpenseRatioForPeviousMonth();
-		List<ChartExpenseBean> chartData = admo.getExpenseStats();
-		List<ChartExpenseBean> lineChartData = admo.getTransactionStats();
-		List<ChartExpenseBean> donutChartData = admo.getTransactionTypeStats();
+		int totalUsers =  admDao.getUsersCount();
+		int totalExpenseCount = admDao.getExpenseCount();
+		int totalExpenseDaily = admDao.getAmmountOfExpennseDaily();
+		int totalExpenseMonthly = admDao.getAmmountOfExpenseMonthly();
+		int ratioUsersMonthly = admDao.getUserRatioMonthly();
+		int ratioTransactionMonthly = admDao.getRatioOfTransaction();
+		Double ratioExpenseDaily = admDao.getExpenseRatioForPeviousDay();
+		Double ratioExpenseMonthly = admDao.getExpenseRatioForPeviousMonth();
+		List<ChartExpenseBean> chartData = admDao.getExpenseStats();
+		List<ChartExpenseBean> lineChartData = admDao.getTransactionStats();
+		List<ChartExpenseBean> donutChartData = admDao.getTransactionTypeStats();
 		
 		
 		model.addAttribute("NumberOfUsers", totalUsers);
@@ -81,7 +81,7 @@ public class AdminController {
 		System.out.println("in AdminController saveuserprofile() userID =>" +usBean.getUserId());
 		System.out.println(pBean.getProfileImg().getOriginalFilename());
 		System.out.println("userDetails updated => " + usBean.getFirstName() + usBean.getLastName());
-		admo.updateUser(usBean);
+		admDao.updateUser(usBean);
 		try {
 			File userDir = new File ("C:\\Users\\vaibhav\\Documents\\workspace-spring-tool-suite-4-4.17.2.RELEASE\\expenseManager-23_Final\\src\\main\\resources\\static\\assets\\profiles",
 					pBean.getUserId()+"");
@@ -92,7 +92,7 @@ public class AdminController {
 			FileUtils.writeByteArrayToFile(file, pBean.getProfileImg().getBytes());
 			pBean.setImageUrl("assets/profiles/" + pBean.getUserId() + "/" + pBean.getProfileImg().getOriginalFilename());
 			
-			admo.updateImageUrl(pBean);
+			admDao.updateImageUrl(pBean);
 		
 		} catch (Exception e) {
 			// TODO: handle exception

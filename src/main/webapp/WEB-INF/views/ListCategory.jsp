@@ -60,7 +60,7 @@
 
 												<th style="color: white">Category</th>
 
-												<th style="color: white">Active</th>
+												 <th style="color: white">Active</th> 
 												<th style="color: white">Action</th>
 												
 												<th style="color: white">Edit Category</th> 
@@ -74,14 +74,14 @@
 											%>
 											<tr>
 												<td><%=list.get(i).getCategoryName()%></td>
-											<%-- 	<td><%=list.get(i).getDeleted()%></td> --%>
-											<td>
-											<div class="form-check form-switch">
+											 	<td><%=list.get(i).getDeleted()%></td> 
+									<%-- 		<td>
+										 	<div class="form-check form-switch">
 											
 												<input class="form-check-input" onclick="changeStatus(<%=list.get(i).getCategoryId()%><%=list.get(i).getDeleted()%>)" type="checkbox"
 												id="flexSwitchCheckChecked" <%=!list.get(i).getDeleted() ? "checked" : ""%>>
-												</div>
-												</td>
+												</div> 
+												</td> --%>
 												
  												<td><a
 													href="deletecategory/<%=list.get(i).getCategoryId()%>"><button type="button" class="btn btn-rounded mdi mdi-delete btn-inverse-danger btn-sm "></button></a>

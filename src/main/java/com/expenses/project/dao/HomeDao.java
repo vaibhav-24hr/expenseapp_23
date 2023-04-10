@@ -1,12 +1,14 @@
 package com.expenses.project.dao;
 
 import java.util.Calendar;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.expenses.project.bean.ChartExpenseBean;
 import com.expenses.project.bean.ExpenseBean;
 import com.expenses.project.bean.UserBean;
 
@@ -85,6 +87,15 @@ public Integer getAmountOfExpenseDaily(Integer userId) {
 	return stmt.queryForObject(todayExpenseQuery, Integer.class, new Object[] {userId,today});
 }
 	
-	
+public List<ChartExpenseBean> getExpenseStats(Integer userId){
+//	select MONTH(date) as month ,sum(ammount) as expenseAmmount from expense group by month(date) order by MONTH(date)
+	String selectQuery = "select monthname(date) as month , sum(ammount) as expenseAmmount from expense where year(date) = ? and userId = ? group by monthname(date),month(date)  order by month(date)  ;";
+	return 	stmt.query(selectQuery, new BeanPropertyRowMapper<ChartExpenseBean>(ChartExpenseBean.class),y,userId);
+}
+
+public List<ChartExpenseBean> getStatusOfTransactionStats(Integer userId){
+	String selectQuery = "select s.statusShow AS Status, COUNT(e.statusId) AS Transaction from status s LEFT JOIN Expense e ON s.statusId = e.statusId WHERE userId = ? GROUP BY s.statusId;";
+	return stmt.query(selectQuery, new BeanPropertyRowMapper<ChartExpenseBean>(ChartExpenseBean.class),userId);
+}
 	
 }

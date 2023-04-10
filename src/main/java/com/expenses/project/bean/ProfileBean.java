@@ -4,9 +4,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class ProfileBean {
 
-	Integer userId;
-	MultipartFile profileImg;
-	String imageUrl;
+	private Integer userId;
+	private MultipartFile profileImg;
+	private String imageUrl;
 	
 	public Integer getUserId() {
 		return userId;

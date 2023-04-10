@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.expenses.project.bean.ChartExpenseBean;
 import com.expenses.project.bean.UserBean;
 import com.expenses.project.dao.HomeDao;
 import com.expenses.project.dao.UserDao;
@@ -45,10 +46,16 @@ public class UserController {
 		Integer monthlyIncome = hdo.getAmmountOfIncomeMonthly(userId);
 		Integer dailyExpense = hdo.getAmountOfExpenseDaily(userId);
 		
+		List<ChartExpenseBean> chartData = hdo.getExpenseStats(userId);
+		List<ChartExpenseBean> pieStatus = hdo.getStatusOfTransactionStats(userId);
+		
 		model.addAttribute("monthlyExpense" , monthlyExpense);
 		model.addAttribute("monthlyTransaction", monthlyTransaction);
 		model.addAttribute("monthlyIncome" , monthlyIncome);
 		model.addAttribute("dailyExpense",dailyExpense);
+		model.addAttribute("chartData",chartData);
+		model.addAttribute("pieStatus",pieStatus);
+		
 		
 		System.out.println(userId);
 		
@@ -76,5 +83,9 @@ public class UserController {
 		
 		return "ViewUser";
 	}
+	
+	
+	
+	
 	
 }

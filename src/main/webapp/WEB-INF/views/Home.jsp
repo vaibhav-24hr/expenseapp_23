@@ -1,3 +1,5 @@
+<%@page import="com.expenses.project.bean.ChartExpenseBean"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -9,6 +11,7 @@
 	
 <title>Home Page</title>
 <jsp:include page="AllCss.jsp"></jsp:include>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 
@@ -110,24 +113,237 @@
 					</div>
 
 <div class="row">
-              <div class="col-lg-6 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                    <h4 class="card-title">Line chart</h4>
-                    <canvas id="lineChart" style="height: 224px; display: block; width: 449px;" width="622" height="310" class="chartjs-render-monitor"></canvas>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-6 grid-margin stretch-card">
+              
+             <!--  <div class="col-lg-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
                     <h4 class="card-title">Bar chart</h4>
                     <canvas id="barChart" style="height: 224px; display: block; width: 449px;" width="622" height="310" class="chartjs-render-monitor"></canvas>
                   </div>
                 </div>
-              </div>
-            </div>
-            
+              </div> -->
+              
+              <div class="col-lg-8 grid-margin stretch-card">
+							<div class="card">
+								<div class="card-body">
+									<!-- Bar Chart -->
+									<div class="chartjs-size-monitor"> <!--   -->
+										<div class="chartjs-size-monitor-expand"> <!--  -->
+											<div class=""></div>
+										</div>
+										<div class="chartjs-size-monitor-shrink"> <!--  -->
+											<div class=""></div>
+										</div>
+									</div>
+									<!-- Bar Chart -->
+									<!-- <h4 class="card-title">Bar chart</h4>
+									<canvas id="barChart"
+										style="height: 224px; display: block; width: 449px;"
+										width="622" height="310" ></canvas> --> <!-- class="chartjs-render-monitor" -->
+
+<% 
+List<ChartExpenseBean> chartData = (List<ChartExpenseBean>)request.getAttribute("chartData"); 
+%>
+
+								<h4 class="card-title" >Every Month Expenses </h4>
+								<div>
+									<canvas id="barChart" class="chartjs-render-monitor"></canvas>
+								</div>
+
+									<script>
+									
+									  BGcolorArray= [
+										    'rgba(255, 99, 132, 0.2)',
+									        'rgba(54, 162, 235, 0.2)',
+									        'rgba(255, 206, 86, 0.2)',
+									        'rgba(75, 192, 192, 0.2)',
+									        'rgba(153, 102, 255, 0.2)',
+									        'rgba(255, 159, 64, 0.2)',
+									        'rgba(48, 51, 204, 0.2)',
+									        'rgba(50, 200, 204, 0.2)',
+									        'rgba(189, 129, 46, 0.2)',
+									        'rgba(122, 124, 129, 0.2',
+									        'rgba(48, 30, 38, 0.2)',
+									        'rgba(201, 203, 207, 0.2)'
+									      ]
+									  
+									  bordderArray = [
+										    'rgba(255, 99, 132, 1)',
+									        'rgba(54, 162, 235, 1)',
+									        'rgba(255, 206, 86, 1)',
+									        'rgba(75, 192, 192, 1)',
+									        'rgba(153, 102, 255, 1)',
+									        'rgba(255, 159, 64, 1)',
+									        'rgba(48, 51, 204, 0.2)',
+									        'rgba(50, 200, 204, 0.2)',
+									        'rgba(189, 129, 46, 0.2)',
+									        'rgba(122, 124, 129, 0.2',
+									        'rgba(48, 30, 38, 0.2)',
+									        'rgba(201, 203, 207, 1)'
+									        ]
+									
+									bgColor = [];
+									borderColor = [];
+									
+									<% for(int i = 0; i<chartData.size(); i++){%>
+										bgColor.push(BGcolorArray[<%=i%>]);
+									<%}%>
+									
+									<% for(int i=0; i<chartData.size(); i++){ %>
+										borderColor.push(bordderArray[<%=i%>]);
+									<%}%>
+									
+										const ctx2 = document
+												.getElementById('barChart');
+
+										new Chart(ctx2,{
+													type : 'bar',
+													data : {
+														labels : [ <% for(ChartExpenseBean cb : chartData) {%>
+														'<%=cb.getMonth()%>', 
+																<%}%> ],
+																
+														datasets : [ {
+															label : '# Expense Ammount',
+															
+															data : [ <%for(ChartExpenseBean cb : chartData){%>
+																'<%=cb.getExpenseAmmount()%>',
+																	<%}%> ],
+																	
+															backgroundColor: bgColor,
+															borderColor: borderColor,  
+															borderWidth : 1.5
+														} ]
+													},
+													options : {
+														scales : {
+													    	  x: {
+														          ticks: {
+														            color: 'white'
+														          },
+														          grid: {
+														        	  color: 'rgba(255, 255, 255, 0.1)'
+														          }
+														        },
+													    	    y: {
+															          ticks: {
+															            color: 'white'
+															          },
+															          grid: {
+															        	  color: 'rgba(255, 255, 255, 0.1)'
+															          }
+															        }
+													    	  }
+													}
+												}); 		
+									</script>
+								</div>
+							</div>
+						</div> <!-- End of chart -->
+						
+						
+						 <div class="col-lg-4 grid-margin stretch-card">
+              
+              							<div class="card">
+								<div class="card-body">
+									<div class="chartjs-size-monitor">
+										<div class="chartjs-size-monitor-expand">
+											<div class=""></div>
+										</div>
+										<div class="chartjs-size-monitor-shrink">
+											<div class=""></div>
+										</div>
+									</div>
+								<!-- 	<h4 class="card-title">Transaction History</h4>
+									<canvas id="transaction-history"
+										class="transaction-chart chartjs-render-monitor"
+										style="display: block; height: 134px; width: 268px;"
+										width="371" height="185"></canvas> -->
+<%List<ChartExpenseBean> pieStatus = (List<ChartExpenseBean>)request.getAttribute("pieStatus"); %>										
+										
+										<h4 class="card-title" >Transaction Status</h4>
+								<div>
+									<canvas id="pieChart" class="chartjs-render-monitor"></canvas>
+								</div>
+							<script type="text/javascript">
+							 
+							 BGcolorArray= [
+								  'rgba(75, 192, 192, 0.4)',
+							        'rgba(153, 102, 255, 0.4)',
+							        'rgba(255, 159, 64, 0.4)',
+								    'rgba(255, 99, 132, 0.4)',
+							        'rgba(54, 162, 235, 0.4)',
+							        'rgba(255, 206, 86, 0.4)'
+							            
+							      ]
+							 
+							  bordderArray = [
+								  'rgba(75, 192, 192, 1)',
+							        'rgba(153, 102, 255, 1)',
+							        'rgba(255, 159, 64, 1)',
+								    'rgba(255, 99, 132, 1)',
+							        'rgba(54, 162, 235, 1)',
+							        'rgba(255, 206, 86, 1)'
+							        ]
+							 
+								bgColor = [];
+								borderColor = [];
+								
+								<% for(int i = 0; i<pieStatus.size(); i++){%>
+									bgColor.push(BGcolorArray[<%=i%>]);
+								<%}%>
+								
+								<% for(int i=0; i<pieStatus.size(); i++){ %>
+									borderColor.push(bordderArray[<%=i%>]);
+								<%}%>
+ 
+							 const ctx3 = document.getElementById('pieChart');
+							
+							 new Chart(ctx3, {
+							   type: 'doughnut',
+							   data: {
+							     labels: [<%for(ChartExpenseBean db : pieStatus){%>
+							       '<%=db.getStatus()%>',
+							     <%}%>
+							     ],
+							     datasets: [{
+							       label: '# Transaction Status',
+							       data: [ <%for(ChartExpenseBean db : pieStatus){%>
+							         <%=db.getTransaction()%>,
+							       <%}%> ],
+							       backgroundColor: bgColor,
+							       borderColor: borderColor,
+							       borderWidth: 1
+							     }]
+							   },
+							   options: {
+							     cutout: '50%',
+							     plugins: {
+							       title: {
+							         display: true,
+							         text: 'Donut Chart'
+							       },
+							       legend: {
+							         position: 'bottom'
+							       }
+							     }
+							   }
+							 });  
+ 
+ 						</script>
+										
+								</div>
+							</div>
+              
+              
+            			</div>
+            			
+            			
+            			
+            			
+            			
+            			
+            			
             <div class="row">
               <div class="col-lg-6 grid-margin stretch-card">
                 <div class="card">
@@ -162,9 +378,9 @@
 	
 	<jsp:include page="AllJavascript.jsp"></jsp:include>
 	    <!-- Custom js for this page -->
-    <script src="../../assets/js/chart.js"></script>
+    <!-- <script src="../../assets/js/chart.js"></script> -->
     <!-- End custom js for this page -->
-
+</div>
 </body>
 </html>
 

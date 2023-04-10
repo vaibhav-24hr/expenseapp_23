@@ -41,8 +41,8 @@
 									%>
 
 
-									userId :${user.userId}
-									<%=usBean.getUserId()%><br> 
+									userId: <%-- :${user.userId} --%>
+									 <%=usBean.getUserId()%> <br> 
 									 firstName : <%=usBean.getFirstName() %><br> 
 									Last Name: <%=usBean.getLastName()%><br>
 									email : <%=usBean.getEmail() %><br> 

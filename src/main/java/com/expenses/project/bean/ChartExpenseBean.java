@@ -2,10 +2,12 @@ package com.expenses.project.bean;
 
 public class ChartExpenseBean {
 
-	String month;
-	Long expenseAmmount;
-	Integer transaction;
-	String PaymentType;
+	private String month;
+	private Long expenseAmmount;
+	private Integer transaction;
+	private String PaymentType;
+	private String Status;
+	private String Transaction;
 	
 	
 	
@@ -18,6 +20,15 @@ public class ChartExpenseBean {
 
 	
 	
+	public String getStatus() {
+		return Status;
+	}
+	public void setStatus(String status) {
+		Status = status;
+	}
+	public void setTransaction(String transaction) {
+		Transaction = transaction;
+	}
 	public Integer getTransaction() {
 		return transaction;
 	}

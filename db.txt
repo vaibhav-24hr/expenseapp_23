@@ -289,7 +289,45 @@ O/P :-
 	+----------------+-------+	
 
 
+For Specific User
+->  select monthname(date) as month , sum(ammount) as expenseAmmount from expense where year(date) = 2023 and userId = 11 group by monthname(date),month(date)  order by month(date)  ;
++-------+----------------+
+| month | expenseAmmount |
++-------+----------------+
+| March |          10700 |
+| April |           5000 |
++-------+----------------+
 
+
+for All users
+
+-> select s.statusShow AS Status, COUNT(e.statusId) AS Transaction from status s LEFT JOIN Expense e ON s.statusId = e.statusId GROUP BY s.statusId;
++-----------------+-------------+
+| Status          | Transaction |
++-----------------+-------------+
+| paid            |           0 |
+| unpaid          |           0 |
+| unpaid          |           0 |
+| unpaid          |           0 |
+| paid            |           9 |
+| partial paid    |           1 |
+| asd             |           0 |
+| unpaid          |           3 |
+| Not Decided Yet |           1 |
+| Dummy           |           0 |
+| Dmy             |           0 |
++-----------------+-------------+
+
+for Specific users
+
+-> select s.statusShow AS Status, COUNT(e.statusId) AS Transaction from status s LEFT JOIN Expense e ON s.statusId = e.statusId WHERE userId = 27 GROUP BY s.statusId;
++--------------+-------------+
+| Status       | Transaction |
++--------------+-------------+
+| unpaid       |           1 |
+| partial paid |           1 |
+| paid         |           2 |
++--------------+-------------+
 
 
 
