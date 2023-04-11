@@ -104,12 +104,8 @@ public class AdminDao {
 		if (monthlyExpense == null) {
 			monthlyExpense = 0;
 		}
-		
-		
 		System.out.println(lastDay);
 		System.out.println(lastMonth);
-		
-		
 		return monthlyExpense;
 		
 	}
@@ -139,7 +135,6 @@ public class AdminDao {
 			System.out.println( " Expense Daily Ratio  =>" +  ratio);
 			return Double.parseDouble(String.format("%.2f", ratio));
 //		}
-		
 	}
 	
 	
@@ -186,13 +181,10 @@ public class AdminDao {
 	
 	public Integer getRatioOfTransaction() {
 		String countTransactionQuery = "select count(*) from expense where date like ?";
-		
 		//  the sum of expenses for the  today
 		Integer cuurentMonthTransaction = stmt.queryForObject(countTransactionQuery, Integer.class, new Object[] { currentMonth });
-		
 	    //  the sum of expenses for the previous day
 		Integer previousMonthTransaction = stmt.queryForObject(countTransactionQuery, Integer.class, new Object[] { lastMonth });
-		
 		// calculate the ratio between the previous day's expenses and the current day's expenses
 		if(cuurentMonthTransaction == null || previousMonthTransaction == null) {
 			return 0;
@@ -201,9 +193,8 @@ public class AdminDao {
 			System.out.println( " Transaction Ratio  =>" +  ratio);
 			return ratio;
 		}
-		
-		
 	}
+	
 	// To display Chart
 	public List<ChartExpenseBean> getExpenseStats(){
 //		select MONTH(date) as month ,sum(ammount) as expenseAmmount from expense group by month(date) order by MONTH(date)

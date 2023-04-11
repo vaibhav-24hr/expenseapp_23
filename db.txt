@@ -167,16 +167,16 @@ Expense Query
 3). select MONTH(date) as month ,sum(ammount) as expenseAmmount from expense group by month(date) order by MONTH(date);
 ---> Update from Above -> order by MONTH(date) <=> ABove updation Query givr data in Accending Month Data
 O/P 
-+-------+----------------+
-| month | expenseAmmount |
-+-------+----------------+
-|     1 |          11500 |
-|     2 |          15000 |
-|     3 |          83000 |
-|     4 |           6400 |
-|     5 |           4000 |
-|     6 |           5000 |
-+-------+----------------+
+	+-------+----------------+
+	| month | expenseAmmount |
+	+-------+----------------+
+	|     1 |          11500 |
+	|     2 |          15000 |
+	|     3 |          83000 |
+	|     4 |           6400 |
+	|     5 |           4000 |
+	|     6 |           5000 |
+	+-------+----------------+
 
 
 4). select MONTH(date) as month ,sum(ammount) as expenseAmmount from expense group by month(date) order by MONTH(date) desc;
@@ -188,30 +188,30 @@ O/P
 6). select monthname(date) as month , sum(ammount) as expenseAmmount from expense where year(date) = 2023 group by monthname(date) order by monthname(date);
 ---> update from Above -> where year(date) = 2023 <=> above query will give data of All month of current year
 O/P 
-+----------+----------------+
-| month    | expenseAmmount |
-+----------+----------------+
-| April    |           6400 |
-| February |          15000 |
-| January  |          11500 |
-| June     |           5000 |
-| March    |          83000 |
-| May      |           4000 |
-+----------+----------------+
+	+----------+----------------+
+	| month    | expenseAmmount |
+	+----------+----------------+
+	| April    |           6400 |
+	| February |          15000 |
+	| January  |          11500 |
+	| June     |           5000 |
+	| March    |          83000 |
+	| May      |           4000 |
+	+----------+----------------+
 
 7). select monthname(date) as month , sum(ammount) as expenseAmmount from expense where year(date) = 2023 group by monthname(date),month(date)  order by month(date);
 ---> update from Above -> group by monthname(date),month(date)  order by month(date); <=> This Query Will give data of assending order by Month Name
 O/P
-+----------+----------------+
-| month    | expenseAmmount |
-+----------+----------------+
-| January  |          11500 |
-| February |          15000 |
-| March    |          83000 |
-| April    |           6400 |
-| May      |           4000 |
-| June     |           5000 |
-+----------+----------------+
+	+----------+----------------+
+	| month    | expenseAmmount |
+	+----------+----------------+
+	| January  |          11500 |
+	| February |          15000 |
+	| March    |          83000 |
+	| April    |           6400 |
+	| May      |           4000 |
+	| June     |           5000 |
+	+----------+----------------+
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 select monthname(orderdate) as month , sum(totalAmount) as orderAmount from orders where year(orderDate) = 2023 group by monthname(orderdate) order by month(orderDate);
@@ -238,14 +238,14 @@ This Query will give number of Transaction in Every Account ex (CreditCard = 4, 
 
  SELECT a.accountType AS PaymentType, COUNT(e.accountTypeId) AS transaction  FROM accountType a LEFT JOIN expense e ON a.accountTypeId = e.accountTypeId group by a.accountTypeId;
 O/P :-
-+-------------+-------------+
-| PaymentType | transaction |
-+-------------+-------------+
-| cash        |           7 |
-| credit card |           3 |
-| debit card  |           3 |
-| cheque      |           2 |
-+-------------+-------------+
+	+-------------+-------------+
+	| PaymentType | transaction |
+	+-------------+-------------+
+	| cash        |           7 |
+	| credit card |           3 |
+	| debit card  |           3 |
+	| cheque      |           2 |
+	+-------------+-------------+
 
 
 --> select c.categoryName as category , count(e.categoryId) as Spending from category c LEFT JOIN expense e ON c.categoryId = e.categoryId group by c.categoryId;
@@ -271,7 +271,7 @@ O/P :-
 	| D-Mart          |        0 |
 	+-----------------+----------+
 	
---> select v.vendorName as vendor, count(e.vendorId) as Spent from vendor v LEFT JOIN expense e ON v.vendorId = e.vendorId group by v.vendorId;
+ mysql> select v.vendorName as vendor, count(e.vendorId) as Spent from vendor v LEFT JOIN expense e ON v.vendorId = e.vendorId group by v.vendorId;
 
 	+----------------+-------+
 	| vendor         | Spent |
@@ -290,47 +290,93 @@ O/P :-
 
 
 For Specific User
-->  select monthname(date) as month , sum(ammount) as expenseAmmount from expense where year(date) = 2023 and userId = 11 group by monthname(date),month(date)  order by month(date)  ;
-+-------+----------------+
-| month | expenseAmmount |
-+-------+----------------+
-| March |          10700 |
-| April |           5000 |
-+-------+----------------+
+mysql>  select monthname(date) as month , sum(ammount) as expenseAmmount from expense where year(date) = 2023 and userId = 11 group by monthname(date),month(date)  order by month(date)  ;
+	+-------+----------------+
+	| month | expenseAmmount |
+	+-------+----------------+
+	| March |          10700 |
+	| April |           5000 |
+	+-------+----------------+
 
 
 for All users
 
--> select s.statusShow AS Status, COUNT(e.statusId) AS Transaction from status s LEFT JOIN Expense e ON s.statusId = e.statusId GROUP BY s.statusId;
-+-----------------+-------------+
-| Status          | Transaction |
-+-----------------+-------------+
-| paid            |           0 |
-| unpaid          |           0 |
-| unpaid          |           0 |
-| unpaid          |           0 |
-| paid            |           9 |
-| partial paid    |           1 |
-| asd             |           0 |
-| unpaid          |           3 |
-| Not Decided Yet |           1 |
-| Dummy           |           0 |
-| Dmy             |           0 |
-+-----------------+-------------+
+mysql> select s.statusShow AS Status, COUNT(e.statusId) AS Transaction from status s LEFT JOIN Expense e ON s.statusId = e.statusId GROUP BY s.statusId;
+	+-----------------+-------------+
+	| Status          | Transaction |
+	+-----------------+-------------+
+	| paid            |           0 |
+	| unpaid          |           0 |
+	| unpaid          |           0 |
+	| unpaid          |           0 |
+	| paid            |           9 |
+	| partial paid    |           1 |
+	| asd             |           0 |
+	| unpaid          |           3 |
+	| Not Decided Yet |           1 |
+	| Dummy           |           0 |
+	| Dmy             |           0 |
+	+-----------------+-------------+
 
 for Specific users
 
--> select s.statusShow AS Status, COUNT(e.statusId) AS Transaction from status s LEFT JOIN Expense e ON s.statusId = e.statusId WHERE userId = 27 GROUP BY s.statusId;
-+--------------+-------------+
-| Status       | Transaction |
-+--------------+-------------+
-| unpaid       |           1 |
-| partial paid |           1 |
-| paid         |           2 |
-+--------------+-------------+
+mysql> select s.statusShow AS Status, COUNT(e.statusId) AS Transaction from status s LEFT JOIN Expense e ON s.statusId = e.statusId WHERE userId = 27 GROUP BY s.statusId;
+	+--------------+-------------+
+	| Status       | Transaction |
+	+--------------+-------------+
+	| unpaid       |           1 |
+	| partial paid |           1 |
+	| paid         |           2 |
+	+--------------+-------------+
 
+mysql> select e.userId, u.firstName ,e.title from expense e LEFT JOIN users u ON u.userId = e.userId;
+	+--------+------------+-------------------+
+	| userId | firstName  | title             |
+	+--------+------------+-------------------+
+	|     11 | VAIBHAV    | With Friends      |
+	|     11 | VAIBHAV    | Furniture         |
+	|      8 | Vaibhav    | Pizza             |
+	|     27 | salCollege | College Fees      |
+	|     11 | VAIBHAV    | Lunch             |
+	|      4 | Elon       | dmy               |
+	|      4 | Elon       | dmy 2             |
+	|     27 | salCollege | College Fees      |
+	|     27 | salCollege | Canteen BreakFast |
+	|     27 | salCollege | Coolege Books     |
+	|     18 | z          | Grocery           |
+	|     18 | z          | Shopping          |
+	|      8 | Vaibhav    | Dummy             |
+	|      5 | admin      | Fees              |
+	+--------+------------+-------------------+
 
+userId = 11 
+mysql> SELECT e.title, e.ammount, e.date, s.statusShow
+    -> FROM expense e
+    -> LEFT JOIN status s ON e.statusId = s.statusId
+    -> WHERE userId = 11
+    -> GROUP BY e.title, e.ammount, e.date, s.statusShow
+    -> ORDER BY e.date DESC;
+	+--------------+---------+------------+--------------+
+	| title        | ammount | date       | statusShow   |
+	+--------------+---------+------------+--------------+
+	| Grocery      |    2000 | 2023-04-11 | partial paid |
+	| Lunch        |    5000 | 2023-04-01 | paid         |
+	| Furniture    |   10000 | 2023-03-14 | paid         |
+	| With Friends |     700 | 2023-03-12 | paid         |
+	+--------------+---------+------------+--------------+
+	
+userId = 27 
 
+mysql> SELECT e.title, e.ammount, e.date, s.statusShow from expense e LEFT JOIN status s ON e.statusId = s.statusId WHERE userId = 27 
+		GROUP BY e.title, e.ammount, e.date, s.statusShow ORDER BY e.date DESC;
+	+-------------------+---------+------------+--------------+
+	| title             | ammount | date       | statusShow   |
+	+-------------------+---------+------------+--------------+
+	| Canteen BreakFast |     200 | 2023-04-03 | paid         |
+	| College Fees      |   32000 | 2023-03-30 | unpaid       |
+	| College Fees      |   15000 | 2023-02-04 | partial paid |
+	| Coolege Books     |    1500 | 2023-01-12 | paid         |
+	+-------------------+---------+------------+--------------+
 
 
 

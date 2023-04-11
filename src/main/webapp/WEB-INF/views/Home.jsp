@@ -1,3 +1,4 @@
+<%@page import="com.expenses.project.bean.ExpenseBean"%>
 <%@page import="com.expenses.project.bean.ChartExpenseBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -37,7 +38,7 @@
 										<div class="col-9">
 											<div class="d-flex align-items-center align-self-start">
 												<h3 class="mb-0">${monthlyTransaction == null ? 0 : monthlyTransaction}</h3>
-												 <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%  </p>
+												 <p class="text-success ml-2 mb-0 font-weight-medium"> ${monthlyTransactionRatio == null ? 0 : monthlyTransactionRatio}  </p>
 											</div>
 										</div>
 									 	<div class="col-3">
@@ -57,7 +58,7 @@
 										<div class="col-9">
 											<div class="d-flex align-items-center align-self-start">
 												<h3 class="mb-0">${monthlyExpense == null ? 0 : monthlyExpense}</h3>
-												 <p class="text-success ml-2 mb-0 font-weight-medium">+11%</p> 
+												 <p class="text-success ml-2 mb-0 font-weight-medium">${monthlyExpenseRatio == null ? 0 : monthlyExpenseRatio}</p> 
 											</div>
 										</div>
 										<div class="col-3">
@@ -97,7 +98,7 @@
 										<div class="col-9">
 											<div class="d-flex align-items-center align-self-start">
 												<h3 class="mb-0">${dailyExpense == null ? 0 : dailyExpense}</h3>
-												 <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p> 
+												 <p class="text-success ml-2 mb-0 font-weight-medium">${dailyExpenseRatio == null ? 0 : dailyExpenseRatio}</p> 
 											</div>
 										</div>
 										<div class="col-3">
@@ -111,6 +112,161 @@
 							</div>
 						</div>
 					</div>
+
+<div class="row">
+<%List<ExpenseBean> explist = (List<ExpenseBean>)request.getAttribute("explist"); %>
+	<div class="col-lg-8 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body" >
+                    <h4 class="card-title">Expense History</h4>
+                    <!-- <p class="card-description"> Add class <code>.table</code>
+                    </p> -->
+                    <div class="table-responsive" style="height: 250px; overflow: auto;"   > <!-- style="overflow-y: scroll; height: 250px;" -->
+                      <table class="table" id = "list"  >
+                        <thead>
+                          <tr>
+                            <th style="color: white">Profile</th>
+                            <th style="color: white">Amount</th>
+                            <th style="color: white">Date</th>
+                            <th style="color: white">Status </th>
+                          </tr>
+                        </thead>
+                     
+                        <tbody >
+                        
+                        
+                          <%
+                               /*  int k = 0; */
+                                for (ExpenseBean eb : explist) {
+                                	/* k++;
+                                	if (k == 4)
+                                		break; */
+                                %>
+                           <tr>
+                            <td><%=eb.getTitle() %></td>
+                            <td><%=eb.getAmmount()%></td>
+                            <td><%=eb.getDate() %></td>
+                            <td><label class="badge  status" style="color: black" ><%=eb.getStatusShow() %></label></td>
+                          </tr>
+                      <%} %>
+                          
+                          
+                        </tbody>
+                      </table>
+                    </div>
+<!-- To Hide ScrolBar -->  <style>
+ 						 ::-webkit-scrollbar {
+    						width: 0;
+   							 height: 0;
+  						}
+					</style>
+                  </div>
+                </div>
+              </div>
+
+	 <div class="col-lg-4 grid-margin stretch-card">
+              
+              							<div class="card">
+								<div class="card-body">
+									<div class="chartjs-size-monitor">
+										<div class="chartjs-size-monitor-expand">
+											<div class=""></div>
+										</div>
+										<div class="chartjs-size-monitor-shrink">
+											<div class=""></div>
+										</div>
+									</div>
+								<!-- 	<h4 class="card-title">Transaction History</h4>
+									<canvas id="transaction-history"
+										class="transaction-chart chartjs-render-monitor"
+										style="display: block; height: 134px; width: 268px;"
+										width="371" height="185"></canvas> -->
+<%List<ChartExpenseBean> pieStatus = (List<ChartExpenseBean>)request.getAttribute("pieStatus"); %>										
+										
+										<h4 class="card-title" >Transaction Status</h4>
+								<div>
+									<canvas id="pieChart" class="chartjs-render-monitor"></canvas>
+								</div>
+							<script type="text/javascript">
+							 
+							 BGcolorArray= [
+								  'rgba(75, 192, 192, 0.4)',
+							        'rgba(153, 102, 255, 0.4)',
+							        'rgba(255, 159, 64, 0.4)',
+								    'rgba(255, 99, 132, 0.4)',
+							        'rgba(54, 162, 235, 0.4)',
+							        'rgba(255, 206, 86, 0.4)'
+							            
+							      ]
+							 
+							  bordderArray = [
+								  'rgba(75, 192, 192, 1)',
+							        'rgba(153, 102, 255, 1)',
+							        'rgba(255, 159, 64, 1)',
+								    'rgba(255, 99, 132, 1)',
+							        'rgba(54, 162, 235, 1)',
+							        'rgba(255, 206, 86, 1)'
+							        ]
+							 
+								bgColor = [];
+								borderColor = [];
+								
+								<% for(int i = 0; i<pieStatus.size(); i++){%>
+									bgColor.push(BGcolorArray[<%=i%>]);
+								<%}%>
+								
+								<% for(int i=0; i<pieStatus.size(); i++){ %>
+									borderColor.push(bordderArray[<%=i%>]);
+								<%}%>
+ 
+							 const ctx3 = document.getElementById('pieChart');
+							
+							 new Chart(ctx3, {
+							   type: 'doughnut',
+							   data: {
+							     labels: [<%for(ChartExpenseBean db : pieStatus){%>
+							       '<%=db.getStatus()%>',
+							     <%}%>
+							     ],
+							     datasets: [{
+							       label: '# Transaction Status',
+							       data: [ <%for(ChartExpenseBean db : pieStatus){%>
+							         <%=db.getTransaction()%>,
+							       <%}%> ],
+							       backgroundColor: bgColor,
+							       borderColor: borderColor,
+							       borderWidth: 1
+							     }]
+							   },
+							   options: {
+							     cutout: '50%',
+							     plugins: {
+							       title: {
+							         display: true,
+							         text: 'Donut Chart'
+							       },
+							       legend: {
+							         position: 'bottom'
+							       }
+							     }
+							   }
+							 });  
+ 
+ 						</script>
+										
+								</div>
+							</div>
+              
+              
+            			</div>
+
+
+
+</div>
+
+
+
+
 
 <div class="row">
               
@@ -242,7 +398,7 @@ List<ChartExpenseBean> chartData = (List<ChartExpenseBean>)request.getAttribute(
 						</div> <!-- End of chart -->
 						
 						
-						 <div class="col-lg-4 grid-margin stretch-card">
+						<%--  <div class="col-lg-4 grid-margin stretch-card">
               
               							<div class="card">
 								<div class="card-body">
@@ -336,7 +492,7 @@ List<ChartExpenseBean> chartData = (List<ChartExpenseBean>)request.getAttribute(
 							</div>
               
               
-            			</div>
+            			</div> --%>
             			
             			
             			
@@ -381,6 +537,44 @@ List<ChartExpenseBean> chartData = (List<ChartExpenseBean>)request.getAttribute(
     <!-- <script src="../../assets/js/chart.js"></script> -->
     <!-- End custom js for this page -->
 </div>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#lists').DataTable();
+		});
+		
+		                 // For Id
+/* 		const statusElement = document.getElementById('status');
+		const statusElementValue = statusElement.textContent;
+
+		if (statusElementValue === 'paid') {
+		  statusElement.classList.add('badge-success');
+		} else if (statusElementValue === 'partial paid') {
+		  statusElement.classList.add('badge-warning');
+		} else if (statusElementValue === 'unpaid') {
+		  statusElement.classList.add('badge-danger');
+		} else {
+		  statusElement.classList.add('badge-info');
+		} */
+		
+		                  // For Class
+		const statusElements = document.querySelectorAll('.status');
+
+		statusElements.forEach((statusElement) => {
+		  const statusElementValue = statusElement.textContent;
+
+		  if (statusElementValue === 'paid') {
+		    statusElement.classList.add('badge-success');
+		  } else if (statusElementValue === 'partial paid') {
+		    statusElement.classList.add('badge-warning');
+		  } else if (statusElementValue === 'unpaid') {
+		    statusElement.classList.add('badge-danger');
+		  } else {
+		    statusElement.classList.add('badge-info');
+		  }
+		});
+		
+	</script>
 </body>
 </html>
 

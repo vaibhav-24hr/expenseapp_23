@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.expenses.project.bean.ChartExpenseBean;
+import com.expenses.project.bean.ExpenseBean;
 import com.expenses.project.bean.UserBean;
+import com.expenses.project.dao.ExpenseDao;
 import com.expenses.project.dao.HomeDao;
 import com.expenses.project.dao.UserDao;
 
@@ -25,7 +27,9 @@ public class UserController {
 	UserDao uDao;
 	
 	@Autowired
-	HomeDao hdo;
+	HomeDao hoDao;
+	
+
 	
 	@GetMapping("/home")
 	public String home(HttpServletRequest req, Model model) {
@@ -41,13 +45,17 @@ public class UserController {
 		
 //		uddo.getUserAmmountOfExpenseMonthly(userId);
 		
-		Integer monthlyTransaction = hdo.getMonthlyTransaction(userId);
-		Integer monthlyExpense = hdo.getUserAmmountOfExpenseMonthly(userId);
-		Integer monthlyIncome = hdo.getAmmountOfIncomeMonthly(userId);
-		Integer dailyExpense = hdo.getAmountOfExpenseDaily(userId);
+		Integer monthlyTransaction = hoDao.getMonthlyTransaction(userId);
+		Integer monthlyExpense = hoDao.getUserAmmountOfExpenseMonthly(userId);
+		Integer monthlyIncome = hoDao.getAmmountOfIncomeMonthly(userId);
+		Integer dailyExpense = hoDao.getAmountOfExpenseDaily(userId);
+		Integer monthlyTransactionRatio = hoDao.getRatioOfTransactionForUser(userId);
+		Double dailyExpenseRatio = hoDao.getExpenseRatioForPeviousDayUser(userId);
+		Double monthlyExpenseRatio = hoDao.getExpenseRatioForPeviousMonthUser(userId);
 		
-		List<ChartExpenseBean> chartData = hdo.getExpenseStats(userId);
-		List<ChartExpenseBean> pieStatus = hdo.getStatusOfTransactionStats(userId);
+		List<ExpenseBean> explist = hoDao.getUserLastExpense(userId);							
+		List<ChartExpenseBean> chartData = hoDao.getExpenseStats(userId);
+		List<ChartExpenseBean> pieStatus = hoDao.getStatusOfTransactionStats(userId);
 		
 		model.addAttribute("monthlyExpense" , monthlyExpense);
 		model.addAttribute("monthlyTransaction", monthlyTransaction);
@@ -55,6 +63,10 @@ public class UserController {
 		model.addAttribute("dailyExpense",dailyExpense);
 		model.addAttribute("chartData",chartData);
 		model.addAttribute("pieStatus",pieStatus);
+		model.addAttribute("dailyExpenseRatio",dailyExpenseRatio);
+		model.addAttribute("monthlyExpenseRatio",monthlyExpenseRatio);
+		model.addAttribute("monthlyTransactionRatio",monthlyTransactionRatio);
+		model.addAttribute("explist", explist);
 		
 		
 		System.out.println(userId);
