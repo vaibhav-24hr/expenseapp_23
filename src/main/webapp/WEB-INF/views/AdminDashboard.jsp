@@ -447,11 +447,11 @@ List<ChartExpenseBean> chartData = (List<ChartExpenseBean>)request.getAttribute(
 									        'rgba(75, 192, 192, 1)',
 									        'rgba(153, 102, 255, 1)',
 									        'rgba(255, 159, 64, 1)',
-									        'rgba(48, 51, 204, 0.2)',
-									        'rgba(50, 200, 204, 0.2)',
-									        'rgba(189, 129, 46, 0.2)',
-									        'rgba(122, 124, 129, 0.2',
-									        'rgba(48, 30, 38, 0.2)',
+									        'rgba(48, 51, 204, 1)',
+									        'rgba(50, 200, 204, 1)',
+									        'rgba(189, 129, 46, 1)',
+									        'rgba(122, 124, 129, 1)',
+									        'rgba(48, 30, 38, 1)',
 									        'rgba(201, 203, 207, 1)'
 									        ]
 									

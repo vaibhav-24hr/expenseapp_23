@@ -72,48 +72,48 @@ public class HomeDao {
 	// Difference Of Data
 	
 	
-	public Double getExpenseRatioForPeviousDayUser(Integer userId) {
+	public Integer getExpenseRatioForPeviousDayUser(Integer userId) {
 		//Query
 				String sumExpenseQuery = "select sum(ammount) from expense where date like ? and userId = ?";
 				
 				//  the sum of expenses for the  today
-				Double cuurentDayExpense = stmt.queryForObject(sumExpenseQuery, Double.class, new Object[] { currentDay,userId });
+				Integer cuurentDayExpense = stmt.queryForObject(sumExpenseQuery, Integer.class, new Object[] { currentDay,userId });
 					if(cuurentDayExpense == null) {
-						cuurentDayExpense = 0.0;
+						cuurentDayExpense = 0;
 					}
 				System.out.println("Today Expense =>" + cuurentDayExpense);
 			    //  the sum of expenses for the previous day
-				Double previousDayExpense = stmt.queryForObject(sumExpenseQuery, Double.class, new Object[] { lastDay,userId });
+				Integer previousDayExpense = stmt.queryForObject(sumExpenseQuery, Integer.class, new Object[] { lastDay,userId });
 					if(previousDayExpense == null) {
-						previousDayExpense = 0.0;
+						previousDayExpense = 0;
 					}
 				System.out.println("YesterDay Expense =>" + previousDayExpense);
 				// calculate the ratio between the previous day's expenses and the current day's expenses
 //				if(cuurentDayExpense == null || previousDayExpense == null ) {
 //					return null;
 //				}else {
-					Double ratio = cuurentDayExpense - previousDayExpense; // (cuurentDayExpense - previousDayExpense) / 250000 * 100% ;
+				Integer ratio = cuurentDayExpense - previousDayExpense; // (cuurentDayExpense - previousDayExpense) / 250000 * 100% ;
 					System.out.println( " Expense Daily Ratio  =>" +  ratio);
-					return Double.parseDouble(String.format("%.2f", ratio));
+					return ratio;
 //				}
 			}
 	
-	public Double getExpenseRatioForPeviousMonthUser(Integer userId) {
+	public Integer getExpenseRatioForPeviousMonthUser(Integer userId) {
 		String sumExpenseQuery = "select sum(ammount) from expense where date like ? and userId = ?";
 		
 		//  the sum of expenses for the  today
-		Double cuurentMonthExpense = stmt.queryForObject(sumExpenseQuery, Double.class, new Object[] { currentMonth,userId });
+		Integer cuurentMonthExpense = stmt.queryForObject(sumExpenseQuery, Integer.class, new Object[] { currentMonth,userId });
 		System.out.println("This Month Expense =>" + cuurentMonthExpense);
 	    //  the sum of expenses for the previous day
-		Double previousMonthExpense = stmt.queryForObject(sumExpenseQuery, Double.class, new Object[] { lastMonth,userId });
+		Integer previousMonthExpense = stmt.queryForObject(sumExpenseQuery, Integer.class, new Object[] { lastMonth,userId });
 		System.out.println("Last Month Expense =>" + previousMonthExpense);
 		// calculate the ratio between the previous day's expenses and the current day's expenses
 		if(cuurentMonthExpense == null || previousMonthExpense == null ) {
 			return null;
 		}else {
-			Double ratio = cuurentMonthExpense / previousMonthExpense;
+			Integer ratio = cuurentMonthExpense - previousMonthExpense;
 			System.out.println( " Expense Month Ratio  =>" +  ratio);
-			return Double.parseDouble(String.format("%.4f", ratio));
+			return ratio;
 		}
 	}
 	
@@ -132,6 +132,20 @@ public class HomeDao {
 			System.out.println( " Transaction Ratio  =>" +  ratio);
 			return ratio;
 		}
+	}
+	
+	public Integer getRatioAmmountOfIncomeMonthly(Integer userId) {
+		String sumMonthlyIncomeQuery = "select sum(ammount) from income where userId = ? and date like ?";
+		Integer currentMonthIncome = stmt.queryForObject(sumMonthlyIncomeQuery, Integer.class, new Object[] {userId, currentMonth});
+		Integer lastMonthIncome = stmt.queryForObject(sumMonthlyIncomeQuery,  Integer.class, new Object[] {userId, lastMonth});
+		System.out.println("Monthly Income => " + currentMonthIncome + " & " + lastMonthIncome);
+		
+		if(lastMonthIncome == null || currentMonthIncome == null) {
+			return 0;
+		}else {
+		Integer ratio = currentMonthIncome - lastMonthIncome;
+		return ratio;
+	}
 	}
 	
 	public List<ExpenseBean> getUserLastExpense(Integer useId) {

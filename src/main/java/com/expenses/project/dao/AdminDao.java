@@ -151,7 +151,7 @@ public class AdminDao {
 		if(cuurentMonthExpense == null || previousMonthExpense == null ) {
 			return null;
 		}else {
-			Double ratio = cuurentMonthExpense / previousMonthExpense;
+			Double ratio = cuurentMonthExpense - previousMonthExpense;
 			System.out.println( " Expense Month Ratio  =>" +  ratio);
 			return Double.parseDouble(String.format("%.4f", ratio));
 			

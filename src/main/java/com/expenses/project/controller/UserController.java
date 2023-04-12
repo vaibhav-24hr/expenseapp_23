@@ -50,9 +50,9 @@ public class UserController {
 		Integer monthlyIncome = hoDao.getAmmountOfIncomeMonthly(userId);
 		Integer dailyExpense = hoDao.getAmountOfExpenseDaily(userId);
 		Integer monthlyTransactionRatio = hoDao.getRatioOfTransactionForUser(userId);
-		Double dailyExpenseRatio = hoDao.getExpenseRatioForPeviousDayUser(userId);
-		Double monthlyExpenseRatio = hoDao.getExpenseRatioForPeviousMonthUser(userId);
-		
+		Integer dailyExpenseRatio = hoDao.getExpenseRatioForPeviousDayUser(userId);
+		Integer monthlyExpenseRatio = hoDao.getExpenseRatioForPeviousMonthUser(userId);
+		Integer monthlyIncomeRatio = hoDao.getRatioAmmountOfIncomeMonthly(userId);
 		List<ExpenseBean> explist = hoDao.getUserLastExpense(userId);							
 		List<ChartExpenseBean> chartData = hoDao.getExpenseStats(userId);
 		List<ChartExpenseBean> pieStatus = hoDao.getStatusOfTransactionStats(userId);
@@ -67,6 +67,7 @@ public class UserController {
 		model.addAttribute("monthlyExpenseRatio",monthlyExpenseRatio);
 		model.addAttribute("monthlyTransactionRatio",monthlyTransactionRatio);
 		model.addAttribute("explist", explist);
+		model.addAttribute("monthlyIncomeRatio", monthlyIncomeRatio);
 		
 		
 		System.out.println(userId);

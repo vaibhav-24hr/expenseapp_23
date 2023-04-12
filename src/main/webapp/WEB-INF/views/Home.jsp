@@ -38,14 +38,14 @@
 										<div class="col-9">
 											<div class="d-flex align-items-center align-self-start">
 												<h3 class="mb-0">${monthlyTransaction == null ? 0 : monthlyTransaction}</h3>
-												 <p class="text-success ml-2 mb-0 font-weight-medium"> ${monthlyTransactionRatio == null ? 0 : monthlyTransactionRatio}  </p>
+												 <p class="text icon mdi ml-2 mb-0 font-weight-medium ratio"> ${monthlyTransactionRatio == null ? 0 : monthlyTransactionRatio}  </p>
 											</div>
 										</div>
-									 	<div class="col-3">
+									 <!-- 	<div class="col-3">
 											<div class="icon icon-box-success ">
 												<span class="mdi mdi-arrow-top-right icon-item"></span>
 											</div>
-										</div> 
+										</div>  -->
 									</div>
 									<h6 class="text-muted font-weight-normal">This Month Transaction</h6>
 								</div>
@@ -58,14 +58,14 @@
 										<div class="col-9">
 											<div class="d-flex align-items-center align-self-start">
 												<h3 class="mb-0">${monthlyExpense == null ? 0 : monthlyExpense}</h3>
-												 <p class="text-success ml-2 mb-0 font-weight-medium">${monthlyExpenseRatio == null ? 0 : monthlyExpenseRatio}</p> 
+												 <p class="text icon mdi ml-2 mb-0 font-weight-medium ratio">${monthlyExpenseRatio == null ? 0 : monthlyExpenseRatio}</p> 
 											</div>
 										</div>
-										<div class="col-3">
+										<!-- <div class="col-3">
 											 <div class="icon icon-box-success">
 												<span class="mdi mdi-arrow-top-right icon-item"></span>
 											</div> 
-										</div>
+										</div> -->
 									</div>
 									<h6 class="text-muted font-weight-normal">This Month Expenses</h6>
 								</div>
@@ -78,14 +78,14 @@
 										<div class="col-9">
 											<div class="d-flex align-items-center align-self-start">
 <!-- Expression Language Condition if not NULL --><h3 class="mb-0">${monthlyIncome == null ? 0 : monthlyIncome}</h3>
-												 <p class="text-danger ml-2 mb-0 font-weight-medium">-2.4%</p> 
+												 <p class="text icon mdi ml-2 mb-0 font-weight-medium  ratio">${monthlyIncomeRatio == null ? 0 : monthlyIncomeRatio}</p> 
 											</div>
 										</div>
-										<div class="col-3">
+									<!-- 	<div class="col-3">
 											 <div class="icon icon-box-danger">
 												<span class="mdi mdi-arrow-bottom-left icon-item"></span>
 											</div> 
-										</div>
+										</div> -->
 									</div>
 									<h6 class="text-muted font-weight-normal">This Month Income</h6>
 								</div>
@@ -98,14 +98,14 @@
 										<div class="col-9">
 											<div class="d-flex align-items-center align-self-start">
 												<h3 class="mb-0">${dailyExpense == null ? 0 : dailyExpense}</h3>
-												 <p class="text-success ml-2 mb-0 font-weight-medium">${dailyExpenseRatio == null ? 0 : dailyExpenseRatio}</p> 
+												 <p class="text icon mdi  ml-2 mb-0 font-weight-medium ratio">${dailyExpenseRatio == null ? 0 : dailyExpenseRatio}</p> 
 											</div>
 										</div>
-										<div class="col-3">
+									<!-- 	<div class="col-3">
 											 <div class="icon icon-box-success ">
 												<span class="mdi mdi-arrow-top-right icon-item"></span>
 											</div> 
-										</div>
+										</div> -->
 									</div>
 									<h6 class="text-muted font-weight-normal">Today Expenses</h6>
 								</div>
@@ -557,6 +557,35 @@ List<ChartExpenseBean> chartData = (List<ChartExpenseBean>)request.getAttribute(
 		  statusElement.classList.add('badge-info');
 		} */
 		
+		// Ratio Data Class
+		
+/* 		 		const ratioElements = document.querySelectorAll('.ratio');
+				
+				ratioElements.forEach(ratioElement) => {
+					
+					const ratioElementValue = ratioElement.textContent;
+					
+					if (ratioElementValue < 0) {
+					    ratioElement.classList.add('text-success','icon-box-success');
+					    else{
+					    	 ratioElement.classList.add('text-danger','icon-box-danger');
+					    	}
+					    }
+					
+				} */
+				
+				const ratioElements = document.querySelectorAll('.ratio');
+				
+				ratioElements.forEach((ratioElement) => {
+				    const ratioElementValue = ratioElement.textContent;
+				    if (ratioElementValue > 0) {
+				        ratioElement.classList.add('text-success');
+				    } else {
+				        ratioElement.classList.add('text-danger');
+				    }
+				});
+				 		
+		
 		                  // For Class
 		const statusElements = document.querySelectorAll('.status');
 
@@ -573,6 +602,10 @@ List<ChartExpenseBean> chartData = (List<ChartExpenseBean>)request.getAttribute(
 		    statusElement.classList.add('badge-info');
 		  }
 		});
+		
+		
+
+		
 		
 	</script>
 </body>
