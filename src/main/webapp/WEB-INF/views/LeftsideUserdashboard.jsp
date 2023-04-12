@@ -35,7 +35,7 @@
           <li class="nav-item menu-items">
             <a class="nav-link" href="newexpense">
               <span class="menu-icon">
-                <i class="mdi mdi-playlist-play"></i>
+                <i class="mdi mdi-currency-inr"></i>
               </span>
               <span class="menu-title">Add Expenses</span>
             </a>
@@ -64,7 +64,7 @@
            <li class="nav-item menu-items">
             <a class="nav-link" href="listincome">
               <span class="menu-icon">
-                <i class="mdi mdi-account-card-details"></i>
+                <i class="mdi mdi-wallet-travel"></i>
               </span>
               <span class="menu-title">Your Income</span>
             </a>

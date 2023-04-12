@@ -150,7 +150,7 @@ public class ExpenseController {
 		// Pull All Data from DB
 		
 		exb.setUserId(userId);
-		List<ExpenseBean> explist = exd.getAllExpense(userId);
+		List<ExpenseBean> explist = exd.getAllExpenseByUser(userId);
 		System.out.println(explist);
 		model.addAttribute("explist", explist);
 		
@@ -165,5 +165,20 @@ public class ExpenseController {
 		return "ViewExpense";
 	}
 	
+	// For Admin
+	@GetMapping("/allexpenses")
+	public String allExpenses(Model model) {
+		List<ExpenseBean> allExpList = exd.getAllExpense();
+		model.addAttribute("allExpList", allExpList);
+		return "AllExpenses";
+	}
+
+	@GetMapping("/viewallexpense")
+	public String viewAllExpense(@RequestParam("expenseId") Integer expenseId , Model model){
+		ExpenseBean AllExb =  exd.getAllExpenseById(expenseId);
+		System.out.println(AllExb.getExpenseId());
+		model.addAttribute("AllExb", AllExb);
+		return "ViewAllExpense";
+	}
 
 }

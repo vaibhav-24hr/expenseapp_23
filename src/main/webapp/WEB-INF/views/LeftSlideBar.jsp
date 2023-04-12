@@ -88,6 +88,15 @@
           </li>
           
           <li class="nav-item menu-items">
+            <a class="nav-link"  href="allexpenses">
+              <span class="menu-icon">
+                <i class="mdi mdi-database"></i>
+              </span>
+              <span class="menu-title">Users Expenses</span>
+            </a>
+          </li>
+          
+          <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
               <span class="menu-icon">
                 <i class="mdi mdi-security"></i>

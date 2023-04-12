@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.expenses.project.bean.ChartExpenseBean;
+import com.expenses.project.bean.ExpenseBean;
 import com.expenses.project.bean.ProfileBean;
 import com.expenses.project.bean.UserBean;
 //import com.expenses.project.bean.UserBean;
@@ -49,7 +50,6 @@ public class AdminController {
 		List<ChartExpenseBean> chartData = admDao.getExpenseStats();
 		List<ChartExpenseBean> lineChartData = admDao.getTransactionStats();
 		List<ChartExpenseBean> donutChartData = admDao.getTransactionTypeStats();
-		
 		
 		model.addAttribute("NumberOfUsers", totalUsers);
 		model.addAttribute("NumberOfMonthlyExpenses", totalExpenseCount);

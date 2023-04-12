@@ -41,7 +41,7 @@ public class ExpenseDao {
 	
 	
 	
-	public List<ExpenseBean> getAllExpense(Integer userId){
+	public List<ExpenseBean> getAllExpenseByUser(Integer userId){
 		
 		String selectQuery = "select e.userId, e.expenseId, e.title, e.ammount, e.date, e.description, c.categoryName, sc.subcategoryName, v.vendorName, a.accountType, s.statusShow from expense e, category c, subcategory sc, vendor v, accountType a, status s where e.categoryId = c.categoryId and e.subCategoryId = sc.subCategoryId and e.vendorId = v.vendorId and e.accountTypeId = a.accountTypeId and e.statusId = s.statusId and userId = ?";
 		List<ExpenseBean> explist = stmt.query(selectQuery, new BeanPropertyRowMapper<ExpenseBean>(ExpenseBean.class), new Object[] {userId});
@@ -64,13 +64,33 @@ public class ExpenseDao {
 			System.out.println("Expense DAO : getExpenseById();");
 			System.out.println(e.getMessage());
 		}
-		
-		
 	return exb;
+	}
+
+// for Admin Dashboard
+	public List<ExpenseBean> getAllExpense(){
+		
+		String selectQuery = "select e.userId, e.expenseId, e.title, e.ammount, e.date, e.description, c.categoryName, sc.subcategoryName, v.vendorName, a.accountType, s.statusShow from expense e, category c, subcategory sc, vendor v, accountType a, status s where e.categoryId = c.categoryId and e.subCategoryId = sc.subCategoryId and e.vendorId = v.vendorId and e.accountTypeId = a.accountTypeId and e.statusId = s.statusId";
+		List<ExpenseBean> explist = stmt.query(selectQuery, new BeanPropertyRowMapper<ExpenseBean>(ExpenseBean.class));
+		return explist;
 	}
 
 
 
+
+	public ExpenseBean getAllExpenseById(Integer expenseId) {
+		// TODO Auto-generated method stub
+		ExpenseBean AllExb = null;  
+		String selectQuery = "select e.userId, e.expenseId, u.firstName, u.lastName, u.email, e.title, e.ammount, e.date, e.description, c.categoryName, sc.subcategoryName, v.vendorName, a.accountType, s.statusShow from expense e,users u, category c, subcategory sc, vendor v, accountType a, status s where e.categoryId = c.categoryId and e.subCategoryId = sc.subCategoryId and e.userId = u.userId and e.vendorId = v.vendorId and e.accountTypeId = a.accountTypeId and e.statusId = s.statusId and expenseId = ?";
+		try {
+			AllExb = stmt.queryForObject(selectQuery, new BeanPropertyRowMapper<ExpenseBean>(ExpenseBean.class), new Object[]{expenseId});
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Expense DAO : getAllExpenseById();");
+			System.out.println(e.getMessage());
+		}
+		return AllExb;
+	}
 
 	
 	
