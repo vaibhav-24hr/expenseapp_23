@@ -85,15 +85,19 @@
 												 <label class="form-check-label" for="switchTheme">Dark Mode</label>
 												</div> 
 												</td>  --%>
-												
+
 												<td>
-    <div class="form-check form-switch">
-        <input class="form-check-input" onclick="changeStatus(<%=list.get(i).getCategoryId()%>,<%=list.get(i).getDeleted()%>)" type="checkbox" id="<%=list.get(i).getCategoryId()%>" <%=!list.get(i).getDeleted() ? "checked" : ""%>>
-        <label class="form-check-label" for="<%=list.get(i).getCategoryId()%>">Dark Mode</label>
-    </div> 
-</td>
-												
- 												<td><%-- <a
+													<div class="form-check form-switch">
+														<input class="form-check-input"
+															onclick="changeStatus(<%=list.get(i).getCategoryId()%>,<%=list.get(i).getDeleted()%>)"
+															type="checkbox" id="<%=list.get(i).getCategoryId()%>"
+															<%=!list.get(i).getDeleted() ? "checked" : ""%>>
+														<label class="form-check-label"
+															for="<%=list.get(i).getCategoryId()%>">Dark Mode</label>
+													</div>
+												</td>
+
+												<td><%-- <a
 													href="deletecategory/<%=list.get(i).getCategoryId()%>"><button type="button" class="btn btn-rounded mdi mdi-delete btn-inverse-danger btn-sm "></button></a>
 													/ --%> <a href="viewcategory?categoryId=<%=list.get(i).getCategoryId()%>"><button type="button" class="btn  btn-rounded mdi mdi-eye btn-inverse-success btn-sm"></button> </a></td>
 												<td><a href="editcategory?categoryId=<%=list.get(i).getCategoryId()%>"><button type="button" class="btn  btn-rounded mdi mdi-lead-pencil btn-inverse-info btn-sm"></button> </a></td>

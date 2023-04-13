@@ -78,7 +78,6 @@ public class SubCategoryController {
 	
 	@PostMapping("updatesubcategory")
 	public String updateSubCategory(SubCategoryBean scBean) {
-		
 		scDao.updateSubcategory(scBean);
 		return "redirect:/listsubcategories";
 	}

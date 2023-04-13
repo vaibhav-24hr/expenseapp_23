@@ -59,6 +59,7 @@
 												<!-- 		<th style="color: white">Description</th> -->
 												<!-- 	<th style="color: white">UserId</th -->
 												 <th>Action</th> 
+												 <th>Edit</th> 
 											</tr>
 										</thead>
 
@@ -81,7 +82,7 @@
 												<%-- 		<td> <%=exb.getDescription() %> </td> --%>
 												<%-- 		<td> <%=exb.getUserId() %> </td> --%>
 											     <td><a href="viewexpense?expenseId=<%=exb.getExpenseId()%>"><button type="button" class="btn btn-rounded mdi mdi-eye btn-inverse-success btn-sm"></button></a></td> 
-											   
+											    <td><a href="editexpense?expenseId=<%=exb.getExpenseId() %>" ><button type="button" class="btn btn-rounded mdi mdi-pencil btn-inverse-info btn-sm"></button></a></td>
 											</tr>
 
 											<%

@@ -48,6 +48,9 @@ public class ExpenseController {
 	@Autowired
 	ExpenseDao exd;
 	
+	@Autowired
+	AccountDao acDao;
+	
 	
 	
 	@GetMapping("/newexpense")
@@ -179,6 +182,34 @@ public class ExpenseController {
 		System.out.println(AllExb.getExpenseId());
 		model.addAttribute("AllExb", AllExb);
 		return "ViewAllExpense";
+	}
+	
+	@GetMapping("/editexpense")
+	public String editExpense(@RequestParam("expenseId")Integer expenseId , Model model) {
+		ExpenseBean exBean = exd.getExpenseById(expenseId);
+		
+		List<StatusBean> statuslist =  std.getAllStatus(); 
+		model.addAttribute( "statuslist" ,statuslist);
+		
+		List<AccountBean> acclist = acDao.getAllAccount();
+		model.addAttribute("acclist",acclist);
+		
+		
+		System.out.println("editExpense() expenseId => " + expenseId);
+		
+		System.out.println("Expense Status Id =>" + exBean.getStatusId());
+		
+		model.addAttribute("exBean" , exBean); // All info of Expense go to JSP 
+		model.addAttribute("allExpList" , exd.getAllExpense());
+
+
+		return "EditExpense";
+	}
+	
+	@PostMapping("/updateexpense")
+	public String updateExpense(ExpenseBean exBean) {
+		exd.updateExpense(exBean);
+		return "redirect:/listexpense";
 	}
 
 }

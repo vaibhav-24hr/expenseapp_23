@@ -91,6 +91,12 @@ public class ExpenseDao {
 		}
 		return AllExb;
 	}
+	
+	
+	public void updateExpense(ExpenseBean exBean) {
+		String updateQuery = " update expense set statusId = ? , accountTypeId = ? where expenseId = ?";
+		stmt.update(updateQuery,exBean.getStatusId(),exBean.getAccountTypeId(),exBean.getExpenseId());
+	}
 
 	
 	
