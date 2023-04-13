@@ -54,10 +54,12 @@ public class CategoryController {
 //	}
 	
 	
-	@GetMapping("/deletecategory/{categoryId}/{categoryStatus}")
+	
+	
+	@GetMapping("/deletecategory/{categoryId}/{currentStatus}")
 	public String deleteCategory(@PathVariable("categoryId") Integer categoryId, @PathVariable("currentStatus") boolean currentStatus) {
 		cDao.deactiveCategory(categoryId, currentStatus);
-		return "redirect:/listcategory";
+		return "redirect:/listcategories";
 	}
 	
 	@GetMapping("/viewcategory")

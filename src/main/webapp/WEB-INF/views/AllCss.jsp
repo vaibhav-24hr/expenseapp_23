@@ -1,7 +1,8 @@
 
 <!-- Data Table CSs -->
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
-
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+ -->
 <link rel="stylesheet"
 	href="assets/vendors/mdi/css/materialdesignicons.min.css">
 <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
@@ -74,4 +75,54 @@ to {
 	left: 0;
 	top: 0
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* .sidebar {
+  width: 250px;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: #333;
+  color: #fff;
+}
+
+body {
+  overflow-y: scroll;
+  margin-left: 0px; /* adjust the margin to match the width of the sidebar */
+} 
+/* 
+.homepage .sidebar {
+  width: 250px;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: #333;
+  color: #fff;
+  overflow-y: scroll;
+  scrollbar-width: none; /* hide scrollbar for Firefox */
+  -ms-overflow-style: none; /* hide scrollbar for Internet Explorer 10+ */
+}
+
+.homepage .sidebar::-webkit-scrollbar {
+  width: 0; /* hide scrollbar for Chrome, Safari, and Opera */
+}
+ */
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 </style>

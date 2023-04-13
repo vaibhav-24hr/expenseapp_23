@@ -9,6 +9,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>ExpenseApp | List Expense</title>
+
 <jsp:include page="AllCss.jsp"></jsp:include>
 </head>
 <body>

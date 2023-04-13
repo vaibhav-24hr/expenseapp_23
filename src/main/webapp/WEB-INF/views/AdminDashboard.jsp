@@ -397,15 +397,15 @@
 					
 					<div class="row">
 					<div class="col-lg-12 grid-margin stretch-card">
-							<div class="card">
-								<div class="card-body">
+							<div class="col-lg-12 card">
+								<div class="col-lg-12 card-body">
 									<!-- Bar Chart -->
-									<div class="chartjs-size-monitor"> <!--   -->
-										<div class="chartjs-size-monitor-expand"> <!--  -->
-											<div class=""></div>
+									<div class="col-lg-12 chartjs-size-monitor"> <!--   -->
+										<div class="col-lg-12 chartjs-size-monitor-expand"> <!--  -->
+											<div class="col-lg-12"></div>
 										</div>
-										<div class="chartjs-size-monitor-shrink"> <!--  -->
-											<div class=""></div>
+										<div class="col-lg-12 chartjs-size-monitor-shrink"> <!--  -->
+											<div class="col-lg-12"></div>
 										</div>
 									</div>
 									<!-- Bar Chart -->
@@ -419,7 +419,7 @@ List<ChartExpenseBean> chartData = (List<ChartExpenseBean>)request.getAttribute(
 %>
 
 								<h4 class="card-title" >Every Month Expenses </h4>
-								<div>
+								<div class="col-lg-12">
 									<canvas id="barChart" class="chartjs-render-monitor"></canvas>
 								</div>
 

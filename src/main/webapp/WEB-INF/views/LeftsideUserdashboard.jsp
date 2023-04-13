@@ -1,7 +1,8 @@
+
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-          <p class="sidebar-brand brand-logo" style="color : white">Expense</p>
-          <p class="sidebar-brand brand-logo-mini" style="color : white" >E</p>
+          <a class="sidebar-brand brand-logo" style="color : white">Expense</a>
+          <a class="sidebar-brand brand-logo-mini" style="color : white">E</a>
         </div>
         <ul class="nav">
           <li class="nav-item profile">

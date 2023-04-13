@@ -377,8 +377,16 @@ mysql> SELECT e.title, e.ammount, e.date, s.statusShow from expense e LEFT JOIN 
 	| College Fees      |   15000 | 2023-02-04 | partial paid |
 	| Coolege Books     |    1500 | 2023-01-12 | paid         |
 	+-------------------+---------+------------+--------------+
+ 
+All Expense Detail For AdminPanel
 
+mysql> select e.userId, e.expenseId, e.title, e.ammount, e.date, e.description, c.categoryName, sc.subcategoryName, v.vendorName, a.accountType, s.statusShow from expense e, category c, subcategory sc, vendor v, accountType a, status s where e.categoryId = c.categoryId and e.subCategoryId = sc.subCategoryId and e.vendorId = v.vendorId and e.accountTypeId = a.accountTypeId and e.statusId = s.statusId and expenseId = 12;
 
+	+--------+-----------+-------+---------+------------+-------------+--------------+-----------------+----------------+-------------+-----------------+
+	| userId | expenseId | title | ammount | date       | description | categoryName | subcategoryName | vendorName     | accountType | statusShow      |
+	+--------+-----------+-------+---------+------------+-------------+--------------+-----------------+----------------+-------------+-----------------+
+	|      8 |        12 | Pizza |     300 | 2023-03-29 | Pizza Party | Food         | Break Fast      | Domino's Pizza | debit card  | Not Decided Yet |
+	+--------+-----------+-------+---------+------------+-------------+--------------+-----------------+----------------+-------------+-----------------+
 
 
 

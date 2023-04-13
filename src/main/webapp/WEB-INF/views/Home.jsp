@@ -279,9 +279,9 @@
                 </div>
               </div> -->
               
-              <div class="col-lg-8 grid-margin stretch-card">
-							<div class="card">
-								<div class="card-body">
+              <div class="col-lg-9 grid-margin stretch-card">
+							<div class="col-lg-12 card">
+								<div class="col-lg-12 card-body">
 									<!-- Bar Chart -->
 									<div class="chartjs-size-monitor"> <!--   -->
 										<div class="chartjs-size-monitor-expand"> <!--  -->
