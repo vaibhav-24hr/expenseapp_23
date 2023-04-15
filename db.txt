@@ -388,7 +388,13 @@ mysql> select e.userId, e.expenseId, e.title, e.ammount, e.date, e.description, 
 	|      8 |        12 | Pizza |     300 | 2023-03-29 | Pizza Party | Food         | Break Fast      | Domino's Pizza | debit card  | Not Decided Yet |
 	+--------+-----------+-------+---------+------------+-------------+--------------+-----------------+----------------+-------------+-----------------+
 
-
+mysql> select monthname(date) as income_month, sum(ammount) as Income from income where year(date) = 2023 and userId = 11 group by monthname(date) , month(date) order by month(date);
+	+--------------+--------+
+	| income_month | Income |
+	+--------------+--------+
+	| March        | 152000 |
+	| April        |   3000 |
+	+--------------+--------+
 
 
 

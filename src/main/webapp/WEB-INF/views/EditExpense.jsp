@@ -73,14 +73,14 @@
 										</select>  --%>
 										
 										
-<select name="statusId" id="statusId">
-  <option value="-1">Select Status</option> 
-  <% for(StatusBean sb : statuslist) { %>
-    <% String selected = sb.getStatusId() == exBean.getStatusId() ? "selected" : "Not Found"; %>
-    <% System.out.println("Status ID: " + sb.getStatusId() + ", Selected: " + selected); %>
-    <option value="<%= sb.getStatusId() %>" <%= selected %>><%= sb.getStatusShow() %></option>										
-  <% } %>
-</select> 
+											<select name="statusId" id="statusId">
+											  <option value="-1">Select Status</option> 
+											  <% for(StatusBean sb : statuslist) { %>
+											    <% String selected = sb.getStatusId() == exBean.getStatusId() ? "selected" : "Not Found Status Id"; %>
+											    <% System.out.println("Status ID: " + sb.getStatusId() + ", Selected: " + selected); %>
+											    <option value="<%= sb.getStatusId() %>" <%= selected %>><%= sb.getStatusShow() %></option>										
+											  <% } %>
+											</select> 
 																				
 										<br></div>
 										

@@ -8,9 +8,26 @@ public class ChartExpenseBean {
 	private String PaymentType;
 	private String Status;
 	private String Transaction;
+	private String income_month;
+	private String incomeAmount;
 	
 	
 	
+	
+	
+	
+	public String getIncome_month() {
+		return income_month;
+	}
+	public void setIncome_month(String income_month) {
+		this.income_month = income_month;
+	}
+	public String getIncomeAmount() {
+		return incomeAmount;
+	}
+	public void setIncomeAmount(String incomeAmount) {
+		this.incomeAmount = incomeAmount;
+	}
 	public String getPaymentType() {
 		return PaymentType;
 	}

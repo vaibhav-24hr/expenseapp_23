@@ -159,13 +159,18 @@ public class HomeDao {
 
 	public List<ChartExpenseBean> getExpenseStats(Integer userId) {
 //	select MONTH(date) as month ,sum(ammount) as expenseAmmount from expense group by month(date) order by MONTH(date)
-		String selectQuery = "select monthname(date) as month , sum(ammount) as expenseAmmount from expense where year(date) = ? and userId = ? group by monthname(date),month(date)  order by month(date)  ;";
+		String selectQuery = "select monthname(date) as month , sum(ammount) as expenseAmmount from expense where year(date) = ? and userId = ? group by monthname(date),month(date)  order by month(date)  ";
 		return stmt.query(selectQuery, new BeanPropertyRowMapper<ChartExpenseBean>(ChartExpenseBean.class), y, userId);
 	}
 
 	public List<ChartExpenseBean> getStatusOfTransactionStats(Integer userId) {
-		String selectQuery = "select s.statusShow AS Status, COUNT(e.statusId) AS Transaction from status s LEFT JOIN Expense e ON s.statusId = e.statusId WHERE userId = ? GROUP BY s.statusId;";
+		String selectQuery = "select s.statusShow AS Status, COUNT(e.statusId) AS Transaction from status s LEFT JOIN Expense e ON s.statusId = e.statusId WHERE userId = ? GROUP BY s.statusId";
 		return stmt.query(selectQuery, new BeanPropertyRowMapper<ChartExpenseBean>(ChartExpenseBean.class), userId);
+	}
+	
+	public List<ChartExpenseBean> getIncomeStats(Integer userId){
+		String selectQuery = "select monthname(date) as income_month, sum(ammount) as incomeAmount from income where year(date) = ? and userId = ? group by monthname(date) , month(date) order by month(date)";
+		return stmt.query(selectQuery, new BeanPropertyRowMapper<ChartExpenseBean>(ChartExpenseBean.class),y,userId);
 	}
 
 }
