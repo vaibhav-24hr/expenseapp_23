@@ -56,7 +56,7 @@ public class ExpenseDao {
 		// TODO Auto-generated method stub
 		
 		ExpenseBean exb = null;
-		String selectQuery = "select e.expenseId, e.title, e.ammount, e.date, e.description, c.categoryName, sc.subcategoryName, v.vendorName, a.accountType, s.statusShow,s.statusId, a.accountTypeId from expense e, category c, subcategory sc, vendor v, accountType a, status s where e.categoryId = c.categoryId and e.subCategoryId = sc.subCategoryId and e.vendorId = v.vendorId and e.accountTypeId = a.accountTypeId and e.statusId = s.statusId and expenseId = ?";
+		String selectQuery = "select e.expenseId, e.title, e.ammount, e.date, e.description, c.categoryName, sc.subcategoryName, v.vendorName, a.accountType, s.statusShow,s.statusId, a.accountTypeId, v.vendorId, c.categoryId, sc.subCategoryId from expense e, category c, subcategory sc, vendor v, accountType a, status s where e.categoryId = c.categoryId and e.subCategoryId = sc.subCategoryId and e.vendorId = v.vendorId and e.accountTypeId = a.accountTypeId and e.statusId = s.statusId and expenseId = ?";
 // String selectQuery= "select * from expense where expenseId = ?"; 
 		try {
 			exb = stmt.queryForObject(selectQuery ,new BeanPropertyRowMapper<ExpenseBean>(ExpenseBean.class), new Object[]{expenseId});
@@ -94,8 +94,8 @@ public class ExpenseDao {
 	
 	
 	public void updateExpense(ExpenseBean exBean) {
-		String updateQuery = " update expense set statusId = ? , accountTypeId = ? where expenseId = ?";
-		stmt.update(updateQuery,exBean.getStatusId(),exBean.getAccountTypeId(),exBean.getExpenseId());
+		String updateQuery = " update expense set title = ?, statusId = ? , accountTypeId = ? , categoryId = ? , subCategoryId = ? , vendorId = ? , ammount = ? , date = ? where expenseId = ?";
+		stmt.update(updateQuery,exBean.getTitle(),exBean.getStatusId(),exBean.getAccountTypeId(),exBean.getCategoryId(),exBean.getSubCategoryId(),exBean.getVendorId(),exBean.getAmmount(),exBean.getDate(),exBean.getExpenseId());
 	}
 
 	

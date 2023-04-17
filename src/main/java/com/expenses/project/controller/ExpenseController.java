@@ -100,8 +100,8 @@ public class ExpenseController {
 		 List<StatusBean> stlist = std.getAllStatus();
 		 model.addAttribute("stlist", stlist);
 		 
-		 List<VendorBean> vdlist = vdo.getAllVendor();
-		 model.addAttribute("vdlist", vdlist);
+//		 List<VendorBean> vdlist = vdo.getAllVendor();
+//		 model.addAttribute("vdlist", vdlist);
 		
 		
 		int userId = -1;
@@ -187,12 +187,22 @@ public class ExpenseController {
 	@GetMapping("/editexpense")
 	public String editExpense(@RequestParam("expenseId")Integer expenseId , Model model) {
 		ExpenseBean exBean = exd.getExpenseById(expenseId);
+
+		 List<CategoryBean> clist = cgd.getAllCategory();
+		 model.addAttribute("clist",clist);
 		
-		List<StatusBean> statuslist =  std.getAllStatus(); 
-		model.addAttribute( "statuslist" ,statuslist);
+		 List<SubCategoryBean> sublist = scd.getAllSubCategory();
+		 model.addAttribute("sublist",sublist);
+		 
+		 List<AccountBean> acclist = acd.getAllAccount();
+		 model.addAttribute("acclist", acclist);
+		 
+		 List<VendorBean> vendorlist = vdo.getAllVendor();
+		 model.addAttribute("vendorlist", vendorlist);
 		
-		List<AccountBean> acclist = acDao.getAllAccount();
-		model.addAttribute("acclist",acclist);
+		 List<StatusBean> statuslist =  std.getAllStatus(); 
+		 model.addAttribute( "statuslist" ,statuslist);
+		
 		
 		
 		System.out.println("editExpense() expenseId => " + expenseId);
