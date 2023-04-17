@@ -10,12 +10,18 @@ public class ChartExpenseBean {
 	private String Transaction;
 	private String income_month;
 	private String incomeAmount;
+	private String categoryName;
 	
 	
 	
 	
 	
-	
+	public String getCategoryName() {
+		return categoryName;
+	}
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
 	public String getIncome_month() {
 		return income_month;
 	}

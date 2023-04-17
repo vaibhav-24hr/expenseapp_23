@@ -56,7 +56,7 @@ public class ExpenseDao {
 		// TODO Auto-generated method stub
 		
 		ExpenseBean exb = null;
-		String selectQuery = "select e.expenseId, e.title, e.ammount, e.date, e.description, c.categoryName, sc.subcategoryName, v.vendorName, a.accountType, s.statusShow from expense e, category c, subcategory sc, vendor v, accountType a, status s where e.categoryId = c.categoryId and e.subCategoryId = sc.subCategoryId and e.vendorId = v.vendorId and e.accountTypeId = a.accountTypeId and e.statusId = s.statusId and expenseId = ?";
+		String selectQuery = "select e.expenseId, e.title, e.ammount, e.date, e.description, c.categoryName, sc.subcategoryName, v.vendorName, a.accountType, s.statusShow,s.statusId, a.accountTypeId from expense e, category c, subcategory sc, vendor v, accountType a, status s where e.categoryId = c.categoryId and e.subCategoryId = sc.subCategoryId and e.vendorId = v.vendorId and e.accountTypeId = a.accountTypeId and e.statusId = s.statusId and expenseId = ?";
 // String selectQuery= "select * from expense where expenseId = ?"; 
 		try {
 			exb = stmt.queryForObject(selectQuery ,new BeanPropertyRowMapper<ExpenseBean>(ExpenseBean.class), new Object[]{expenseId});

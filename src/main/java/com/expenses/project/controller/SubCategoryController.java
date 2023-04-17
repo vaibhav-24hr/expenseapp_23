@@ -26,7 +26,7 @@ public class SubCategoryController {
 
 	@GetMapping("/newsubcategory") // URL
 	public String newSubCategory(Model model) { // File
-		model.addAttribute("list", cDao.getAllCategory());
+		model.addAttribute("list", cDao.getAvailableCategory());
 		return "NewSubCategory"; // JSP file
 	}
 	
@@ -49,6 +49,7 @@ public class SubCategoryController {
 	public String listSubCategory(Model model) {
 		// pull all categories from DB-Table
 		List<SubCategoryBean> sclist = scDao.getAllSubCategory();
+		
 		model.addAttribute("sclist",sclist);
 		return "ListSubCategory";
 	}
@@ -72,7 +73,7 @@ public class SubCategoryController {
 	public String editSubCategory(@RequestParam("subCategoryId")Integer subCategoryId, Model model) {
 		SubCategoryBean scBean = scDao.getSubCategoryById(subCategoryId);
 		model.addAttribute("scBean" , scBean);
-		model.addAttribute("list", cDao.getAllCategory());
+		model.addAttribute("list", cDao.getAvailableCategory());
 		return "EditSubCategory";
 	}
 	

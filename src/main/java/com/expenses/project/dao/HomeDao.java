@@ -172,5 +172,10 @@ public class HomeDao {
 		String selectQuery = "select monthname(date) as income_month, sum(ammount) as incomeAmount from income where year(date) = ? and userId = ? group by monthname(date) , month(date) order by month(date)";
 		return stmt.query(selectQuery, new BeanPropertyRowMapper<ChartExpenseBean>(ChartExpenseBean.class),y,userId);
 	}
+	
+	public List<ChartExpenseBean> getCategoryStats(Integer userId) {
+		String selectQuery = "SELECT c.categoryName, COUNT(*) AS Transaction FROM category c  JOIN expense e ON e.categoryId = c.categoryId where userId = ? GROUP BY c.categoryName ORDER BY c.categoryName";
+		return stmt.query(selectQuery, new BeanPropertyRowMapper<ChartExpenseBean>(ChartExpenseBean.class),userId);
+	}
 
 }

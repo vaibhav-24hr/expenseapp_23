@@ -87,7 +87,7 @@
 			</div>
 		</div>
 	</div>
-
+<jsp:include page="AllJavascript.jsp"></jsp:include>
 </body>
 </html>
 

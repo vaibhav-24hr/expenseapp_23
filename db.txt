@@ -396,7 +396,69 @@ mysql> select monthname(date) as income_month, sum(ammount) as Income from incom
 	| April        |   3000 |
 	+--------------+--------+
 
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
+mysql> select c.categoryName as category , count(e.expenseId) as NoExoense from category c LEFT JOIN expense e on e.categoryId = c.categoryId GROUP BY c.categoryId;
+	+-----------------+-----------+
+	| category        | NoExoense |
+	+-----------------+-----------+
+	| Lunch           |         0 |     For Admin but USer side this query dont get O/P 
+	| Dinner          |         0 |
+	| BreakFast       |         0 |		in this query i 
+	| Coffee          |         0 |
+	| Automobile      |         1 |     Category LEFT JOIN Expense
+	| Groceary        |         1 |
+	| House           |         1 |
+	| Electronics     |         0 |
+	| Repairing       |         0 |
+	| Medical         |         0 |
+	| Clothes         |         0 |
+	| Food            |         7 |
+	| Stationery      |         1 |
+	| House Hold      |         3 |
+	| Books for maths |         0 |
+	| Other           |         3 |
+	| D-Mart          |         0 |
+	| dddddddddddddd  |         0 |
+	+-----------------+-----------+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-
-
+=========================================================================================================
+ Simple JOIN Query
+mysql>  SELECT c.categoryName, COUNT(*) AS Transaction  FROM category c  JOIN expense e ON e.categoryId = c.categoryId GROUP BY c.categoryName ORDER BY c.categoryName;
+	+--------------+------------------+
+	| categoryName | Transaction	  |
+	+--------------+------------------+
+	| Automobile   |                1 |
+	| Food         |                7 |
+	| Groceary     |                1 |      
+	| House        |                1 |
+	| House Hold   |                3 |
+	| Other        |                3 |
+	| Stationery   |                1 |
+	+--------------+------------------+
+=========================================================================================================
+LeftJoin Query Good Query for both side
+mysql> SELECT c.categoryName , count(*) AS Transaction FROM expense e LEFT JOIN category c ON e.categoryId = c.categoryId GROUP BY c.categoryId;
+	+--------------+------------------+
+	| categoryName | Transaction	  |			Expense LEFT JOIN Category  
+	+--------------+------------------+
+	| Automobile   |                1 |          
+	| Food         |                7 |		
+	| Groceary     |                1 |
+	| House        |                1 |        
+	| House Hold   |                3 |
+	| Other        |                3 |
+	| Stationery   |                1 |
+	+--------------+------------------+
+=========================================================================================================
+for userId = 11
+mysql>  SELECT c.categoryName, COUNT(*) AS Transaction  FROM category c  JOIN expense e ON e.categoryId = c.categoryId where userId =11 GROUP BY c.categoryName ORDER BY c.categoryName;
+	+--------------+------------------+
+	| categoryName | Transaction	  |
+	+--------------+------------------+
+	| Food         |                3 |
+	| House        |                1 |
+	| House Hold   |                1 |
+	| Other        |                1 |
+	+--------------+------------------+

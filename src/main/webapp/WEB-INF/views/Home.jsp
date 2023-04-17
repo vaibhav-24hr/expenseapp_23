@@ -135,7 +135,7 @@
 										<table class="table" id="list">
 											<thead>
 												<tr>
-													<th style="color: white">Profile</th>
+													<th style="color: white">Name</th>
 													<th style="color: white">Amount</th>
 													<th style="color: white">Date</th>
 													<th style="color: white">Status</th>
@@ -373,6 +373,138 @@
 						</div>
 						<!-- End of chart -->
 
+
+<!-- Second Chart -->
+
+
+
+
+</div>
+
+						<div class="row">
+							<div class="col-lg-6 grid-margin stretch-card">
+								<div class="card">
+									<div class="card-body">
+										<div class="chartjs-size-monitor">
+											<div class="chartjs-size-monitor-expand">
+												<div class=""></div>
+											</div>
+											<div class="chartjs-size-monitor-shrink">
+												<div class=""></div>
+											</div>
+										</div>
+										<h4 class="card-title">Category chart</h4>
+										<div>
+<!-- 										<canvas id="Horizontal" class="chartjs-render-monitor"></canvas>
+									<script type="text/javascript">	
+									var ctx4 = document.getElementById('Horizontal').getContext('2d');
+
+									var chart = new Chart(ctx, {
+									    type: 'bar',
+									    data: {
+									        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+									        datasets: [{
+									            label: '# of Votes',
+									            data: [12, 19, 3, 5, 2, 3, 7],
+									            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+									            borderColor: 'rgba(54, 162, 235, 1)',
+									            borderWidth: 1
+									        }]
+									    },
+									    options: {
+									        scales: {
+									            x: {
+									                ticks: {
+									                    beginAtZero: true
+									                }
+									            }
+									        }
+									    }
+									}); -->
+<!-- 									<canvas id="horizontalChart" class="chartjs-render-monitor"></canvas>
+<script type="text/javascript">    
+    var ctx4 = document.getElementById('horizontalChart').getContext('2d');
+
+    if (window.myChart) {
+        window.myChart.destroy();
+    }
+
+    var chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3, 7],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        }
+    });
+</script> -->
+<%	List<ChartExpenseBean> categData = (List<ChartExpenseBean>) request.getAttribute("categData");
+%>
+
+<canvas id="horizontalChart" class="chartjs-render-monitor"></canvas>
+<script type="text/javascript">    
+    var ctx4 = document.getElementById('horizontalChart').getContext('2d');
+
+    if (window.myChart) {
+        window.myChart.destroy();
+    }
+
+    var chart = new Chart(ctx4, { // Use ctx4 instead of ctx
+        type: 'bar',
+        data: {
+            labels: [<%for (ChartExpenseBean cd : categData) {%>
+			'<%=cd.getCategoryName()%>', 
+			<%}%>],
+            datasets: [{
+                label: '# of Votes',
+                data: [<%for (ChartExpenseBean cd : categData) {%>
+    			'<%=cd.getTransaction()%>', 
+    			<%}%>],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        }
+    });
+</script>
+								
+										
+										
+									</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+
+
+
+
+
 						<div class="row">
 							<div class="col-lg-6 grid-margin stretch-card">
 								<div class="card">
@@ -434,7 +566,7 @@
 		<!-- Custom js for this page -->
 		<!-- <script src="../../assets/js/chart.js"></script> -->
 		<!-- End custom js for this page -->
-	</div>
+	
 
 	<script type="text/javascript">
 		$(document).ready(function() {

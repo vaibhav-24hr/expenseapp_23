@@ -22,6 +22,14 @@ public class CategoryDao {
 		
 	}
 	
+	public List<CategoryBean> getAvailableCategory(){
+		
+		//		String selectQuery = "select * from category where deleted = false";
+		String selectQuery = "select * from category where deleted = false";
+		List<CategoryBean> list = stmt.query(selectQuery, new BeanPropertyRowMapper<CategoryBean>(CategoryBean.class));
+		return list;
+	}
+	
 	public List<CategoryBean> getAllCategory(){
 		
 		//		String selectQuery = "select * from category where deleted = false";

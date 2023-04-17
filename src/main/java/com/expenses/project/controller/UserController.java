@@ -57,6 +57,7 @@ public class UserController {
 		List<ChartExpenseBean> chartData = hoDao.getExpenseStats(userId);
 		List<ChartExpenseBean> pieStatus = hoDao.getStatusOfTransactionStats(userId);
 		List<ChartExpenseBean> incoList = hoDao.getIncomeStats(userId);
+		List<ChartExpenseBean> categData = hoDao.getCategoryStats(userId);
 		
 		model.addAttribute("monthlyExpense" , monthlyExpense);
 		model.addAttribute("monthlyTransaction", monthlyTransaction);
@@ -70,6 +71,7 @@ public class UserController {
 		model.addAttribute("explist", explist);
 		model.addAttribute("monthlyIncomeRatio", monthlyIncomeRatio);
 		model.addAttribute("incoList", incoList);
+		model.addAttribute("categData", categData);
 		
 		System.out.println(userId);
 		
@@ -97,6 +99,11 @@ public class UserController {
 		
 		return "ViewUser";
 	}
+	
+	
+
+	
+	
 	
 	
 	

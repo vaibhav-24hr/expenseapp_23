@@ -57,7 +57,7 @@ public class ExpenseController {
 	public String newExpense(ExpenseBean exb,Model model) {
 		
 
-		List<CategoryBean> list = cgd.getAllCategory();
+		List<CategoryBean> list = cgd.getAvailableCategory();
 		model.addAttribute("list",list);
 		
 		 List<SubCategoryBean> sublist = scd.getAllSubCategory();
@@ -211,5 +211,9 @@ public class ExpenseController {
 		exd.updateExpense(exBean);
 		return "redirect:/listexpense";
 	}
-
+	
+	@GetMapping("/uploadbill")
+	public String uploadBill() {
+		return "UploadBill";
+	}
 }

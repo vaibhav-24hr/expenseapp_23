@@ -39,11 +39,11 @@ public class CategoryController {
 		
 		// pull all categories from DB-Table
 		List<CategoryBean> list = cDao.getAllCategory();
-		model.addAttribute("list",list);
-		
+		model.addAttribute("list",list);	
 		return "ListCategory";
-		
 	}
+	
+	
 	
 //	@GetMapping("/deletecategory/{categoryId}") //"URl/{print_CATEGORYID from JSP}"
 //	public String deleteCategory(@PathVariable("categoryId")Integer categoryId) {  // to know categoryID from URL we need to add annotation => path@variable PATH & its datatype

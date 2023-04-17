@@ -45,9 +45,7 @@
 				List<StatusBean> statuslist = (List<StatusBean>)request.getAttribute("statuslist");
 				List<AccountBean> acclist = (List<AccountBean>)request.getAttribute("acclist");
 				
-			%> 
-
-								
+			%> 				
 								
 								<form method="post" action="updateexpense">
 									<div class="form-group">
@@ -76,8 +74,8 @@
 											<select name="statusId" id="statusId">
 											  <option value="-1">Select Status</option> 
 											  <% for(StatusBean sb : statuslist) { %>
-											    <% String selected = sb.getStatusId() == exBean.getStatusId() ? "selected" : "Not Found Status Id"; %>
-											    <% System.out.println("Status ID: " + sb.getStatusId() + ", Selected: " + selected); %>
+											    <% String selected = sb.getStatusId() == exBean.getStatusId() ? "selected" : ""; %>
+											   
 											    <option value="<%= sb.getStatusId() %>" <%= selected %>><%= sb.getStatusShow() %></option>										
 											  <% } %>
 											</select> 
