@@ -1,5 +1,9 @@
 package com.expenses.project.bean;
 
+import java.security.KeyStore.PrivateKeyEntry;
+
+import org.springframework.web.multipart.MultipartFile;
+
 public class ExpenseBean {
 
 	private Integer expenseId;
@@ -24,8 +28,24 @@ public class ExpenseBean {
 	private String email;
 	
 	
+	private MultipartFile billImg; // used to Store Bill Image
+	private String billURL;       // Bill Url in DataBase
 	
 	
+	
+	
+	public MultipartFile getBillImg() {
+		return billImg;
+	}
+	public void setBillImg(MultipartFile billImg) {
+		this.billImg = billImg;
+	}
+	public String getBillURL() {
+		return billURL;
+	}
+	public void setBillURL(String billURL) {
+		this.billURL = billURL;
+	}
 	public String getFirstName() {
 		return firstName;
 	}

@@ -43,7 +43,9 @@
 	Status: <%=exb.getStatusShow() %><br>
 	Description : <%=exb.getDescription() %><br>
 	
-	
+	Expense Bill :   <img class="img-xs rounded-circle " src="<%=exb.getBillURL()%>" alt="">
+	<h4><%=exb.getBillURL() %></h4>
+		<h4><%=exb.getBillImg() %></h4>
 							</div>
 						</div>
 					</div>

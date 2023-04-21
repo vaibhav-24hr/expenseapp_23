@@ -52,7 +52,7 @@
 				
 			%> 				
 								
-								<form method="post" action="updateexpense">
+								<form method="post" action="updateexpense" enctype="multipart/form-data">
 								<div class="row">
 									<div class="form-group">
 									<input type="hidden" name="expenseId" value = "${exBean.expenseId}"/>
@@ -154,15 +154,21 @@
 								    </div>
 								    <br>
 								    <div class="row">
-									<div class="form-group col-md-4">
+									<div class="form-group col-md-6">
 										<h4>Amount *</h4>
 										<input class="form-control"  type="text" name = "ammount" value="<%=exBean.getAmmount()%>">
 									</div>
 									
-									<div class="form-group col-md-4">
+									<div class="form-group col-md-6">
 										<h4>Date *</h4>
 								<input type="date" id = "myDate" name = "date" value="<%=exBean.getDate() %>" class="form-control" >
 								    </div>
+									
+									</div><br>
+									
+									<div class="row form-group">
+									<h4 align="center" >Upload Bill of Your Expense</h4>
+									<input class="form-control" type="file" name = "billImg" value="<%=exBean.getBillURL() %>" placeholder="Upload Bill of Your Expense">
 									
 									</div>
 									

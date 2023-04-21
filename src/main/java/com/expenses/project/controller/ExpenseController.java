@@ -1,11 +1,13 @@
 package com.expenses.project.controller;
 
+import java.io.File;
 import java.security.PublicKey;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +28,8 @@ import com.expenses.project.dao.ExpenseDao;
 import com.expenses.project.dao.StatusDao;
 import com.expenses.project.dao.SubCategoryDao;
 import com.expenses.project.dao.VendorDao;
+
+import ch.qos.logback.core.util.FileUtil;
 
 @Controller
 public class ExpenseController {
@@ -218,12 +222,33 @@ public class ExpenseController {
 	
 	@PostMapping("/updateexpense")
 	public String updateExpense(ExpenseBean exBean) {
+		System.out.println(exBean.getExpenseId());
+		System.out.println(exBean.getBillImg().getOriginalFilename());
+		System.out.println(exBean.getBillURL());
 		exd.updateExpense(exBean);
+		try { // To make Folder of every Expense Bill
+			File billDir = new File("C:\\Users\\vaibhav\\Documents\\workspace-spring-tool-suite-4-4.17.2.RELEASE\\expenseManager-23_Final\\src\\main\\resources\\static\\assets\\bills",exBean.getExpenseId()+"");			
+		// validate if folder doesn't exists so it will make it or if folder exist then store image in specific folder
+			if(billDir.exists() == false) {
+				billDir.mkdir();
+			}
+			// 
+			File file = new File(billDir,exBean.getBillImg().getOriginalFilename());
+			// copy Image
+			FileUtils.writeByteArrayToFile(file, exBean.getBillImg().getBytes());
+			//
+			exBean.setBillURL("assets/bills/"+exBean.getExpenseId()+"/"+exBean.getBillImg().getOriginalFilename());
+			
+			exd.updateBillUrl(exBean);
+		} catch (Exception e) {
+			// TODO: handle exception
+			
+		}
 		return "redirect:/listexpense";
 	}
 	
-	@GetMapping("/uploadbill")
-	public String uploadBill() {
-		return "UploadBill";
-	}
+//	@GetMapping("/uploadbill")
+//	public String uploadBill() {
+//		return "UploadBill";
+//	}
 }

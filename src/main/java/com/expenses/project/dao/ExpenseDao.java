@@ -38,9 +38,6 @@ public class ExpenseDao {
 		stmt.update(insertQuery, exb.getTitle(), exb.getCategoryId(), exb.getSubCategoryId(), exb.getVendorId(), exb.getAccountTypeId(), exb.getStatusId(), exb.getAmmount(), exb.getDate(), exb.getDescription(), exb.getUserId());
 	}
 	
-	
-	
-	
 	public List<ExpenseBean> getAllExpenseByUser(Integer userId){
 		
 		String selectQuery = "select e.userId, e.expenseId, e.title, e.ammount, e.date, e.description, c.categoryName, sc.subcategoryName, v.vendorName, a.accountType, s.statusShow from expense e, category c, subcategory sc, vendor v, accountType a, status s where e.categoryId = c.categoryId and e.subCategoryId = sc.subCategoryId and e.vendorId = v.vendorId and e.accountTypeId = a.accountTypeId and e.statusId = s.statusId and userId = ?";
@@ -49,14 +46,11 @@ public class ExpenseDao {
 		return explist;
 	}
 
-
-
-
 	public ExpenseBean getExpenseById(Integer expenseId) {
 		// TODO Auto-generated method stub
 		
 		ExpenseBean exb = null;
-		String selectQuery = "select e.expenseId, e.title, e.ammount, e.date, e.description, c.categoryName, sc.subcategoryName, v.vendorName, a.accountType, s.statusShow,s.statusId, a.accountTypeId, v.vendorId, c.categoryId, sc.subCategoryId from expense e, category c, subcategory sc, vendor v, accountType a, status s where e.categoryId = c.categoryId and e.subCategoryId = sc.subCategoryId and e.vendorId = v.vendorId and e.accountTypeId = a.accountTypeId and e.statusId = s.statusId and expenseId = ?";
+		String selectQuery = "select e.expenseId, e.title, e.billURL, e.ammount, e.date, e.description, c.categoryName, sc.subcategoryName, v.vendorName, a.accountType, s.statusShow,s.statusId, a.accountTypeId, v.vendorId, c.categoryId, sc.subCategoryId from expense e, category c, subcategory sc, vendor v, accountType a, status s where e.categoryId = c.categoryId and e.subCategoryId = sc.subCategoryId and e.vendorId = v.vendorId and e.accountTypeId = a.accountTypeId and e.statusId = s.statusId and expenseId = ?";
 // String selectQuery= "select * from expense where expenseId = ?"; 
 		try {
 			exb = stmt.queryForObject(selectQuery ,new BeanPropertyRowMapper<ExpenseBean>(ExpenseBean.class), new Object[]{expenseId});
@@ -70,7 +64,7 @@ public class ExpenseDao {
 // for Admin Dashboard
 	public List<ExpenseBean> getAllExpense(){
 		
-		String selectQuery = "select e.userId, e.expenseId, e.title, e.ammount, e.date, e.description, c.categoryName, sc.subcategoryName, v.vendorName, a.accountType, s.statusShow from expense e, category c, subcategory sc, vendor v, accountType a, status s where e.categoryId = c.categoryId and e.subCategoryId = sc.subCategoryId and e.vendorId = v.vendorId and e.accountTypeId = a.accountTypeId and e.statusId = s.statusId";
+		String selectQuery = "select e.userId, e.expenseId, e.billURL, e.title, e.ammount, e.date, e.description, c.categoryName, sc.subcategoryName, v.vendorName, a.accountType, s.statusShow from expense e, category c, subcategory sc, vendor v, accountType a, status s where e.categoryId = c.categoryId and e.subCategoryId = sc.subCategoryId and e.vendorId = v.vendorId and e.accountTypeId = a.accountTypeId and e.statusId = s.statusId";
 		List<ExpenseBean> explist = stmt.query(selectQuery, new BeanPropertyRowMapper<ExpenseBean>(ExpenseBean.class));
 		return explist;
 	}
@@ -81,7 +75,7 @@ public class ExpenseDao {
 	public ExpenseBean getAllExpenseById(Integer expenseId) {
 		// TODO Auto-generated method stub
 		ExpenseBean AllExb = null;  
-		String selectQuery = "select e.userId, e.expenseId, u.firstName, u.lastName, u.email, e.title, e.ammount, e.date, e.description, c.categoryName, sc.subcategoryName, v.vendorName, a.accountType, s.statusShow from expense e,users u, category c, subcategory sc, vendor v, accountType a, status s where e.categoryId = c.categoryId and e.subCategoryId = sc.subCategoryId and e.userId = u.userId and e.vendorId = v.vendorId and e.accountTypeId = a.accountTypeId and e.statusId = s.statusId and expenseId = ?";
+		String selectQuery = "select e.userId, e.expenseId, e.billURL, u.firstName, u.lastName, u.email, e.title, e.ammount, e.date, e.description, c.categoryName, sc.subcategoryName, v.vendorName, a.accountType, s.statusShow from expense e,users u, category c, subcategory sc, vendor v, accountType a, status s where e.categoryId = c.categoryId and e.subCategoryId = sc.subCategoryId and e.userId = u.userId and e.vendorId = v.vendorId and e.accountTypeId = a.accountTypeId and e.statusId = s.statusId and expenseId = ?";
 		try {
 			AllExb = stmt.queryForObject(selectQuery, new BeanPropertyRowMapper<ExpenseBean>(ExpenseBean.class), new Object[]{expenseId});
 		} catch (Exception e) {
@@ -98,6 +92,11 @@ public class ExpenseDao {
 		stmt.update(updateQuery,exBean.getTitle(),exBean.getStatusId(),exBean.getAccountTypeId(),exBean.getCategoryId(),exBean.getSubCategoryId(),exBean.getVendorId(),exBean.getAmmount(),exBean.getDate(),exBean.getExpenseId());
 	}
 
-	
-	
+
+
+
+	public void updateBillUrl(ExpenseBean exBean) {
+		// TODO Auto-generated method stub
+		stmt.update("update expense set billURL = ? where expenseId = ?",exBean.getBillURL(),exBean.getExpenseId());
+	}	
 }
