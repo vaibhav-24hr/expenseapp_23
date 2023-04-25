@@ -49,12 +49,12 @@
 									<div class="form-group">
 										<h4>Category *</h4>
                        
-									 <select name="categoryId"> 
+									 <select class="form-control" name="categoryId"> 
 											<%
 											for (CategoryBean cb : list) {
 											%>
 
-											<option value="<%=cb.getCategoryId()%>">
+											<option class="form-control" value="<%=cb.getCategoryId()%>">
 												<%=cb.getCategoryName()%></option>
 											<%
 											}

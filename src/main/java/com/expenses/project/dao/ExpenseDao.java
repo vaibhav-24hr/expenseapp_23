@@ -61,7 +61,7 @@ public class ExpenseDao {
 	return exb;
 	}
 
-// for Admin Dashboard
+// for Admin Dashboard  for INdividual Expense
 	public List<ExpenseBean> getAllExpense(){
 		
 		String selectQuery = "select e.userId, e.expenseId, e.billURL, e.title, e.ammount, e.date, e.description, c.categoryName, sc.subcategoryName, v.vendorName, a.accountType, s.statusShow from expense e, category c, subcategory sc, vendor v, accountType a, status s where e.categoryId = c.categoryId and e.subCategoryId = sc.subCategoryId and e.vendorId = v.vendorId and e.accountTypeId = a.accountTypeId and e.statusId = s.statusId";
@@ -71,7 +71,7 @@ public class ExpenseDao {
 
 
 
-
+// For View Page including Bill Image 
 	public ExpenseBean getAllExpenseById(Integer expenseId) {
 		// TODO Auto-generated method stub
 		ExpenseBean AllExb = null;  

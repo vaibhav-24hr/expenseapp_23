@@ -31,6 +31,21 @@
 								<div class="card-body">
 
 <% ExpenseBean AllExb = (ExpenseBean)request.getAttribute("AllExb"); %>
+	<h3>Expense Bill:</h3>
+<div id="bill-image-container">
+    <img id="bill-image" style="object-fit: cover; max-width: 100%; border: solid 2px #36ff00;" src="<%=AllExb.getBillURL()%>" alt="">
+</div>
+
+<script>
+    var billImageContainer = document.getElementById("bill-image-container");
+    var imageUrl = '<%=AllExb.getBillURL()%>';
+    if (imageUrl) {
+        document.getElementById("bill-image").src = imageUrl;
+    } else {
+        billImageContainer.innerHTML = 'You don\'t have an expense bill.';
+    }
+</script>
+	
 
 	Date: <%=AllExb.getDate()%><br>
 	userId = <%=AllExb.getUserId() %><br>

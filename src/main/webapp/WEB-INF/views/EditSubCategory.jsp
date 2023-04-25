@@ -44,7 +44,7 @@
 								<form method="post" action="updatesubcategory">
 									<div class="form-group">
 									<input type="hidden" name="subCategoryId" value = "${scBean.subCategoryId}"/>
-										<h4>Category *</h4>
+										<h4>Sub Category *</h4>
 										<input type="text" class="form-control p_input"
 											name="subCategoryName" value="${scBean.subCategoryName}">
 									</div>
@@ -52,12 +52,12 @@
 									
 										<h4>Category *</h4>
 										
-										<select name = "categoryId" id = "categoryId"> 
+										<select class="form-control  name = "categoryId" id = "categoryId"> 
 												<option value="-1">Select Category </option>													
 										<%
 											for(CategoryBean cb :list){
 										%>
-										<option value="<%=cb.getCategoryId()%>"
+										<option class="form-control  value="<%=cb.getCategoryId()%>"
 											<%=cb.getCategoryId() == scBean.getCategoryId() ? "selected" : ""%>>
 											<%=cb.getCategoryName()%></option>	
 										

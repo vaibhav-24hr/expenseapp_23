@@ -18,17 +18,17 @@
 
 <body>
 
-	<div class="container-scroller">
+	<div class="container-scroller" >
 		<!-- Slidebar -->
 		<jsp:include page="LeftsideUserdashboard.jsp"></jsp:include>
 		<!-- navbar -->
-		<div class="container-fluid page-body-wrapper">
+		<div class="container-fluid page-body-wrapper" >
 
 			<jsp:include page="Navbar.jsp"></jsp:include>
 			<!-- maincontent -->
-
-			<div class="main-panel">
-				<div class="content-wrapper">
+ 
+			<div class="main-panel" >
+				<div class="content-wrapper" style="background-color: teal;" >
 
 					<div class="row">
 						<div class="col-xl-3 col-sm-6 grid-margin stretch-card">
@@ -40,7 +40,7 @@
 												<h3 class="mb-0">${monthlyTransaction == null ? 0 : monthlyTransaction}</h3>
 												<p class="text icon mdi ml-2 mb-0 font-weight-medium ratio">
 													${monthlyTransactionRatio == null ? 0 : monthlyTransactionRatio}
-												</p>
+												</p><i class="icon-md mdi  mdi-chart-bar text-info ml-auto"></i>
 											</div>
 										</div>
 										<!-- 	<div class="col-3">
@@ -49,8 +49,8 @@
 											</div>
 										</div>  -->
 									</div>
-									<h6 class="text-muted font-weight-normal">This Month
-										Transaction</h6>
+									<p style="color: aqua;"   class=" font-weight-smal">This Month
+										Trnsaction</p>
 								</div>
 							</div>
 						</div>
@@ -62,7 +62,9 @@
 											<div class="d-flex align-items-center align-self-start">
 												<h3 class="mb-0">${monthlyExpense == null ? 0 : monthlyExpense}</h3>
 												<p class="text icon mdi ml-2 mb-0 font-weight-medium ratio">${monthlyExpenseRatio == null ? 0 : monthlyExpenseRatio}</p>
+											<i class="icon-md mdi  mdi-currency-inr text-warning ml-auto"></i>
 											</div>
+											
 										</div>
 										<!-- <div class="col-3">
 											 <div class="icon icon-box-success">
@@ -70,8 +72,8 @@
 											</div> 
 										</div> -->
 									</div>
-									<h6 class="text-muted font-weight-normal">This Month
-										Expenses</h6>
+									<p style="color: aqua;" class=" font-weight-normal">This Month
+										Expenses </p>
 								</div>
 							</div>
 						</div>
@@ -83,7 +85,8 @@
 											<div class="d-flex align-items-center align-self-start">
 												<!-- Expression Language Condition if not NULL -->
 												<h3 class="mb-0">${monthlyIncome == null ? 0 : monthlyIncome}</h3>
-												<p class="text icon mdi ml-2 mb-0 font-weight-medium  ratio">${monthlyIncomeRatio == null ? 0 : monthlyIncomeRatio}</p>
+												<p  class="text icon mdi ml-2 mb-0 font-weight-medium  ratio">${monthlyIncomeRatio == null ? 0 : monthlyIncomeRatio}</p>
+												<i class="icon-md mdi  mdi-wallet-travel text-primary ml-auto"></i>
 											</div>
 										</div>
 										<!-- 	<div class="col-3">
@@ -92,8 +95,8 @@
 											</div> 
 										</div> -->
 									</div>
-									<h6 class="text-muted font-weight-normal">This Month
-										Income</h6>
+									<p style="color: aqua;"  class=" font-weight-normal">This Month
+										Income</p>
 								</div>
 							</div>
 						</div>
@@ -105,6 +108,7 @@
 											<div class="d-flex align-items-center align-self-start">
 												<h3 class="mb-0">${dailyExpense == null ? 0 : dailyExpense}</h3>
 												<p class="text icon mdi  ml-2 mb-0 font-weight-medium ratio">${dailyExpenseRatio == null ? 0 : dailyExpenseRatio}</p>
+												 <i class="icon-md mdi mdi-calendar-today text-warning ml-auto"></i> 
 											</div>
 										</div>
 										<!-- 	<div class="col-3">
@@ -113,7 +117,7 @@
 											</div> 
 										</div> -->
 									</div>
-									<h6 class="text-muted font-weight-normal">Today Expenses</h6>
+									<p style="color: aqua;"   class=" font-weight-normal">Today Expenses</p>
 								</div>
 							</div>
 						</div>
@@ -288,7 +292,7 @@
                 </div>
               </div> -->
 
-						<div class="col-lg-9 grid-margin stretch-card">
+						<div class="col-lg-12 grid-margin stretch-card">
 							<div class="col-lg-12 card">
 								<div class="col-lg-12 card-body">
 									<!-- Bar Chart -->
@@ -382,7 +386,7 @@
 </div>
 
 						<div class="row">
-							<div class="col-lg-6 grid-margin stretch-card">
+							<div class="col-lg-7 grid-margin stretch-card">
 								<div class="card">
 									<div class="card-body">
 										<div class="chartjs-size-monitor">
@@ -457,6 +461,49 @@
 
 <canvas id="horizontalChart" class="chartjs-render-monitor"></canvas>
 <script type="text/javascript">    
+
+<%-- BGcolorArray= [    		  
+   /*    'rgba(201, 203, 207, 0.4)',
+      'rgba(48, 30, 38, 0.4)',
+      'rgba(122, 124, 129, 0.4)',
+      'rgba(189, 129, 46, 0.4)',
+      'rgba(50, 200, 204, 0.4)',
+      'rgba(48, 51, 204, 0.4)', */
+      'rgba(255, 159, 64, 0.4)',
+      'rgba(153, 102, 255, 0.4)',
+      'rgba(75, 192, 192, 0.4)',
+      'rgba(255, 206, 86, 0.4)',
+      'rgba(54, 162, 235, 0.4)',
+	  'rgba(255, 99, 132, 0.4)'
+
+    ]
+
+bordderArray = [
+	/* 'rgba(201, 203, 207, 1)',
+    'rgba(48, 30, 38, 1)',
+    'rgba(122, 124, 129, 1)',
+    'rgba(189, 129, 46, 1)',
+    'rgba(50, 200, 204, 1)',
+    'rgba(48, 51, 204, 1)', */
+    'rgba(255, 159, 64, 1)',
+    'rgba(153, 102, 255, 1)',
+    'rgba(75, 192, 192, 1)',
+    'rgba(255, 206, 86, 1)',
+    'rgba(54, 162, 235, 1)',
+	  'rgba(255, 99, 132, 1)'
+      ]
+
+	bgColor = [];
+	borderColor = [];
+	
+	<%for (int i = 0; i < pieStatus.size(); i++) {%>
+		bgColor.push(BGcolorArray[<%=i%>]);
+	<%}%>
+	
+	<%for (int i = 0; i < pieStatus.size(); i++) {%>
+		borderColor.push(bordderArray[<%=i%>]);
+	<%}%> --%>
+
     var ctx4 = document.getElementById('horizontalChart').getContext('2d');
 
     if (window.myChart) {
@@ -470,25 +517,36 @@
 			'<%=cd.getCategoryName()%>', 
 			<%}%>],
             datasets: [{
-                label: '# of Votes',
+                label: '# Transaction Category',
                 data: [<%for (ChartExpenseBean cd : categData) {%>
     			'<%=cd.getTransaction()%>', 
     			<%}%>],
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                borderColor: 'rgba(54, 162, 235, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                borderColor: 'rgba(0, 0, 0, 1)',
                 borderWidth: 1
             }]
         },
-        options: {
-            scales: {
-                x: {
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        }
-    });
+        options : {
+			scales : {
+		    	  x: {
+			          ticks: {
+			            color: 'white'
+			          },
+			          grid: {
+			        	  color: 'rgba(255, 255, 255, 0.1)'
+			          }
+			        },
+		    	    y: {
+				          ticks: {
+				            color: 'white'
+				          },
+				          grid: {
+				        	  color: 'rgba(255, 255, 255, 0.1)'
+				          }
+				        }
+		    	  }
+		}
+	});
 </script>
 								
 										
@@ -498,6 +556,97 @@
 								</div>
 							</div>
 
+<div class="col-lg-5 grid-margin stretch-card" >
+								<div class="card" >
+									<div class="card-body" >
+										<div class="chartjs-size-monitor" >
+											<div class="chartjs-size-monitor-expand" >
+												<div class=""></div>
+											</div>
+											<div class="chartjs-size-monitor-shrink" >
+												<div class=""></div>
+											</div>
+										</div>
+										<h4 class="card-title">Vendor chart</h4>
+										<div>
+										
+<%	List<ChartExpenseBean> vendorData = (List<ChartExpenseBean>) request.getAttribute("vendorData"); %>
+
+<canvas id="pieVChart" class="chartjs-render-monitor" ></canvas>
+									<script type="text/javascript">
+							 
+							 BGcolorArray= [								  	    			        
+							        'rgba(255, 206, 86, 0.4)',
+							        'rgba(54, 162, 235, 0.4)',
+							        'rgba(255, 99, 132, 0.4)',
+							        'rgba(255, 159, 64, 0.4)',
+							        'rgba(153, 102, 255, 0.4)',
+							        'rgba(75, 192, 192, 0.4)'
+							      ]
+							 
+							/*   bordderArray = [
+								    'rgba(255, 206, 86, 1)',
+							        'rgba(54, 162, 235, 1)',
+							        'rgba(255, 99, 132, 1)',
+							        'rgba(255, 159, 64, 1)',
+							        'rgba(153, 102, 255, 1)',
+							        'rgba(75, 192, 192, 1)'
+							        ] */
+							 
+								bgColor = [];
+								/* borderColor = []; */
+								
+								<%for (int i = 0; i < vendorData.size(); i++) {%>
+									bgColor.push(BGcolorArray[<%=i%>]);
+								<%}%>
+								
+								<%for (int i = 0; i < vendorData.size(); i++) {%>
+									borderColor.push(bordderArray[<%=i%>]);
+								<%}%>
+ 
+							 const ctxV = document.getElementById('pieVChart');
+							
+							 new Chart(ctxV, {
+							   type: 'doughnut',
+							   data: {
+							     labels: [<%for (ChartExpenseBean vb : vendorData) {%>
+							       '<%=vb.getVendor()%>',
+							     <%}%>
+							     ],
+							     datasets: [{
+							       label: '# Transaction Status',
+							       data: [ <%for (ChartExpenseBean vb : vendorData) {%>
+							         <%=vb.getTransaction()%>,
+							       <%}%> ],
+							       backgroundColor: bgColor,
+							       borderColor: 'rgba(0, 0, 0, 1)',
+							       borderWidth: 1
+							     }]
+							   },
+							   options: {
+							     cutout: '0%',
+							     plugins: {
+							       title: {
+							         display: true,
+							         text: 'Pie Chart'
+							       },
+							       legend: {
+							         position: 'bottom'
+							       }
+							     }
+							   }
+							 });  
+ 
+ 						</script>
+								
+										
+										
+									</div>
+									</div>
+								</div>
+
+
+</div>
 						</div>
 
 
@@ -505,44 +654,7 @@
 
 
 
-						<div class="row">
-							<div class="col-lg-6 grid-margin stretch-card">
-								<div class="card">
-									<div class="card-body">
-										<div class="chartjs-size-monitor">
-											<div class="chartjs-size-monitor-expand">
-												<div class=""></div>
-											</div>
-											<div class="chartjs-size-monitor-shrink">
-												<div class=""></div>
-											</div>
-										</div>
-										<h4 class="card-title">Area chart</h4>
-										<canvas id="areaChart"
-											style="height: 224px; display: block; width: 449px;"
-											width="622" height="310" class="chartjs-render-monitor"></canvas>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-6 grid-margin stretch-card">
-								<div class="card">
-									<div class="card-body">
-										<div class="chartjs-size-monitor">
-											<div class="chartjs-size-monitor-expand">
-												<div class=""></div>
-											</div>
-											<div class="chartjs-size-monitor-shrink">
-												<div class=""></div>
-											</div>
-										</div>
-										<h4 class="card-title">Doughnut chart</h4>
-										<canvas id="doughnutChart"
-											style="height: 224px; display: block; width: 449px;"
-											width="622" height="310" class="chartjs-render-monitor"></canvas>
-									</div>
-								</div>
-							</div>
-						</div>
+
 					</div>
 					<!-- Content Wrapper -->
 

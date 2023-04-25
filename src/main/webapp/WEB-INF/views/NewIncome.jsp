@@ -31,7 +31,7 @@
 
 							<div class="card-body" align="left">
 
-								<h4 class="card-title" align="center">Add Your expenses
+								<h4 class="card-title" align="center">Add Your Income
 									Here</h4>
 
 								<div class="form-group">

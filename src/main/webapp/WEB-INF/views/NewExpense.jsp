@@ -23,7 +23,8 @@
 	List<SubCategoryBean> sublist = (List<SubCategoryBean>) request.getAttribute("sublist");
 	List<AccountBean> acclist = (List<AccountBean>) request.getAttribute("acclist");
 	List<StatusBean> stlist = (List<StatusBean>) request.getAttribute("stlist");
-	List<VendorBean> vdlist = (List<VendorBean>) request.getAttribute("vdlist");
+	/* List<VendorBean> vdlist = (List<VendorBean>) request.getAttribute("vdlist"); */
+	List<VendorBean> vendorlist = (List<VendorBean>)request.getAttribute("vendorlist");
 	%>
 
 	<div class="container-scroller">
@@ -35,7 +36,7 @@
 			<jsp:include page="Navbar.jsp"></jsp:include>
 			<!-- maincontent -->
 
-			<div class="main-panel">
+			<div class="main-panel" >
 				<div class="content-wrapper" align="center">
 					<!-- <div class="col-md-8"></div> -->
 					<div class="col-md-10">
@@ -53,10 +54,10 @@
 										<br> <br> Vendor: <select name="vendorId"
 											class="form-control">
 											<%
-											for (VendorBean vb : vdlist) {
+											for (VendorBean vb : vendorlist) {
 											%>
 
-											<option value="<%=vb.getVendorId()%>">
+											<option class="form-control" value="<%=vb.getVendorId()%>">
 												<%=vb.getVendorName()%></option>
 											<%
 											}
@@ -68,7 +69,7 @@
 											for (CategoryBean cb : list) {
 											%>
 
-											<option value="<%=cb.getCategoryId()%>">
+											<option class="form-control" value="<%=cb.getCategoryId()%>">
 												<%=cb.getCategoryName()%></option>
 											<%
 											}
@@ -78,7 +79,7 @@
 											<%
 											for (SubCategoryBean sb : sublist) {
 											%>
-											<option value="<%=sb.getSubCategoryId()%>">
+											<option class="form-control" value="<%=sb.getSubCategoryId()%>">
 												<%=sb.getSubCategoryName()%></option>
 											<%
 											}
@@ -89,7 +90,7 @@
 											for (AccountBean acb : acclist) {
 											%>
 
-											<option value="<%=acb.getAccountTypeId()%>">
+											<option class="form-control" value="<%=acb.getAccountTypeId()%>">
 												<%=acb.getAccountType()%></option>
 
 											<%
@@ -100,7 +101,7 @@
 											<%
 											for (StatusBean stb : stlist) {
 											%>
-											<option value="<%=stb.getStatusId()%>">
+											<option class="form-control" value="<%=stb.getStatusId()%>">
 												<%=stb.getStatusShow()%>
 											</option>
 											<%

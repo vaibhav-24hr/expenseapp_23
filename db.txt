@@ -462,3 +462,16 @@ mysql>  SELECT c.categoryName, COUNT(*) AS Transaction  FROM category c  JOIN ex
 	| House Hold   |                1 |
 	| Other        |                1 |
 	+--------------+------------------+
+	
+	for userId = 11
+mysql> select v.vendorName as vendor , count(*) as Transaction FROM expense e LEFT JOIN vendor v ON e.vendorId = v.vendorId where userId = 11 GROUP BY v.vendorName;
+	+----------------+-------------+
+	| vendor         | Transaction |
+	+----------------+-------------+
+	| StarBucks      |           1 |
+	| Croma          |           2 |
+	| McDonald's     |           1 |
+	| College        |           1 |
+	| D-Mart         |           1 |
+	| Domino's Pizza |           1 |
+	+----------------+-------------+

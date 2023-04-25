@@ -11,11 +11,18 @@ public class ChartExpenseBean {
 	private String income_month;
 	private String incomeAmount;
 	private String categoryName;
+	private String vendor;
 	
 	
 	
 	
 	
+	public String getVendor() {
+		return vendor;
+	}
+	public void setVendor(String vendor) {
+		this.vendor = vendor;
+	}
 	public String getCategoryName() {
 		return categoryName;
 	}

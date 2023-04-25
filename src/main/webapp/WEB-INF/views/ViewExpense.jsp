@@ -32,7 +32,26 @@
 
 <% ExpenseBean exb = (ExpenseBean)request.getAttribute("exb"); %>
 
-	Date: <%=exb.getDate()%><br>
+	
+	<h3>Expense Bill:</h3>
+
+
+
+<div id="bill-image-container">
+    <img id="bill-image" style="object-fit: cover; max-width: 100%; border: solid 2px #36ff00;" src="<%=exb.getBillURL()%>" alt="">
+</div>
+
+<script>
+    var billImageContainer = document.getElementById("bill-image-container");
+    var imageUrl = '<%=exb.getBillURL()%>';
+    if (imageUrl) {
+        document.getElementById("bill-image").src = imageUrl;
+    } else {
+        billImageContainer.innerHTML = 'You don\'t have an expense bill.';
+    }
+</script>
+	<br>
+	Date: <%=exb.getDate()%>  <br>
 	 expenseId: <%=exb.getExpenseId()%><br>
 	 title: 	<%=exb.getTitle()%><br>
 	 Vendor Name:  <%=exb.getVendorName()%><br>
@@ -43,9 +62,8 @@
 	Status: <%=exb.getStatusShow() %><br>
 	Description : <%=exb.getDescription() %><br>
 	
-	Expense Bill :   <img class="img-xs rounded-circle " src="<%=exb.getBillURL()%>" alt="">
-	<h4><%=exb.getBillURL() %></h4>
-		<h4><%=exb.getBillImg() %></h4>
+	
+
 							</div>
 						</div>
 					</div>
@@ -58,3 +76,30 @@
 
 </body>
 </html>
+
+
+	<%-- <h3> Expense Bill : </h3><img style="object-fit:cover; max-width: 100%; border: solid 2px #36ff00;"  class="" src="<%=exb.getBillURL()%>" alt="" > --%>
+
+
+<%-- 	<img id="bill-image" style="object-fit:cover; max-width: 100%; border: solid 2px #36ff00;"  class="" src="<%=exb.getBillURL()%>" alt="" ><!-- </div> -->
+<script>
+    var billImage = document.getElementById("bill-image");
+    var imageUrl = '<%=exb.getBillURL()%>';
+    if (imageUrl) {
+        billImage.innerHTML = '<img src="' + imageUrl + '">';
+    } else {
+        billImage.innerHTML = 'You don\'t have an expense bill.';
+    }
+</script> --%>
+
+<%-- <div id="bill-image-container">
+    <img id="bill-image" style="object-fit: cover; max-width: 100%; border: solid 2px #36ff00;" src="<%=exb.getBillURL()%>" alt="">
+</div>
+
+<script>
+    var billImageContainer = document.getElementById("bill-image-container");
+    var imageUrl = '<%=exb.getBillURL()%>';
+    if (imageUrl == null) {
+        billImageContainer.innerHTML = 'You don\'t have an expense bill.';
+    }
+</script> --%>

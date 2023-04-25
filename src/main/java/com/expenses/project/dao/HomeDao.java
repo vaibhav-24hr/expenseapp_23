@@ -177,5 +177,10 @@ public class HomeDao {
 		String selectQuery = "SELECT c.categoryName, COUNT(*) AS Transaction FROM category c  JOIN expense e ON e.categoryId = c.categoryId where userId = ? GROUP BY c.categoryName ORDER BY c.categoryName";
 		return stmt.query(selectQuery, new BeanPropertyRowMapper<ChartExpenseBean>(ChartExpenseBean.class),userId);
 	}
+	
+	public List<ChartExpenseBean> getVendorStats(Integer userId){
+		String selectQuery = " select v.vendorName as vendor , count(*) as Transaction FROM expense e RIGHT JOIN vendor v ON e.vendorId = v.vendorId where userId = ? GROUP BY v.vendorName";
+		return stmt.query(selectQuery,new BeanPropertyRowMapper<ChartExpenseBean>(ChartExpenseBean.class),userId);
+	}
 
 }
