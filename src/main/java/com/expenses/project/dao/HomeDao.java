@@ -173,14 +173,25 @@ public class HomeDao {
 		return stmt.query(selectQuery, new BeanPropertyRowMapper<ChartExpenseBean>(ChartExpenseBean.class),y,userId);
 	}
 	
+	public List<ChartExpenseBean> getCategoryStatsAmmount(Integer userId) {
+		String selectQuery = "SELECT c.categoryName, sum(ammount) AS TransactionAmmount FROM category c  JOIN expense e ON e.categoryId = c.categoryId where userId = ? and date = ? GROUP BY c.categoryName ORDER BY c.categoryName";
+		return stmt.query(selectQuery, new BeanPropertyRowMapper<ChartExpenseBean>(ChartExpenseBean.class),userId,y);
+	}
+	
+	public List<ChartExpenseBean> getVendorStatsAmmount(Integer userId){
+		String selectQuery = " select v.vendorName as vendor , sum(ammount) as TransactionAmmount FROM expense e RIGHT JOIN vendor v ON e.vendorId = v.vendorId where userId = ? and date = ? GROUP BY v.vendorName";
+		return stmt.query(selectQuery,new BeanPropertyRowMapper<ChartExpenseBean>(ChartExpenseBean.class),userId , y);
+	}
+	
+	
 	public List<ChartExpenseBean> getCategoryStats(Integer userId) {
-		String selectQuery = "SELECT c.categoryName, COUNT(*) AS Transaction FROM category c  JOIN expense e ON e.categoryId = c.categoryId where userId = ? GROUP BY c.categoryName ORDER BY c.categoryName";
-		return stmt.query(selectQuery, new BeanPropertyRowMapper<ChartExpenseBean>(ChartExpenseBean.class),userId);
+		String selectQuery = "SELECT c.categoryName, count(*) AS Transaction FROM category c  JOIN expense e ON e.categoryId = c.categoryId where userId = ? and date = ? GROUP BY c.categoryName ORDER BY c.categoryName";
+		return stmt.query(selectQuery, new BeanPropertyRowMapper<ChartExpenseBean>(ChartExpenseBean.class),userId,y);
 	}
 	
 	public List<ChartExpenseBean> getVendorStats(Integer userId){
-		String selectQuery = " select v.vendorName as vendor , count(*) as Transaction FROM expense e RIGHT JOIN vendor v ON e.vendorId = v.vendorId where userId = ? GROUP BY v.vendorName";
-		return stmt.query(selectQuery,new BeanPropertyRowMapper<ChartExpenseBean>(ChartExpenseBean.class),userId);
+		String selectQuery = " select v.vendorName as vendor , count(*) as Transaction FROM expense e RIGHT JOIN vendor v ON e.vendorId = v.vendorId where userId = ? and date = ? GROUP BY v.vendorName";
+		return stmt.query(selectQuery,new BeanPropertyRowMapper<ChartExpenseBean>(ChartExpenseBean.class),userId , y);
 	}
 
 }

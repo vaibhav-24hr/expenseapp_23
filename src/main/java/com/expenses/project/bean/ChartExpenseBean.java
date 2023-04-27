@@ -12,11 +12,20 @@ public class ChartExpenseBean {
 	private String incomeAmount;
 	private String categoryName;
 	private String vendor;
+	private String TransactionAmmount;
+	
+
 	
 	
 	
 	
 	
+	public String getTransactionAmmount() {
+		return TransactionAmmount;
+	}
+	public void setTransactionAmmount(String transactionAmmount) {
+		TransactionAmmount = transactionAmmount;
+	}
 	public String getVendor() {
 		return vendor;
 	}
