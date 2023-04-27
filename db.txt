@@ -475,3 +475,15 @@ mysql> select v.vendorName as vendor , count(*) as Transaction FROM expense e LE
 	| D-Mart         |           1 |
 	| Domino's Pizza |           1 |
 	+----------------+-------------+
+	
+	Admin Side
+mysql> SELECT c.categoryName, sum(ammount) AS TransactionAmmount FROM category c  JOIN expense e ON e.categoryId = c.categoryId where date like '2023-04-%' GROUP BY c.categoryName ORDER BY c.categoryName;
++--------------+--------------------+
+| categoryName | TransactionAmmount |
++--------------+--------------------+
+| Automobile   |                500 |
+| Electronics  |               2000 |
+| Food         |               5910 |
+| House Hold   |               2700 |
+| Other        |               5000 |
++--------------+--------------------+

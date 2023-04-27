@@ -51,6 +51,11 @@ public class AdminController {
 		List<ChartExpenseBean> lineChartData = admDao.getTransactionStats();
 		List<ChartExpenseBean> donutChartData = admDao.getTransactionTypeStats();
 		
+		List<ChartExpenseBean> categData = admDao.getCategoryStatsMonthly();
+		List<ChartExpenseBean> vendorData = admDao.getVendorStatsMonthly();
+		List<ChartExpenseBean> categDataAmmount = admDao.getCategoryStatsAmmountMonthly();
+		List<ChartExpenseBean> vendorDataAmmount = admDao.getVendorStatsAmmountMonthly();
+		
 		model.addAttribute("NumberOfUsers", totalUsers);
 		model.addAttribute("NumberOfMonthlyExpenses", totalExpenseCount);
 		model.addAttribute("TodayExpense", totalExpenseDaily);
@@ -62,6 +67,10 @@ public class AdminController {
 		model.addAttribute("chartData" , chartData);
 		model.addAttribute("lineChartData" , lineChartData);
 		model.addAttribute("donutChartData", donutChartData);
+		model.addAttribute("categData", categData);
+		model.addAttribute("vendorData", vendorData);
+		model.addAttribute("categDataAmmount", categDataAmmount);
+		model.addAttribute("vendorDataAmmount", vendorDataAmmount);
 		
 		
 		return "AdminDashboard";

@@ -206,25 +206,21 @@
 									<div>
 										<canvas id="pieChart" class="chartjs-render-monitor"></canvas>
 									</div>
-									<script type="text/javascript">
+ 									<script type="text/javascript">
 							 
 							 BGcolorArray= [
-								  'rgba(75, 192, 192, 0.4)',
+								 'rgba(255, 206, 86, 0.4)',
+							        'rgba(75, 192, 192, 0.4)',
 							        'rgba(153, 102, 255, 0.4)',
-							        'rgba(255, 159, 64, 0.4)',
-								    'rgba(255, 99, 132, 0.4)',
-							        'rgba(54, 162, 235, 0.4)',
-							        'rgba(255, 206, 86, 0.4)'
+							        'rgba(255, 159, 64, 0.4)'
 							            
 							      ]
 							 
 							  bordderArray = [
-								  'rgba(75, 192, 192, 1)',
+								  'rgba(255, 206, 86, 1)',
+							        'rgba(75, 192, 192, 1)',
 							        'rgba(153, 102, 255, 1)',
-							        'rgba(255, 159, 64, 1)',
-								    'rgba(255, 99, 132, 1)',
-							        'rgba(54, 162, 235, 1)',
-							        'rgba(255, 206, 86, 1)'
+							        'rgba(255, 159, 64, 1)'
 							        ]
 							 
 								bgColor = [];
@@ -253,7 +249,7 @@
 							         <%=db.getTransaction()%>,
 							       <%}%> ],
 							       backgroundColor: bgColor,
-							       borderColor: borderColor,
+							       borderColor: bordderArray,
 							       borderWidth: 1
 							     }]
 							   },
@@ -271,7 +267,64 @@
 							   }
 							 });  
  
- 						</script>
+ 						</script> 
+ 	
+ 	<!-- Error in Below Code :- Colour of partial paid -->
+ 						
+<%-- <script type="text/javascript">
+    // Define the color mappings for each status
+    const colorMappings = {
+        'paid': 'green',
+        'unpaid': 'red',
+        'partial_paid': 'yellow',
+        // Add more status-color mappings as needed
+    };
+
+    const bgColor = [];
+    const borderColor = [];
+
+    <% for (ChartExpenseBean db : pieStatus) { %>
+        const status_<%= db.getStatus().replace("\\s", "_").replace(" ", "_") %> = '<%= db.getStatus() %>';
+        bgColor.push(colorMappings[status_<%= db.getStatus().replace("\\s", "_").replace(" ", "_") %>]);
+        borderColor.push(colorMappings[status_<%= db.getStatus().replace("\\s", "_").replace(" ", "_") %>]);
+    <% } %>
+
+    const ctx3 = document.getElementById('pieChart');
+    new Chart(ctx3, {
+        type: 'doughnut',
+        data: {
+            labels: [<% for (ChartExpenseBean db : pieStatus) { %>
+                '<%= db.getStatus() %>',
+            <% } %>],
+            datasets: [{
+                label: '# Transaction Status',
+                data: [<% for (ChartExpenseBean db : pieStatus) { %>
+                    <%= db.getTransaction() %>,
+                <% } %>],
+                backgroundColor: bgColor,
+                borderColor: borderColor,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            cutout: '50%',
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Donut Chart'
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+</script> --%>
+
+
+
+ 						
+ 						
 								</div>
 							</div>
 						</div>

@@ -533,6 +533,366 @@ List<ChartExpenseBean> chartData = (List<ChartExpenseBean>)request.getAttribute(
 
 					<!-- 2nd Row End -->
 					
+					
+					<div class="row">
+							
+<div class="col-lg-5 grid-margin stretch-card" >
+								<div class="card" >
+									<div class="card-body" >
+										<div class="chartjs-size-monitor" >
+											<div class="chartjs-size-monitor-expand" >
+												<div class=""></div>
+											</div>
+											<div class="chartjs-size-monitor-shrink" >
+												<div class=""></div>
+											</div>
+										</div>
+										<h5 class="card-title">Amount Spent on Specific Shop</h5>
+										<div>
+										
+<%	List<ChartExpenseBean> vendorDataAmmount = (List<ChartExpenseBean>) request.getAttribute("vendorDataAmmount"); %>
+
+<canvas id="pieVChart2" class="chartjs-render-monitor" ></canvas>
+									<script type="text/javascript">
+							 
+							 BGcolorArray= [								  	    			        
+								 'RGB(231, 76, 60, 0.8)',
+								 'RGB(241, 196, 15, 0.8)',
+								 'RGB(46, 204, 113, 0.8)',
+								 'RGB(52, 152, 219, 0.8)',
+								 'RGB(155, 89, 182, 0.8)',
+								 'RGB(230, 126, 34, 0.8)',
+								 'RGB(241, 148, 138, 0.8)',
+								 'RGB(149, 165, 166, 0.8)',
+								 'RGB(41, 128, 185, 0.8)',
+								 'RGB(242, 190, 69, 0.8)',
+								 'RGB(108, 122, 137, 0.8)',
+								 'RGB(102, 204, 255, 0.8)'
+							      ]
+							 
+							/*   bordderArray = [
+								    'rgba(255, 206, 86, 1)',
+							        'rgba(54, 162, 235, 1)',
+							        'rgba(255, 99, 132, 1)',
+							        'rgba(255, 159, 64, 1)',
+							        'rgba(153, 102, 255, 1)',
+							        'rgba(75, 192, 192, 1)'
+							        ] */
+							 
+								bgColor = [];
+								/* borderColor = []; */
+								
+								<%for (int i = 0; i < vendorDataAmmount.size(); i++) {%>
+									bgColor.push(BGcolorArray[<%=i%>]);
+								<%}%>
+								
+								<%for (int i = 0; i < vendorDataAmmount.size(); i++) {%>
+									borderColor.push(bordderArray[<%=i%>]);
+								<%}%>
+ 
+							 const ctxV2 = document.getElementById('pieVChart2');
+							
+							 new Chart(ctxV2, {
+							   type: 'doughnut',
+							   data: {
+							     labels: [<%for (ChartExpenseBean vb2 : vendorDataAmmount) {%>
+							       '<%=vb2.getVendor()%>',
+							     <%}%>
+							     ],
+							     datasets: [{
+							       label: '# Transaction Status',
+							       data: [ <%for (ChartExpenseBean vb2 : vendorDataAmmount) {%>
+							         <%=vb2.getTransactionAmmount()%>,
+							       <%}%> ],
+							       backgroundColor: bgColor,
+							       borderColor: 'rgba(0, 0, 0, 1)',
+							       borderWidth: 1
+							     }]
+							   },
+							   options: {
+							     cutout: '0%',
+							     plugins: {
+							       title: {
+							         display: true,
+							         text: 'Pie Chart'
+							       },
+							       legend: {
+							         position: 'bottom'
+							       }
+							     }
+							   }
+							 });  
+ 
+ 						</script>
+								
+										
+										
+									</div>
+									</div>
+								</div>
+
+
+</div>
+
+<div class="col-lg-7 grid-margin stretch-card">
+								<div class="card">
+									<div class="card-body">
+										<div class="chartjs-size-monitor">
+											<div class="chartjs-size-monitor-expand">
+												<div class=""></div>
+											</div>
+											<div class="chartjs-size-monitor-shrink">
+												<div class=""></div>
+											</div>
+										</div>
+										<h4 class="card-title">Amount Spent on Specific Category </h4>
+										<div>
+<%	List<ChartExpenseBean> categDataAmmount = (List<ChartExpenseBean>) request.getAttribute("categDataAmmount");
+%>
+
+<canvas id="horizontalChart2" class="chartjs-render-monitor"></canvas>
+<script type="text/javascript">    
+
+
+
+    var ctx7 = document.getElementById('horizontalChart2').getContext('2d');
+
+    if (window.myChart) {
+        window.myChart.destroy();
+    }
+
+    var chart = new Chart(ctx7, { // Use ctx4 instead of ctx
+        type: 'bar',
+        data: {
+            labels: [<%for (ChartExpenseBean cd2 : categDataAmmount) {%>
+			'<%=cd2.getCategoryName()%>', 
+			<%}%>],
+            datasets: [{
+                label: ' Transaction  Category',
+                data: [<%for (ChartExpenseBean cd2 : categDataAmmount) {%>
+    			'<%=cd2.getTransactionAmmount()%>', 
+    			<%}%>],
+                backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                borderColor: 'rgba(0, 0, 0, 1)',
+                borderWidth: 1
+            }]
+        },
+        options : {
+			scales : {
+		    	  x: {
+			          ticks: {
+			            color: 'white'
+			          },
+			          grid: {
+			        	  color: 'rgba(255, 255, 255, 0.1)'
+			          }
+			        },
+		    	    y: {
+				          ticks: {
+				            color: 'white'
+				          },
+				          grid: {
+				        	  color: 'rgba(255, 255, 255, 0.1)'
+				          }
+				        }
+		    	  }
+		}
+	});
+</script>
+								
+										
+										
+									</div>
+									</div>
+								</div>
+							</div>
+						</div> 
+						
+						<div class="row">
+							<div class="col-lg-7 grid-margin stretch-card">
+								<div class="card">
+									<div class="card-body">
+										<div class="chartjs-size-monitor">
+											<div class="chartjs-size-monitor-expand">
+												<div class=""></div>
+											</div>
+											<div class="chartjs-size-monitor-shrink">
+												<div class=""></div>
+											</div>
+										</div>
+										<h5 class="card-title">Yearly Number of Transaction on Particular Category</h5>
+										<div>
+
+<%	List<ChartExpenseBean> categData = (List<ChartExpenseBean>) request.getAttribute("categData");
+%>
+
+<canvas id="horizontalChart" class="chartjs-render-monitor"></canvas>
+
+
+<!-- For Future Update -->
+
+
+ <script type="text/javascript">    
+
+    var ctx4 = document.getElementById('horizontalChart').getContext('2d');
+
+    if (window.myChart) {
+        window.myChart.destroy();
+    }
+
+    var chart = new Chart(ctx4, { // Use ctx4 instead of ctx
+        type: 'line',
+        data: {
+            labels: [<%for (ChartExpenseBean cd : categData) {%>
+			'<%=cd.getCategoryName()%>', 
+			<%}%>],
+            datasets: [{
+                label: ' Category Transaction',
+                data: [<%for (ChartExpenseBean cd : categData) {%>
+    			'<%=cd.getTransaction()%>', 
+    			<%}%>],
+    			pointRadius: 5,
+                backgroundColor: 'rgba(1, 1, 1, 1)',
+                borderColor: 'lime',
+                borderWidth: 1
+            }]
+        },
+        options : {
+			scales : {
+		    	  x: {
+			          ticks: {
+			            color: 'white'
+			          },
+			          grid: {
+			        	  color: 'rgba(255, 255, 255, 0.1)'
+			          }
+			        },
+		    	    y: {
+				          ticks: {
+				            color: 'white'
+				          },
+				          grid: {
+				        	  color: 'rgba(255, 255, 255, 0.1)'
+				          }
+				        }
+		    	  }
+		}
+	});
+</script> 
+
+
+
+
+								
+										
+										
+									</div>
+									</div>
+								</div>
+							</div>
+
+<div class="col-lg-5 grid-margin stretch-card" >
+								<div class="card" >
+									<div class="card-body" >
+										<div class="chartjs-size-monitor" >
+											<div class="chartjs-size-monitor-expand" >
+												<div class=""></div>
+											</div>
+											<div class="chartjs-size-monitor-shrink" >
+												<div class=""></div>
+											</div>
+										</div>
+										<h5 class="card-title"> Yearly Transaction in Specific Shops</h5>
+										<div>
+										
+<%	List<ChartExpenseBean> vendorData = (List<ChartExpenseBean>) request.getAttribute("vendorData"); %>
+
+<canvas id="pieVChart" class="chartjs-render-monitor" ></canvas>
+									<script type="text/javascript">
+							 
+							 BGcolorArray= [								  	    			        
+								 
+								    
+								    'rgba(255, 159, 64, 0.8)',
+								    'rgba(153, 102, 255, 0.8)',
+								    'rgba(75, 192, 192, 0.8)',
+								    'rgba(255, 206, 86, 0.8)',
+								    'rgba(54, 162, 235, 0.8)',
+									  'rgba(255, 99, 132, 0.8)',
+									  'rgba(201, 203, 207, 0.8)',
+									    'rgba(48, 30, 38, 0.8)',
+									    'rgba(122, 124, 129, 0.8)',
+									    'rgba(189, 129, 46, 0.8)',
+									    'rgba(50, 200, 204, 0.8)',
+									    'rgba(48, 51, 204, 0.8)', 
+							      ]
+							 
+							/*   bordderArray = [
+								    'rgba(255, 206, 86, 1)',
+							        'rgba(54, 162, 235, 1)',
+							        'rgba(255, 99, 132, 1)',
+							        'rgba(255, 159, 64, 1)',
+							        'rgba(153, 102, 255, 1)',
+							        'rgba(75, 192, 192, 1)'
+							        ] */
+							 
+								bgColor = [];
+								/* borderColor = []; */
+								
+								<%for (int i = 0; i < vendorData.size(); i++) {%>
+									bgColor.push(BGcolorArray[<%=i%>]);
+								<%}%>
+								
+								<%for (int i = 0; i < vendorData.size(); i++) {%>
+									borderColor.push(bordderArray[<%=i%>]);
+								<%}%>
+ 
+							 const ctxV = document.getElementById('pieVChart');
+							
+							 new Chart(ctxV, {
+							   type: 'doughnut',
+							   data: {
+							     labels: [<%for (ChartExpenseBean vb : vendorData) {%>
+							       '<%=vb.getVendor()%>',
+							     <%}%>
+							     ],
+							     datasets: [{
+							       label: ' Transaction Status',
+							       data: [ <%for (ChartExpenseBean vb : vendorData) {%>
+							         <%=vb.getTransaction()%>,
+							       <%}%> ],
+							       backgroundColor: bgColor,
+							       borderColor: 'rgba(0, 0, 0, 1)',
+							       borderWidth: 1
+							     }]
+							   },
+							   options: {
+							     cutout: '0%',
+							     plugins: {
+							       title: {
+							         display: true,
+							         text: 'Pie Chart'
+							       },
+							       legend: {
+							         position: 'bottom'
+							       }
+							     }
+							   }
+							 });  
+ 
+ 						</script>
+								
+										
+										
+									</div>
+									</div>
+								</div>
+
+
+</div>
+						</div>
+						
+					
 
 
 

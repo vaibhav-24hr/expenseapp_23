@@ -213,6 +213,30 @@ public class AdminDao {
 	}
 	
 	
+	// New Added
+	
+	public List<ChartExpenseBean> getCategoryStatsAmmountMonthly() {
+		String selectQuery = "SELECT c.categoryName, sum(ammount) AS TransactionAmmount FROM category c  JOIN expense e ON e.categoryId = c.categoryId where date like ? GROUP BY c.categoryName ORDER BY c.categoryName";
+		return stmt.query(selectQuery, new BeanPropertyRowMapper<ChartExpenseBean>(ChartExpenseBean.class),currentMonth);
+	}
+	
+	public List<ChartExpenseBean> getVendorStatsAmmountMonthly(){
+		String selectQuery = " select v.vendorName as vendor , sum(ammount) as TransactionAmmount FROM expense e RIGHT JOIN vendor v ON e.vendorId = v.vendorId where date like ? GROUP BY v.vendorName";
+		return stmt.query(selectQuery,new BeanPropertyRowMapper<ChartExpenseBean>(ChartExpenseBean.class), currentMonth);
+	}
+	
+	
+	public List<ChartExpenseBean> getCategoryStatsMonthly() {
+		String selectQuery = "SELECT c.categoryName, count(*) AS Transaction FROM category c  JOIN expense e ON e.categoryId = c.categoryId where date = ? GROUP BY c.categoryName ORDER BY c.categoryName";
+		return stmt.query(selectQuery, new BeanPropertyRowMapper<ChartExpenseBean>(ChartExpenseBean.class),y);
+	}
+	
+	public List<ChartExpenseBean> getVendorStatsMonthly(){
+		String selectQuery = " select v.vendorName as vendor , count(*) as Transaction FROM expense e RIGHT JOIN vendor v ON e.vendorId = v.vendorId where date = ? GROUP BY v.vendorName";
+		return stmt.query(selectQuery,new BeanPropertyRowMapper<ChartExpenseBean>(ChartExpenseBean.class), y);
+	}
+	
+	
 	// For Users Profile Picture
 	
 	public void updateImageUrl(ProfileBean pBean) {
