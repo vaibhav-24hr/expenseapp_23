@@ -39,8 +39,8 @@ public class SubCategoryController {
 		// Insert
 		scDao.addSubCategory(scb);
 		
-		List<SubCategoryBean> list = scDao.getAllSubCategory();
-		model.addAttribute("list",list);
+		List<SubCategoryBean> sclist = scDao.getAllSubCategory();
+		model.addAttribute("sclist",sclist);
 		
 		return "ListSubCategory"; // redirect 
 	}
