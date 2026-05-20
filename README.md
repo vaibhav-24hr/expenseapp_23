@@ -1,7 +1,7 @@
 # Expense Manager
 
 A full-stack **personal finance and expense tracking** web application built with **Spring Boot, JSP, and MySQL**.
-Users can record their daily expenses and incomes, organize them by category, sub-category, vendor and payment mode, upload bill receipts, and visualize their spending through interactive dashboards. An **Admin panel** provides platform-wide analytics and user management.
+The app enables users to record daily expenses and income, organize transactions by category/sub-category/vendor/payment mode, upload bill receipts, and analyze spending through interactive dashboards. A separate **Admin panel** provides platform-wide analytics and user management.
 
 > Developed as an internship project at **Unnati** during the 8th semester (Final Year) of B.E. at **Gujarat Technological University (GTU)**.
 
@@ -24,7 +24,6 @@ Users can record their daily expenses and incomes, organize them by category, su
   - [Run the Application](#5-run-the-application)
 - [Default Roles](#default-roles)
 - [REST/MVC Endpoints (Selected)](#restmvc-endpoints-selected)
-- [Known Issues / Hardcoded Paths](#known-issues--hardcoded-paths)
 - [Author](#author)
 - [License](#license)
 
@@ -49,7 +48,7 @@ Users can record their daily expenses and incomes, organize them by category, su
 - **Expenses**
   - Add a new expense with title, category, sub-category, vendor, account type, status, amount, date, description, and **bill image upload**.
   - List, view, edit, and update existing expenses.
-- **Incomes**
+- **Income**
   - Add a new income with title, account type, status, date, amount, description.
   - List and view income entries.
 - **Profile**
@@ -115,11 +114,11 @@ DAO  (com.expenses.project.dao)  ── uses JdbcTemplate
 MySQL (expenseapp)
 ```
 
-Cross-cutting:
-- `LoginCheckFilter` — global servlet filter for auth gating.
+Cross-cutting components:
+- `LoginCheckFilter` — global servlet filter that gates protected routes.
 - `EmailService` — sends OTP emails for password reset.
 - `OtpGenerator` — utility to generate N-digit OTPs.
-- `HelperData` — shared helpers.
+- `HelperData` — common helper methods.
 
 ---
 
@@ -222,7 +221,7 @@ cd expenseapp_23
 
 ### 2. Set up the Database
 
-Open the MySQL CLI (or MySQL Workbench) and import the provided dump:
+Open the MySQL CLI (or MySQL Workbench) and import the provided SQL dump:
 
 ```bash
 mysql -u root -p < ExpenseManager_v1.sql
@@ -286,7 +285,7 @@ Or, build and run the WAR directly:
 java -jar target/expenseManager-23_Final-0.0.1-SNAPSHOT.war
 ```
 
-Then open your browser at:
+Then open your browser:
 
 ```
 http://localhost:9999/
@@ -309,7 +308,7 @@ You can promote any user to admin directly in MySQL:
 UPDATE users SET role = 1 WHERE email = 'someone@example.com';
 ```
 
-Sample seeded users are present in `ExpenseManager_v1.sql`.
+Sample users are included in `ExpenseManager_v1.sql`.
 
 ---
 
@@ -341,22 +340,6 @@ Plus full CRUD endpoints for categories, sub-categories, vendors, accounts, and 
 
 ---
 
-## Known Issues / Hardcoded Paths
-
-These were left over from the original IDE workspace and **must be addressed before deployment**:
-
-1. **Hardcoded Windows file paths** for profile pictures and bills inside
-   `AdminController.saveProfilePic` and `ExpenseController.updateExpense`, e.g.:
-   ```
-   C:\Users\vaibhav\Documents\workspace-spring-tool-suite-4-4.17.2.RELEASE\expenseManager-23_Final\src\main\resources\static\assets\bills
-   ```
-   These should be moved to a configurable property (e.g. `app.upload.dir`) or a cloud blob store (S3, Cloudinary, etc.).
-2. **Plain-text passwords** stored in the `users` table. Hashing (BCrypt) should be introduced before any real deployment.
-3. **Email credentials** are committed in `EmailService.java`. Move them to environment variables / `application.properties` before pushing to a public repo.
-4. **DB credentials** are committed in `application.properties` — same recommendation.
-
----
-
 ## Author
 
 **Vaibhav** &nbsp;·&nbsp; B.E. Final Year (8th Semester), Gujarat Technological University (GTU)
@@ -369,4 +352,4 @@ Internship project @ **Unnati**.
 
 ## License
 
-This project is released for **educational / academic** purposes as part of the GTU final-year internship program. You are free to use it as a reference for learning Spring Boot + JSP + MySQL development.
+This project is shared for **educational and academic** purposes as part of the GTU final-year internship program. It can be used as a reference for learning Spring Boot + JSP + MySQL development.
