@@ -7,6 +7,7 @@ src/main/resources/local-secrets.properties
 FUTURE_SCOPE.md
 PRIVATE_NOTES.txt
 onboarding.txt
+RAILWAY_DEPLOYMENT.txt
 
 # --- Build output ---
 target/
