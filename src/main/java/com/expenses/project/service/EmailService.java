@@ -11,16 +11,21 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 
 
 @Service
 public class EmailService {
-	public  void sendEmailForForgetPassword(String email,String otp) {
 
-		final String from = "vaibhavsocial1111@gmail.com";// from address
-		final String appPassword = "bithwpwpclnlcueg"; // tejas123
+	@Value("${app.mail.from}")
+	private String from;
+
+	@Value("${app.mail.app-password}")
+	private String appPassword;
+
+	public  void sendEmailForForgetPassword(String email,String otp) {
 
 		Properties prop = System.getProperties();
 
@@ -33,7 +38,6 @@ public class EmailService {
 		Session session = Session.getInstance(prop, new Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
-				// TODO Auto-generated method stub
 				return new PasswordAuthentication(from, appPassword);
 			}
 		});	

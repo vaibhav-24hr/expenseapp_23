@@ -20,8 +20,7 @@ The app enables users to record daily expenses and income, organize transactions
   - [Clone the Repository](#1-clone-the-repository)
   - [Set up the Database](#2-set-up-the-database)
   - [Configure the Application](#3-configure-the-application)
-  - [Configure Email (OTP)](#4-configure-email-otp)
-  - [Run the Application](#5-run-the-application)
+  - [Run the Application](#4-run-the-application)
 - [Default Roles](#default-roles)
 - [REST/MVC Endpoints (Selected)](#restmvc-endpoints-selected)
 - [Author](#author)
@@ -235,53 +234,41 @@ This will:
 
 ### 3. Configure the Application
 
-Edit [`src/main/resources/application.properties`](src/main/resources/application.properties) and update it for your environment:
-
-```properties
-# Server
-server.port=9999
-
-# JSP view resolver
-spring.mvc.view.prefix=/WEB-INF/views/
-spring.mvc.view.suffix=.jsp
-
-# MySQL connection — update username / password to match your local MySQL
-spring.datasource.url=jdbc:mysql://localhost:3306/expenseapp
-spring.datasource.username=YOUR_DB_USERNAME
-spring.datasource.password=YOUR_DB_PASSWORD
-spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-```
-
-### 4. Configure Email (OTP)
-
-Forget-Password OTPs are sent via Gmail SMTP from
-[`src/main/java/com/expenses/project/service/EmailService.java`](src/main/java/com/expenses/project/service/EmailService.java).
-
-Update the two constants with **your own Gmail address** and a **Gmail App Password** (not your real Gmail password):
-
-```java
-final String from = "your-email@gmail.com";
-final String appPassword = "your-16-char-app-password";
-```
-
-> Create an App Password from your Google Account → *Security* → *2-Step Verification* → *App passwords*.
-
-### 5. Run the Application
-
-Using the Maven wrapper:
+The actual `application.properties` is **ignored from version control** to keep credentials private.
+Copy the provided example file and fill in your own values:
 
 ```bash
-# Linux / macOS
-./mvnw spring-boot:run
-
 # Windows (PowerShell)
-.\mvnw.cmd spring-boot:run
+copy src\main\resources\application.properties.example src\main\resources\application.properties
+
+# Linux / macOS
+cp src/main/resources/application.properties.example src/main/resources/application.properties
+```
+
+Then open `src/main/resources/application.properties` and replace the placeholders:
+
+```properties
+# MySQL connection
+spring.datasource.username=YOUR_MYSQL_USERNAME
+spring.datasource.password=YOUR_MYSQL_PASSWORD
+
+# Gmail SMTP (used for Forgot-Password OTP)
+app.mail.from=your-email@gmail.com
+app.mail.app-password=your-16-character-app-password
+```
+
+> Create a Gmail App Password from your Google Account → *Security* → *2-Step Verification* → *App passwords*.
+
+### 4. Run the Application
+
+```bash
+mvn spring-boot:run
 ```
 
 Or, build and run the WAR directly:
 
 ```bash
-./mvnw clean package
+mvn clean package
 java -jar target/expenseManager-23_Final-0.0.1-SNAPSHOT.war
 ```
 

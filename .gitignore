@@ -1,2 +1,46 @@
+# --- Secrets / local config (never push) ---
+src/main/resources/application.properties
+*.env
+.env
+
+# --- Personal local notes (kept locally only) ---
 FUTURE_SCOPE.md
 PRIVATE_NOTES.txt
+onboarding.txt
+
+# --- Build output ---
+target/
+build/
+out/
+*.class
+*.jar
+*.war
+
+# --- Logs ---
+*.log
+logs/
+
+# --- IDE / Editor ---
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.settings/
+.project
+.classpath
+.factorypath
+.springBeans
+nbproject/
+.nb-gradle/
+
+# --- OS files ---
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# --- Maven / Spring ---
+*.original
+.mvn/wrapper/maven-wrapper.jar
