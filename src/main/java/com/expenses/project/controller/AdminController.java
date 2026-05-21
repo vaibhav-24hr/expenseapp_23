@@ -9,6 +9,7 @@ import org.apache.commons.io.FileUtils;
 //import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +33,9 @@ public class AdminController {
 	
 	@Autowired
 	UserDao uDao;
+
+	@Value("${app.upload.dir:src/main/resources/static/assets}")
+	private String uploadDir;
 	
 	
 	@GetMapping("/admindashboard")
@@ -92,10 +96,9 @@ public class AdminController {
 		System.out.println("userDetails updated => " + usBean.getFirstName() + usBean.getLastName());
 		admDao.updateUser(usBean);
 		try {
-			File userDir = new File ("C:\\Users\\vaibhav\\Documents\\workspace-spring-tool-suite-4-4.17.2.RELEASE\\expenseManager-23_Final\\src\\main\\resources\\static\\assets\\profiles",
-					pBean.getUserId()+"");
+			File userDir = new File(uploadDir + "/profiles", pBean.getUserId()+"");
 			if(userDir.exists() == false) {
-				userDir.mkdir();
+				userDir.mkdirs();
 			}
 			File file = new File(userDir, pBean.getProfileImg().getOriginalFilename());
 			FileUtils.writeByteArrayToFile(file, pBean.getProfileImg().getBytes());

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -54,6 +55,9 @@ public class ExpenseController {
 	
 	@Autowired
 	AccountDao acDao;
+
+	@Value("${app.upload.dir:src/main/resources/static/assets}")
+	private String uploadDir;
 	
 	
 	
@@ -227,10 +231,9 @@ public class ExpenseController {
 		System.out.println(exBean.getBillURL());
 		exd.updateExpense(exBean);
 		try { // To make Folder of every Expense Bill
-			File billDir = new File("C:\\Users\\vaibhav\\Documents\\workspace-spring-tool-suite-4-4.17.2.RELEASE\\expenseManager-23_Final\\src\\main\\resources\\static\\assets\\bills",exBean.getExpenseId()+"");			
-		// validate if folder doesn't exists so it will make it or if folder exist then store image in specific folder
+			File billDir = new File(uploadDir + "/bills", exBean.getExpenseId()+"");
 			if(billDir.exists() == false) {
-				billDir.mkdir();
+				billDir.mkdirs();
 			}
 			// 
 			File file = new File(billDir,exBean.getBillImg().getOriginalFilename());

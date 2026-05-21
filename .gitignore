@@ -16,6 +16,11 @@ out/
 *.jar
 *.war
 
+# --- Runtime upload folders (user-generated images) ---
+uploads/
+src/main/resources/static/assets/bills/
+src/main/resources/static/assets/profiles/
+
 # --- Logs ---
 *.log
 logs/

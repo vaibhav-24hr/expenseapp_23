@@ -15,3 +15,8 @@ spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 #Create a Gmail App Password from: https://myaccount.google.com/apppasswords
 app.mail.from=your-email@gmail.com
 app.mail.app-password=your-16-character-app-password
+
+#Folder where uploaded bill images and profile pictures are stored.
+#Default works for local dev. For deployment, point this to a writable folder
+#(e.g. /var/app/uploads on Linux servers) and configure a static resource handler.
+app.upload.dir=src/main/resources/static/assets
