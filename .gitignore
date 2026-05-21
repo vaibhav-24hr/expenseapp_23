@@ -1,5 +1,5 @@
 # --- Secrets / local config (never push) ---
-src/main/resources/application.properties
+src/main/resources/local-secrets.properties
 *.env
 .env
 
